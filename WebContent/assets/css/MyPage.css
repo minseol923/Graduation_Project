@@ -1,0 +1,183 @@
+@charset "utf-8";
+
+#my-Sidebar {
+        width: 250px;
+        padding: 20px;
+        margin-bottom: 20px;
+        float: left;
+      }
+ 
+ ul{
+ 	list-style:none;
+ }
+ 
+ header{
+ text-align: center;
+ }
+ 
+ select{
+ min-width: 100px;
+ 
+ }
+ 
+ul {
+　　　list-style-type: none;
+}
+
+li {
+　　　display: inline;
+}
+
+ #zipcode{
+	padding:5px;
+}
+#delete{
+	padding:10px;
+}
+#phone_certification{
+	padding:10px;
+}
+*{
+	margin:0px;
+	padding:0px;
+	box-sizing:border-box;
+	list-style:none;
+	
+}
+.slide_wrapper{
+	position:relative;
+	width:900px;
+	height:300px;
+	magin:0 auto;
+	overflow:hidden;
+}
+.slide_hobby{
+	position:relative;
+	width:900px;
+	height:300px;
+	magin:0 auto;
+	overflow:hidden;
+}
+.slides{
+	positon:absolute;
+	left:0;
+	top:0;
+	transition:left 0.5s ease-out;
+}
+
+.hobby{
+	positon:absolute;
+	left:0;
+	top:0;
+	transition:left 0.5s ease-out;
+}
+
+.slides li:not(:last-child){
+	float:left;
+	list-style:none;
+	margin-right:5px;
+	
+}
+
+.slides li img{
+	width:250px;
+
+}
+.hobby li:not(:last-child){
+	float:left;
+	list-style:none;
+	margin-right:5px;
+	
+}
+.hobby li img{
+	width:280px;
+
+}
+.slides ul{
+	list-style:none outside none;
+	padding-left:0px;
+	margin:0px;
+	
+}
+.hobby ul{
+	list-style:none outside none;
+	padding-left:0px;
+	margin:0px;
+	
+}
+
+.controls{
+	text-align:center;
+	margin-top:5px;
+}
+
+.controls span{
+	background:#ed786a;
+	color:#fff;
+	padding:10px 20px;
+	margin:0 10px;
+}
+.profile{
+	width:600px;
+	height:350px;
+	border: 2px solid gray;
+	border-radius :3%;
+	display:flex;
+	position: relative;
+	right:-150px;
+}
+
+.profile img{
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	position: relative;
+	bottom:-50px;
+	right:-20px;
+}
+
+.profile .left h4{
+	magin-buttom:10px;
+	text-align:center;
+	position: relative;
+	bottom:-50px;
+	right:-20px;
+	
+}
+
+.profile .left p{
+	font-size:12px;
+	text-align:center;
+	position: relative;
+	bottom:-50px;
+	right:-20px;
+}
+
+.profile .right {
+	width:65%
+	background:#fff;
+	position: relative;
+	right:-70px;
+	margin-top:10px;
+}
+
+.right h3{
+	position: relative;
+	left:-170px;
+	
+}
+
+.profile .right .data h4{
+	magin-bottom:10px;
+	padding-bottom:0px;
+	border-bottom:1px solid #;
+}
+
+.profile .right .data p{
+	font-size:13px;
+}
+#myclass .class img{
+	float:left;
+}
+///////
+

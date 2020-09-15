@@ -3,10 +3,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Strongly Typed by HTML5 UP</title>
+	<title>MY HOB!</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="assets/css/main.css" />
+	<link rel="stylesheet" href="assets/css/main.css"/>
 </head>
 <body class="homepage is-preload">
 		<div id="page-wrapper">
@@ -16,7 +16,7 @@
 					<div class="container">
 
 						<!-- Logo -->
-							<h1 id="logo"><a href="index.jsp">Strongly Typed</a></h1>
+							<h1 id="logo"><a href="index.jsp">MY HOB!</a></h1>
 							<p>A responsive HTML5 site template. Manufactured by HTML5 UP.</p>
 
 						<!-- Nav -->
@@ -24,7 +24,7 @@
 								<ul>
 									<li><a class="icon solid fa-home" href="index.jsp"><span>Introduction</span></a></li>
 									<li>
-										<a href="#" class="icon fa-chart-bar"><span>Dropdown</span></a>
+										<a href="#" class="icon fa-chart-bar"><span>취미</span></a>
 										<ul>
 											<li><a href="#">Lorem ipsum dolor</a></li>
 											<li><a href="#">Magna phasellus</a></li>
@@ -41,7 +41,14 @@
 										</ul>
 									</li>
 									<li><a class="icon solid fa-cog" href="left-sidebar.jsp"><span>Left Sidebar</span></a></li>
-									<li><a class="icon solid fa-retweet" href="right-sidebar.jsp"><span>Right Sidebar</span></a></li>
+									<li><a class="icon solid fa-retweet" href="index.jsp">
+									<span>Service Center</span></a>
+										<ul>
+											<li><a href="/ServiceCenter/notice.jsp">공지사항</a></li>
+											<li><a href="/ServiceCenter/FAQ.jsp">FAQ</a></li>
+											<li><a href="/ServiceCenter/Q&A.jsp">Q&A</a></li>
+										</ul>
+									</li>
 									<li><a class="icon solid fa-sitemap" href="no-sidebar.jsp"><span>No Sidebar</span></a></li>
 								</ul>
 							</nav>
