@@ -88,8 +88,8 @@
           <p class="slide-desc">테이블 가득 달달함을 나누어봐요<br>
               <br><a class="button" href="#">view more</a> </p>
 	  </div>
-	  <button class="arrow prev"><</button>
-	  <button class="arrow next">></button>
+	  <button class="arrow prev"></button>
+	  <button class="arrow next"></button>
 		<ul class="slide-nav"></ul>
  </div>
 <!-- partial -->
