@@ -22,49 +22,67 @@
 					<div class="container">
 
 						<!-- Logo -->
-							<h1 id="logo"><a href="index.html">MY HOB!</a></h1>
-							<p>MAKE YOUR HOBBY</p>
+							<h1 id="logo"><a href="index.jsp">MY HOB!</a></h1>
+							<p>A responsive HTML5 site template. Manufactured by HTML5 UP.</p>
 
 						<!-- Nav -->
 							<nav id="nav">
 								<ul>
-									<li><a class="icon fa-chart-bar"><span>About Us</span></a></li>
+									<li><a class="icon solid fa-home" href="index.jsp"><span>Introduction</span></a></li>
 									<li>
-										<a href="#" class="icon fa-chart-bar"><span>취미탐색</span></a>
+										<a href="#" class="icon fa-chart-bar"><span>취미</span></a>
 										<ul>
-											<li><a href="#">취미검색</a></li>
-											<li><a href="#">MBTI</a></li>
+											<li><a href="#">Lorem ipsum dolor</a></li>
+											<li><a href="#">Magna phasellus</a></li>
+											<li><a href="#">Etiam dolore nisl</a></li>
+											<li>
+												<a href="#">Phasellus consequat</a>
+												<ul>
+													<li><a href="#">Magna phasellus</a></li>
+													<li><a href="#">Etiam dolore nisl</a></li>
+													<li><a href="#">Phasellus consequat</a></li>
+												</ul>
+											</li>
+											<li><a href="#">Veroeros feugiat</a></li>
 										</ul>
 									</li>
-									<li>
-										<a href="#" class="icon fa-chart-bar"><span>커뮤니티</span></a>
+									<li><a class="icon solid fa-cog" href="../MyPage/MyClass.jsp">
+									<span>MY Page</span></a>
 										<ul>
-											<li><a href="#">자유게시판</a></li>
-											<li><a href="#">정보게시판</a></li>
+											<li><a href="/MyPage/MyClass.jsp">My Class</a></li>
+											<li><a href="/MyPage/HobbyLog.jsp">활동로그</a></li>
+											<li><a href="/MyPage/Profile.jsp">내 프로필</a></li>
+											<li><a href="/MyPage/EditProfile.jsp">프로필수정</a></li>
+										</ul>
+									<li><a class="icon solid fa-retweet" href="../ServiceCenter/FAQ.jsp">
+									<span>Service Center</span></a>
+										<ul>
+											<li><a href="/ServiceCenter/notice.jsp">공지사항</a></li>
+											<li><a href="/ServiceCenter/FAQ.jsp">FAQ</a></li>
+											<li><a href="/ServiceCenter/Q&A.jsp">Q&A</a></li>
 										</ul>
 									</li>
-									<li>
-										<a href="#" class="icon fa-chart-bar"><span>고객센터</span></a>
+									<li><a class="icon solid fa-sitemap" href="../community/info_board.jsp">
+										<span>community</span></a>
 										<ul>
-											<li><a href="#">공지사항</a></li>
-											<li><a href="#">FAQ</a></li>
-											<li><a href="#">Q&A</a></li>
+											<li><a href="/community/free_board.jsp">자유게시판</a></li>
+											<li><a href="/community/info_board.jsp">정보게시판</a></li>
 										</ul>
+									
 									</li>
 								</ul>
 							</nav>
 
 					</div>
 				</section>
-				
 			<!-- 사이드 바 -->
 			<div id="my-Sidebar">
         		<h2>마이페이지</h2>
         		<ul>
          		  	<li><a href="../MyPage/Profile.jsp" title="프로필">프로필</a></li>
-        		  	<li><a href="../MyPage/MyClass.jsp" title="내 클래스">내 클래스</li>
-         	  	 	<li><a href="../MyPage/HobbyLog.jsp" title="취미 로그">취미 로그</li>
-         	  	 	<li><a href="../MyPage/EditProfile.jsp" title="회원 정보 관리">회원 정보 관리</li>
+        		  	<li><a href="../MyPage/MyClass.jsp" title="내 클래스">내 클래스</a></li>
+         	  	 	<li><a href="../MyPage/HobbyLog.jsp" title="취미 로그">취미 로그</a></li>
+         	  	 	<li><a href="../MyPage/EditProfile.jsp" title="회원 정보 관리">회원 정보 관리</a></li>
         		</ul>
       		</div>
       
@@ -187,12 +205,12 @@
 		</div>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/jquery.dropotron.min.js"></script>
+			<script src="../assets/js/browser.min.js"></script>
+			<script src="../assets/js/breakpoints.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<script src="../assets/js/main.js"></script>
 
 </body>
 </html>

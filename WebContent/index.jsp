@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,8 +39,15 @@
 											<li><a href="#">Veroeros feugiat</a></li>
 										</ul>
 									</li>
-									<li><a class="icon solid fa-cog" href="left-sidebar.jsp"><span>Left Sidebar</span></a></li>
-									<li><a class="icon solid fa-retweet" href="index.jsp">
+									<li><a class="icon solid fa-cog" href="../MyPage/MyClass.jsp">
+									<span>MY Page</span></a>
+										<ul>
+											<li><a href="/MyPage/MyClass.jsp">My Class</a></li>
+											<li><a href="/MyPage/HobbyLog.jsp">활동로그</a></li>
+											<li><a href="/MyPage/Profile.jsp">내 프로필</a></li>
+											<li><a href="/MyPage/EditProfile.jsp">프로필수정</a></li>
+										</ul>
+									<li><a class="icon solid fa-retweet" href="../ServiceCenter/FAQ.jsp">
 									<span>Service Center</span></a>
 										<ul>
 											<li><a href="/ServiceCenter/notice.jsp">공지사항</a></li>
@@ -49,31 +55,64 @@
 											<li><a href="/ServiceCenter/Q&A.jsp">Q&A</a></li>
 										</ul>
 									</li>
-									<li><a class="icon solid fa-sitemap" href="no-sidebar.jsp"><span>No Sidebar</span></a></li>
+									<li><a class="icon solid fa-sitemap" href="../community/info_board.jsp">
+										<span>community</span></a>
+										<ul>
+											<li><a href="/community/free_board.jsp">자유게시판</a></li>
+											<li><a href="/community/info_board.jsp">정보게시판</a></li>
+										</ul>
+									
+									</li>
 								</ul>
 							</nav>
 
 					</div>
 				</section>
 
+	<div class="project-title"></div>
+	<div class="slider">
+	  <div class="slide">
+	    <h2 class="slide-title">painting</h2>
+          <p class="slide-desc">휴양지 여행처럼 즐거운 지언이의 수채화 클래스<br>
+          <br><a class="button" href="#">view more</a> 
+             </p>
+          
+	  </div>
+	  <div class="slide">
+	    <h2 class="slide-title">Extreme sports</h2>
+	    <p class="slide-desc">'BMX' 배우면서 스피드와 스릴을 만끽해보자!<br>
+          <br><a class="button" href="#">view more</a> </p>
+	  </div>
+	  <div class="slide">
+	    <h2 class="slide-title">Home Baking </h2>
+          <p class="slide-desc">테이블 가득 달달함을 나누어봐요<br>
+              <br><a class="button" href="#">view more</a> </p>
+	  </div>
+	  <button class="arrow prev"><</button>
+	  <button class="arrow next">></button>
+		<ul class="slide-nav"></ul>
+ </div>
+<!-- partial -->
+            
+
 			<!-- Features -->
 				<section id="features">
 					<div class="container">
 						<header>
-							<h2>Gentlemen, behold! This is <strong>Strongly Typed</strong>!</h2>
+							<h2><strong>M</strong>ake <strong>Y</strong>our <strong>Hob</strong>by<strong>!</strong> Enjoy your life!</h2>
 						</header>
 						<div class="row aln-center">
 							<div class="col-4 col-6-medium col-12-small">
 
 								<!-- Feature -->
 									<section>
-										<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+										<a href="#" class="image featured"><img src="images/diy.jpg" alt="" /></a>
 										<header>
-											<h3>Okay, so what is this?</h3>
+											<h3>나만의 다이어리 꾸미기</h3>
 										</header>
-										<p>This is <strong>Strongly Typed</strong>, a free, fully responsive site template
-										by <a href="http://html5up.net">HTML5 UP</a>. Free for personal and commercial use under the
-										<a href="http://html5up.net/license">CCA 3.0 license</a>.</p>
+										<p>다꾸, 이제는 
+										 <a href="#">키트</a>로 구매하세요!
+										</p>
 									</section>
 
 							</div>
@@ -81,13 +120,11 @@
 
 								<!-- Feature -->
 									<section>
-										<a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
+										<a href="#" class="image featured"><img src="images/image-3.jpg" alt="" /></a>
 										<header>
-											<h3>Nice! What is HTML5 UP?</h3>
+											<h3>코딩 쉽게 배우자</h3>
 										</header>
-										<p><a href="http://html5up.net">HTML5 UP</a> is a side project of <a href="http://twitter.com/ajlkn">AJ’s</a> (= me).
-										I started it as a way to both test my responsive tools and sharpen up my coding
-										and design skills a bit.</p>
+                                        <p>현직자에게 배우는 실무 코딩<br>기초부터 스킬까지!</p>
 									</section>
 
 							</div>
@@ -95,12 +132,11 @@
 
 								<!-- Feature -->
 									<section>
-										<a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
+										<a href="#" class="image featured"><img src="images/piano_1.jpg" alt="" /></a>
 										<header>
-											<h3>What's this built with?</h3>
+											<h3>재즈 피아노</h3>
 										</header>
-										<p><strong>Responsive Tools</strong> is a simple set of tools for building responsive
-										sites and apps. All of my templates at <a href="http://html5up.net">HTML5 UP</a> are built using these tools.</p>
+										<p>한달만에 '인생의 회전목마' 완주 가능!</p>
 									</section>
 
 							</div>
@@ -116,8 +152,7 @@
 			<!-- Banner -->
 				<section id="banner">
 					<div class="container">
-						<p>Use this space for <strong>profound thoughts</strong>.<br />
-						Or an enormous ad. Whatever.</p>
+						<p>취미 카테고리 예정</p>
 					</div>
 				</section>
 
@@ -132,22 +167,39 @@
 									<!-- Post -->
 										<article class="box post">
 											<header>
-												<h2><a href="#">I don’t want to say <strong>it’s the aliens</strong> ...<br />
-												but it’s the aliens.</a></h2>
+												<h2><a href="#"><strong>HOT!</strong> <br />
+												지금 인기 있는 취미</a></h2>
 											</header>
-											<a href="#" class="image featured"><img src="images/pic04.jpg" alt="" /></a>
-											<h3>I mean isn't it possible?</h3>
-											<p>Phasellus laoreet massa id justo mattis pharetra. Fusce suscipit
-											ligula vel quam viverra sit amet mollis tortor congue. Sed quis mauris
-											sit amet magna accumsan tristique. Curabitur leo nibh, rutrum eu malesuada
-											in, tristique at erat lorem ipsum dolor sit amet lorem ipsum sed consequat
-											magna tempus veroeros lorem sed tempus aliquam lorem ipsum veroeros
-											consequat magna tempus lorem ipsum consequat Phasellus laoreet massa id
-											justo mattis pharetra. Fusce suscipit ligula vel quam viverra sit amet
-											mollis tortor congue. Sed quis mauris sit amet magna accumsan tristique.
-											Curabitur leo nibh, rutrum eu malesuada in tristique.</p>
+											<a href="#" class="">
+                                            <!--
+											 class="image featured">--><iframe class="video" width="100%" height="315px" src="https://www.youtube.com/embed/Tuq3XRUOQA8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></a><br><br>
+											<h3>일상을 음악으로 채색해봐요, 함께 배우는 어쿠스틱 기타</h3><hr>
+											<p><strong>실제 수강생들의 수강후기</strong></p>
+                                            
+                                          
+                                            
+                                            <div class="lesson">   
+                                                <!--<ul>
+                                                <li><a class="fas fa-user-circle fa-5x" href="#"></a><br>&nbsp;&nbsp;송&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</li>       
+                                                </ul> -->
+                                                
+                                                <table>
+                                                    <tr>
+                                                        <td><a class="fas fa-user-circle fa-5x" href="#"></a><br>&nbsp;&nbsp;송&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</td>
+                                                        <td>진짜 쉽고 재밌게 가르쳐 주세용</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><a class="fas fa-user-circle fa-5x" href="#"></a><br>&nbsp;&nbsp;김&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</td>
+                                                        <td>그냥 그래요 학원 다니길</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><a class="fas fa-user-circle fa-5x" href="#"></a><br>&nbsp;&nbsp;변&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</td>
+                                                        <td>good good</td>
+                                                    </tr>
+                                                </table>
+                                            </div>
 											<ul class="actions">
-												<li><a href="#" class="button icon solid fa-file">Continue Reading</a></li>
+												<li><a href="#" class="button icon solid fa-file">클래스 수강신청하기</a></li>
 											</ul>
 										</article>
 
@@ -196,7 +248,7 @@
 													<!-- Excerpt -->
 														<article class="box excerpt">
 															<header>
-																<span class="date">July 30</span>
+																<span class="date">1개월</span>
 																<h3><a href="#">Just another post</a></h3>
 															</header>
 															<p>Lorem ipsum dolor odio facilisis convallis. Etiam non nunc vel est
@@ -209,7 +261,7 @@
 													<!-- Excerpt -->
 														<article class="box excerpt">
 															<header>
-																<span class="date">July 28</span>
+																<span class="date">2개월</span>
 																<h3><a href="#">And another post</a></h3>
 															</header>
 															<p>Lorem ipsum dolor odio facilisis convallis. Etiam non nunc vel est
@@ -222,7 +274,7 @@
 													<!-- Excerpt -->
 														<article class="box excerpt">
 															<header>
-																<span class="date">July 24</span>
+																<span class="date">3개월</span>
 																<h3><a href="#">One more post</a></h3>
 															</header>
 															<p>Lorem ipsum dolor odio facilisis convallis. Etiam non nunc vel est
@@ -239,7 +291,7 @@
 												<li>
 
 													<!-- Highlight -->
-														<article class="box highlight">
+														<!-- <article class="box highlight">
 															<header>
 																<h3><a href="#">Something of note</a></h3>
 															</header>
@@ -254,10 +306,10 @@
 														</article>
 
 												</li>
-												<li>
+												<li> -->
 
 													<!-- Highlight -->
-														<article class="box highlight">
+														 <!--  <article class="box highlight">
 															<header>
 																<h3><a href="#">Something of less note</a></h3>
 															</header>
@@ -269,7 +321,7 @@
 															<ul class="actions">
 																<li><a href="#" class="button icon solid fa-file">Learn More</a></li>
 															</ul>
-														</article>
+														</article>-->
 
 												</li>
 											</ul>
@@ -285,7 +337,7 @@
 				<section id="footer">
 					<div class="container">
 						<header>
-							<h2>Questions or comments? <strong>Get in touch:</strong></h2>
+							<h2>자신만의 취미 클래스를 등록하고 싶다면 <strong>MY HOB!</strong>에 문의 해주세요.</h2>
 						</header>
 						<div class="row">
 							<div class="col-6 col-12-medium">
@@ -310,9 +362,7 @@
 							</div>
 							<div class="col-6 col-12-medium">
 								<section>
-									<p>Erat lorem ipsum veroeros consequat magna tempus lorem ipsum consequat Phaselamet
-									mollis tortor congue. Sed quis mauris sit amet magna accumsan tristique. Curabitur
-									leo nibh, rutrum eu malesuada.</p>
+									<p></p>
 									<div class="row">
 										<div class="col-6 col-12-small">
 											<ul class="icons">
@@ -366,6 +416,6 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-
+            
 	</body>
 </html>

@@ -6,7 +6,7 @@
 	<title>MY HOB!</title>
 	<meta charset="utf-8" />
   	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="../assets/css/main.css"/>
+	<link rel="stylesheet" href="../assets/css/main2.css"/>
 	<link rel="stylesheet" href="../assets/css/FAQ.css">
 </head>
 
@@ -58,9 +58,9 @@
 			<div id="my-Sidebar">
         	<h2>고객센터</h2>
         		<ul>
-         		  	<li><a href="../ServiceCenter/index.jsp" title="프로필">공지사항</a></li>
-        		  	<li><a href="../ServiceCenter/FAQ.jsp" title="내 클래스">FAQ</a></li>
-         	  	 	<li><a href="../ServiceCenter/Q&A.jsp" title="취미 로그">Q&A</a></li>
+         		  	<li><a href="../ServiceCenter/index.jsp">공지사항</a></li>
+        		  	<li><a href="../ServiceCenter/FAQ.jsp">FAQ</a></li>
+         	  	 	<li><a href="../ServiceCenter/Q&A.jsp">Q&A</a></li>
         		</ul>
       		</div>	
       		
