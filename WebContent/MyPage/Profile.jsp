@@ -11,7 +11,7 @@
 		<title>No Sidebar - Strongly Typed by HTML5 UP</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="../assets/css/main.css" />
+		<link rel="stylesheet" href="../assets/css/main1.css" />
 		<link rel="stylesheet" href="../assets/css/MyPage.css" />
 	</head>
 	<body class="no-sidebar is-preload">
