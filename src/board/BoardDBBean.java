@@ -14,7 +14,7 @@ import javax.sql.DataSource;
 public class BoardDBBean {
 	
     private static BoardDBBean instance = new BoardDBBean();
-    //.jsp���������� DB�������� BoardDBBeanŬ������ �޼ҵ忡 ���ٽ� �ʿ�
+    //.jsp페이지에서 DB연동 빈인 boardDBBean 클래스의 메소드에 접근시 필요
     public static BoardDBBean getInstance() {
         return instance;
     }
@@ -27,7 +27,7 @@ public class BoardDBBean {
     	PreparedStatement pstmt=null;
     	
     	String jdbc_driver = "com.mysql.cj.jdbc.Driver";
-    	String jdbc_url  = "jdbc:mysql://localhost:3306/Graudation_project?characterEncoding=UTF-8&serverTimezone=UTC";
+    	String jdbc_url  = "jdbc:mysql://localhost:3306/bdbjsp?characterEncoding=UTF-8&serverTimezone=UTC";
     	
     	
     		try {
@@ -43,7 +43,7 @@ public class BoardDBBean {
         return conn;
     }
  
-    //board���̺� ���� �߰�(inset��)<=writePro.jsp���������� ���
+    //board테이블에 글을 추가 (insert문) <=writePro.jsp 페이지에서 사용
     public void insertArticle(BoardDataBean article) throws Exception {
         Connection conn = null;
         PreparedStatement pstmt = null;
@@ -63,10 +63,10 @@ public class BoardDBBean {
 			rs = pstmt.executeQuery();
 			
 			if (rs.next())
-		      number=rs.getInt(1)+1;
+		      number=rs.getInt(1)+1; // 작성된 글이 있다면 그 글의 넘버에 1을 더한다.
 		    else
-		      number=1; 
-		   // ���Ŀ� ��� �ٴ� �κп��� ����
+		      number=1; //작성된 글이 없다면 넘버는 1
+		   
 		   /* if (num!=0) {  
 		      sql="update board set re_step=re_step+1 ";
 		      sql += "where ref= ? and re_step> ?";
@@ -107,7 +107,7 @@ public class BoardDBBean {
         }
     }
     
-    //board���̺� ����� ��ü���� ���� ��(select��)<=list.jsp���� ���
+    //board테이블에 저장된 전체글의 수를 얻어냄.(select문)<=list.jsp에서 사용.
 	public int getArticleCount()  throws Exception {
         Connection conn = null;
         PreparedStatement pstmt = null;
@@ -134,7 +134,7 @@ public class BoardDBBean {
 		return x;
     }
 
-	//���� ���(�������� ��)�� ������(select��) <=list.jsp���� ���
+	//글의 목록(복수개의 글)을 가져옴 (select문) <=list.jsp에서 사용.
 	public List<BoardDataBean> getArticles(int start, int end)
              throws Exception {
         Connection conn = null;
@@ -145,7 +145,7 @@ public class BoardDBBean {
             conn = getConnection();
             
             pstmt = conn.prepareStatement(
-            	"select * from board order by ref desc, re_step asc limit ?,? ");
+            	"select * from board order by num desc, ref desc, re_step asc limit ?,? ");
             pstmt.setInt(1, start-1);
 			pstmt.setInt(2, end);
             rs = pstmt.executeQuery();
@@ -180,7 +180,7 @@ public class BoardDBBean {
 		return articleList;
     }
  
-	//���� ������ ����(1���� ��)(select��)<=content.jsp���������� ���
+	//글의 내용을 보기(1개의 글) (select문)<=content.jsp페이지에서 사용.
 	public BoardDataBean getArticle(int num)
             throws Exception {
         Connection conn = null;
@@ -225,7 +225,7 @@ public class BoardDBBean {
 		return article;
     }
     
-	//�� ���������� ����� ���� ����(1���� ��)(select��)<=updateForm.jsp���� ���
+	 //글 수정폼에서 사용할 글의 내용(1개의 글)(select문)<=updateForm.jsp에서 사용
     public BoardDataBean updateGetArticle(int num)
           throws Exception {
         Connection conn = null;
@@ -265,7 +265,7 @@ public class BoardDBBean {
 		return article;
     }
 
-    //�� ����ó������ ���(update��)<=updatePro.jsp���� ���
+    //글 수정폼에서 사용할 글의 내용(1개의 글)(update문)<=updatePro.jsp에서 사용
     public int updateArticle(BoardDataBean article)
           throws Exception {
         Connection conn = null;
@@ -285,8 +285,8 @@ public class BoardDBBean {
             
 			if(rs.next()){
 			  dbpasswd= rs.getString("passwd"); 
-			  if(dbpasswd.equals(article.getPasswd())){
-                sql="update board set writer=?,email=?,subject=?,passwd=?";
+			  if(dbpasswd.equals(article.getPasswd())){//db패스워드와 게시판안의 패스워드를 비교
+                sql="update board set writer=?,email=?,subject=?,passwd=?"; //같으면 업데이트
 			    sql+=",content=? where num=?";
                 pstmt = conn.prepareStatement(sql);
 
@@ -297,9 +297,9 @@ public class BoardDBBean {
                 pstmt.setString(5, article.getContent());
 			    pstmt.setInt(6, article.getNum());
                 pstmt.executeUpdate();
-				x= 1;
+				x= 1; //제대로 수행은 1리턴
 			  }else{
-				x= 0;
+				x= 0; //비밀번호 다르면 0 리턴
 			  }
 			}
         } catch(Exception ex) {
@@ -312,7 +312,7 @@ public class BoardDBBean {
 		return x;
     }
     
-    //�ۻ���ó���� ���(delete��)<=deletePro.jsp���������� ���
+    //글 삭제처리시 사용(delete문)<=deletePro.jsp페이지에서 사용.
     public int deleteArticle(int num, String passwd)
         throws Exception {
         Connection conn = null;
@@ -335,9 +335,9 @@ public class BoardDBBean {
             	      "delete from board where num=?");
                     pstmt.setInt(1, num);
                     pstmt.executeUpdate();
-					x= 1; //�ۻ��� ����
+					x= 1; //글삭제 성공
 				}else
-					x= 0; //��й�ȣ Ʋ��
+					x= 0; //비밀번호 틀림
 			}
         } catch(Exception ex) {
             ex.printStackTrace();

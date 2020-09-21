@@ -2092,7 +2092,7 @@ input, select, textarea {
 
         .navtop{
             position: absolute;
-            top: -5em;
+            top: -50px;
             left:500px;
             width: 100%;
             cursor: default;

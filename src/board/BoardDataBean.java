@@ -6,14 +6,13 @@ public class BoardDataBean {
     private String writer;
     private String subject;
     private String email;
-    private String content;
     private String passwd;
     private Timestamp reg_date;
     private int readcount;
     private int ref;
     private int re_step;	
     private int re_level;
-    
+    private String content;
 	public int getNum() {
 		return num;
 	}
@@ -38,12 +37,6 @@ public class BoardDataBean {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getContent() {
-		return content;
-	}
-	public void setContent(String content) {
-		this.content = content;
-	}
 	public String getPasswd() {
 		return passwd;
 	}
@@ -62,7 +55,6 @@ public class BoardDataBean {
 	public void setReadcount(int readcount) {
 		this.readcount = readcount;
 	}
-	
 	public int getRef() {
 		return ref;
 	}
@@ -80,5 +72,11 @@ public class BoardDataBean {
 	}
 	public void setRe_level(int re_level) {
 		this.re_level = re_level;
-	} 
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
 }

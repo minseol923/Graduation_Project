@@ -1,9 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="utf-8"%>
-<!DOCTYPE html>
+<%@ page import = "board.BoardDBBean" %>
+<%@ page import = "board.BoardDataBean" %>
+<%@ page import = "java.util.List" %>
+<%@ page import = "java.text.SimpleDateFormat" %>
+<%!
+    int pageSize = 10;
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+%>
+
+<%
+    String pageNum = request.getParameter("pageNum");
+    if (pageNum == null) {
+        pageNum = "1";
+    }
+    int currentPage = Integer.parseInt(pageNum);
+    int startRow = (currentPage - 1) * pageSize + 1;
+    int endRow = currentPage * pageSize;
+    int count = 0;
+    int number = 0;
+    List<BoardDataBean> articleList = null; 
+    
+    BoardDBBean dbPro = BoardDBBean.getInstance();
+    count = dbPro.getArticleCount();
+    
+    if (count > 0) {
+        articleList = dbPro.getArticles(startRow, pageSize);
+    }
+	number = count-(currentPage-1)*pageSize;
+%>
 <html>
 <head>
-	<title>MY HOB!</title>
+	<title>MY HOB! 자유게시판</title>
 	<meta charset="utf-8" />
   	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="../assets/css/main2.css"/>
@@ -80,55 +108,56 @@
       	<section id="main"> 
 			<div class="container">
 		 		<div id="content">
-              <table>
-													<thead>
-														<tr>
-															<th>NO.</th>
-															<th width=550>제목</th>
-															<th>작성자</th>
-															<th>작성일</th>
-															<th>조회</th>
-														</tr>
-													</thead>
-													<tbody>
-														<tr>
-															<td>01</td>
-															<td>다들 무슨 취미생활 하시나요?</td>
-															<td>김정하</td>
-															<td>2020.09.16</td>
-															<td>56</td>
-														</tr>
-														<tr>
-															<td>02</td>
-															<td>뜨개질 오프라인 클래스 분위기 어떤가요?</td>
-															<td>김민설</td>
-															<td>2020.09.16</td>
-															<td>24</td>
-														</tr>
-														<tr>
-															<td>03</td>
-															<td>취미로 축구를 하니까 따로 운동을 안해도 돼서 좋아요!</td>
-															<td>김은비</td>
-															<td>2020.09.15</td>
-															<td>34</td>
-														</tr>
-														<tr>
-															<td>04</td>
-															<td>다들 취미생활은 보통 언제하시나요? 퇴근 후에는 잘 안하게 되더라구요</td>
-															<td>송지언</td>
-															<td>2020.09.15</td>
-															<td>45</td>
-														</tr>
-													</tbody>
-													<tfoot>
-														<tr>
-															<td colspan="2"></td>
-														</tr>
-													</tfoot>
-												</table>
-												<div class="col-12">
-												<a href="write_board.jsp" class="form-button-submit button icon solid fa-envelope">글 쓰기</a>
-											</div>         
+		 		
+		 	<p>글목록(전체 글:<%=count%>)</p>
+			<table>
+			  <tr>
+			    <td align="right">
+			       <a href="../community/writeForm.jsp">글쓰기</a>
+			    </td>
+			  </tr>
+			</table>
+			
+			<% if (count == 0) { %>
+			
+			<table>
+			<tr>
+			    <td align="center">
+			              게시판에 저장된 글이 없습니다.
+			    </td>
+			</table>
+			
+			<% } else {%>
+			<table border="1"> 
+			    <tr height="30"> 
+			      <td align="center"  width="50"  >번 호</td> 
+			      <td align="center"  width="250" >제   목</td> 
+			      <td align="center"  width="100" >작성자</td>
+			      <td align="center"  width="150" >작성일</td> 
+			      <td align="center"  width="50" >조 회</td> 
+			    
+			    </tr>
+			<%  
+			   for (int i = 0; i < articleList.size() ; i++) {
+			       BoardDataBean article = (BoardDataBean)articleList.get(i);
+			%>
+			   <tr height="30">
+			    <td  width="50" > <%=number--%></td>
+			    <td  width="250" align="left">
+			      <a href="../community/content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>">
+			           <%=article.getSubject()%></a> 
+			    </td>
+			    <td width="100" align="left"> 
+			       <a href="mailto:<%=article.getEmail()%>">
+			                     <%=article.getWriter()%></a>
+			                     </td>
+			    <td width="150"><%= sdf.format(article.getReg_date())%></td>
+			    <td width="50"><%=article.getReadcount()%></td>
+			
+			  </tr>
+			<%}%>
+			</table>
+			<%}%>
                         </div>
                           </div>
                            </section>

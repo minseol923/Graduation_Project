@@ -44,66 +44,21 @@ li {
 	list-style:none;
 	
 }
-.slide_wrapper{
+.slide-wrapper1{
 	position:relative;
 	width:900px;
 	height:300px;
 	magin:0 auto;
 	overflow:hidden;
 }
-.slide_hobby{
-	position:relative;
-	width:900px;
-	height:300px;
-	magin:0 auto;
-	overflow:hidden;
-}
-.slides{
-	positon:absolute;
-	left:0;
-	top:0;
-	transition:left 0.5s ease-out;
-}
 
-.hobby{
-	positon:absolute;
-	left:0;
-	top:0;
-	transition:left 0.5s ease-out;
-}
-
-.slides li:not(:last-child){
-	float:left;
-	list-style:none;
-	margin-right:5px;
-	
-}
-
-.slides li img{
-	width:250px;
+.slider-wrap1 img{
+	width:270px;
 
 }
-.hobby li:not(:last-child){
-	float:left;
-	list-style:none;
-	margin-right:5px;
-	
-}
-.hobby li img{
-	width:280px;
+.slider-wrap2 img{
+	width:270px;
 
-}
-.slides ul{
-	list-style:none outside none;
-	padding-left:0px;
-	margin:0px;
-	
-}
-.hobby ul{
-	list-style:none outside none;
-	padding-left:0px;
-	margin:0px;
-	
 }
 
 .controls{
@@ -179,5 +134,4 @@ li {
 #myclass .class img{
 	float:left;
 }
-///////
 
