@@ -17,7 +17,7 @@
 	 
 	 if(check==1) {  //로그인 성공시
 		 session.setAttribute("id",id);
-		 response.sendRedirect("../Join/Main.jsp");
+		 response.sendRedirect("./Main.jsp");
 	 }else if(check==0){
 %>
 	<script>
@@ -30,7 +30,6 @@
 	 alert("아이디가 맞지않습니다");
 	 history.go(-1);
 	 </script>
-	 
 	 <% } %>
 </body>
 </html>

@@ -19,8 +19,7 @@ public class userDB {
 	private Connection getConnection() throws Exception{
 		Context initCtx = new InitialContext();
 		Context envCtx =(Context) initCtx.lookup("java:comp/env");
-		DataSource ds =(DataSource)envCtx.lookup("jdbc/b"
-				+ "dbjsp");
+		DataSource ds =(DataSource)envCtx.lookup("jdbc/b"+"dbjsp");
 		return ds.getConnection();
 	}
 	//회원가입 메소드

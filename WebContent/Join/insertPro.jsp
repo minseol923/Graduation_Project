@@ -51,7 +51,7 @@
 %>
 <%=str%>
 <script>
-location.href="../Join/LoginForm.jsp";
+location.href="./Join/LoginForm.jsp";
 </script>
 </body>
 </html>

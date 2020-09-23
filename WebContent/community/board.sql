@@ -9,4 +9,4 @@ create table board(
      ref int not null,
      re_step int not null,
     re_level int not null,
-     content text not null)
+     content text not null);

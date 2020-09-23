@@ -10,7 +10,7 @@
 </head>
 <body>
 <div align="center">
-	<form method="post" action ="../Join/LoginPro.jsp">
+	<form method="post" action ="./LoginPro.jsp">
 	<h1>로그인</h1>
 	<table>
 		<tr>
@@ -28,7 +28,7 @@
 		<tr>
 			<td>
 				<input type="submit" id="login" value="로그인" ><br>
-				<input type="button" id="join" value="회원가입" onClick="location.href='../Join/insertForm.jsp'">			
+				<input type="button" id="join" value="회원가입" onClick="location.href='./insertForm.jsp'">			
 			</td>
 		</tr>
 	</table>

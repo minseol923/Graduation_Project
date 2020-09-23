@@ -9,7 +9,7 @@
 </head>
 <body>
 <div align="center">
-	<form method="post" action="../Join/insertPro.jsp">
+	<form method="post" action="./Join/insertPro.jsp">
 	<h1>Join</h1>
 	<table>
 		<tr>
@@ -29,7 +29,7 @@
 		</tr>		
 		<tr>
 			<td><input type="text" name="email" style="height:25px; width:200px;" placeholder="이메일을 입력해주세요."></td>
-		</tr>	
+		</tr>
 		<tr>
 			<td>Email</td>
 		</tr>		
@@ -48,6 +48,9 @@
 		</tr>
 		<tr>
 			<td><input type="text" name="phone" style="height:25px; width:200px;" placeholder="전화번호를 입력해주세요."></td>
+		</tr>	
+		<tr>
+			<td>전화번호</td>
 		</tr>	
 		<tr>
 			<td><input type="submit" value="가입하기" id="submit"></td>
