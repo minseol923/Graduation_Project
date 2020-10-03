@@ -128,7 +128,7 @@
 								            <tr>
 								            	<td align="center"><b>주소</b></td>
 								            	<td>
-								            		<input type="text" name="postcode" id="postcode" size="6">
+								            		<input type="text" name="address" id="address" size="6">
 								            		<input type="button" name="zipcode" id="zipcode" value="우편번호"><br>
 								                    <input type="text" name="add1" id="add1" size="25" >기본주소<br>
 								                    <input type="text" id="add2" id="add2" size="25"> 나머지 주소
@@ -165,7 +165,7 @@
 								            <tr>
 								                <td align="center"><b>휴대전화</b></td>
 								                <td>
-								               		 <select name="phone1" id="phone" style="width:70px;">
+								               		 <select name="phone" id="phone" style="width:70px;">
 								               		 	<option value="선택">선택</option>
 									                	<option value="010">010</option>
 									                	<option value="011">011</option>
@@ -183,9 +183,9 @@
 								            <tr>
 								                <td align="center"><b>생년월일</b></td>
 								                <td>
-								                	<input type="text" name="my_name" size="10" value>년
-								                	<input type="text" name="my_name" size="10" value>월
-								               		<input type="text" name="my_name" size="10" value>일
+								                	<input type="text" name="birth" size="10" value>년
+								                	<input type="text" name="birth" size="10" value>월
+								               		<input type="text" name="birth" size="10" value>일
 								                	<input type="radio" name="양력음력" value="양력">양력
 								                	<input type="radio" name="양력음력" value="음력">음력
 								                </td>
