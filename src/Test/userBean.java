@@ -1,7 +1,9 @@
 package Test;
 
+//일단 만들어 놓음,,,
+
 public class userBean {
-	private String id,passwd,name,email ,address ,phone ,birth,hobby;
+	private String id,passwd,name,email,address,phone,birth;
 
 	public String getId() {
 		return id;
