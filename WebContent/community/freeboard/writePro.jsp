@@ -16,5 +16,5 @@
     BoardDBBean dbPro = BoardDBBean.getInstance();
     dbPro.insertArticle(article); 
 
-    response.sendRedirect("../community/free_board.jsp");
+    response.sendRedirect("/community/freeboard/free_board.jsp");
 %>

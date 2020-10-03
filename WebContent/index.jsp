@@ -1,95 +1,91 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE HTML>
 <html>
-<head>
-	<title>MY HOB!</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="assets/css/main.css"/>
-</head>
-<body class="homepage is-preload">
+	<head>
+		<title>MY HOB!</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="homepage is-preload">
 		<div id="page-wrapper">
 
-			<!-- Header -->
-				<section id="header">
-					<div class="container">
-
+			<!-- Header -->					
+			
+				<section id="header">					
 						<!-- Logo -->
-							<h1 id="logo"><a href="index.jsp">MY HOB!</a></h1>
-							<p>A responsive HTML5 site template. Manufactured by HTML5 UP.</p>
+						<h1 id="logo"><a href="index.html">MY HOB!</a></h1>										
+									
+					<div class="container">                    
+						
 
 						<!-- Nav -->
+                            
 							<nav id="nav">
 								<ul>
-									<li><a class="icon solid fa-home" href="index.jsp"><span>Introduction</span></a></li>
-									<li>
-										<a href="#" class="icon fa-chart-bar"><span>Ãë¹Ì</span></a>
-										<ul>
-											<li><a href="#">Lorem ipsum dolor</a></li>
-											<li><a href="#">Magna phasellus</a></li>
-											<li><a href="#">Etiam dolore nisl</a></li>
-											<li>
-												<a href="#">Phasellus consequat</a>
-												<ul>
-													<li><a href="#">Magna phasellus</a></li>
-													<li><a href="#">Etiam dolore nisl</a></li>
-													<li><a href="#">Phasellus consequat</a></li>
-												</ul>
-											</li>
-											<li><a href="#">Veroeros feugiat</a></li>
-										</ul>
-									</li>
-									<li><a class="icon solid fa-cog" href="../MyPage/MyClass.jsp">
-									<span>MY Page</span></a>
-										<ul>
-											<li><a href="/MyPage/MyClass.jsp">My Class</a></li>
-											<li><a href="/MyPage/HobbyLog.jsp">È°µ¿·Î±×</a></li>
-											<li><a href="/MyPage/Profile.jsp">³» ÇÁ·ÎÇÊ</a></li>
-											<li><a href="/MyPage/EditProfile.jsp">ÇÁ·ÎÇÊ¼öÁ¤</a></li>
-										</ul>
-									<li><a class="icon solid fa-retweet" href="../ServiceCenter/FAQ.jsp">
-									<span>Service Center</span></a>
-										<ul>
-											<li><a href="/ServiceCenter/notice.jsp">°øÁö»çÇ×</a></li>
-											<li><a href="/ServiceCenter/FAQ.jsp">FAQ</a></li>
-											<li><a href="/ServiceCenter/Q&A.jsp">Q&A</a></li>
-										</ul>
-									</li>
-									<li><a class="icon solid fa-sitemap" href="../community/info_board.jsp">
-										<span>community</span></a>
-										<ul>
-											<li><a href="/community/free_board.jsp">ÀÚÀ¯°Ô½ÃÆÇ</a></li>
-											<li><a href="/community/info_board.jsp">Á¤º¸°Ô½ÃÆÇ</a></li>
-										</ul>
 									
-									</li>
+									<li><a class="fab fa-medium-m" href="#"><span>About Us</span></a></li>
+									<li><a class="icon solid fa-cog" href="left-sidebar.html"><span>ì·¨ë¯¸íƒìƒ‰</span></a>
+                                        <ul>
+											<li><a href="#">ì·¨ë¯¸ ê²€ì‚¬</a></li>
+											<li><a href="#">MBTI</a></li>											
+										</ul>
+                                    </li>
+									<li><a class="far fa-comments" href="/community/freeboard/free_board.jsp"><span>ì»¤ë®¤ë‹ˆí‹°</span></a>
+                                        <ul>
+											<li><a href="/community/freeboard/free_board.jsp">ììœ ê²Œì‹œíŒ</a></li>
+											<li><a href="/community/infoboard/info_board.jsp">ì •ë³´ê²Œì‹œíŒ</a></li>
+										</ul>
+                                    </li>
+									<li><a class="fab fa-quora" href="/ServiceCenter/Noticeboard/notice.jsp"><span>ê³ ê°ì„¼í„°</span></a>
+                                        <ul>
+											<li><a href="/ServiceCenter/Noticeboard/notice.jsp">ê³µì§€ì‚¬í•­</a></li>
+											<li><a href="/ServiceCenter/FAQ.jsp">FAQ</a></li>
+											<li><a href="/ServiceCenter/Q&Aboard/Q&A.jsp">Q&A</a></li>
+										</ul>
+                                    </li>
 								</ul>
-							</nav>
-
+                                
+                                <ul class="navtop">   
+                                
+                                    <li><a href="/Join/LoginForm.jsp">Login</a></li>
+				                    <li><a href="/Join/insertForm.jsp">Join</a></li>
+                                    <li><a class="fas fa-user fa-1.5x" href="/MyPage/Profile.jsp"></a>
+                                    <span></span></a>
+										
+                                    </li>             
+                        </ul>
+                                
+							</nav>                                
+                                
+                        
+                                                  
+                            
 					</div>
 				</section>
-
-	<div class="project-title"></div>
+            
+    <!-- Slider -->
+<div class="project-title"></div>
 	<div class="slider">
 	  <div class="slide">
 	    <h2 class="slide-title">painting</h2>
-          <p class="slide-desc">ÈŞ¾çÁö ¿©ÇàÃ³·³ Áñ°Å¿î Áö¾ğÀÌÀÇ ¼öÃ¤È­ Å¬·¡½º<br>
+          <p class="slide-desc">íœ´ì–‘ì§€ ì—¬í–‰ì²˜ëŸ¼ ì¦ê±°ìš´ ì§€ì–¸ì´ì˜ ìˆ˜ì±„í™” í´ë˜ìŠ¤<br>
           <br><a class="button" href="#">view more</a> 
              </p>
           
 	  </div>
 	  <div class="slide">
 	    <h2 class="slide-title">Extreme sports</h2>
-	    <p class="slide-desc">'BMX' ¹è¿ì¸é¼­ ½ºÇÇµå¿Í ½º¸±À» ¸¸³£ÇØº¸ÀÚ!<br>
+	    <p class="slide-desc">'BMX' ë°°ìš°ë©´ì„œ ìŠ¤í”¼ë“œì™€ ìŠ¤ë¦´ì„ ë§Œë½í•´ë³´ì!<br>
           <br><a class="button" href="#">view more</a> </p>
 	  </div>
 	  <div class="slide">
 	    <h2 class="slide-title">Home Baking </h2>
-          <p class="slide-desc">Å×ÀÌºí °¡µæ ´Ş´ŞÇÔÀ» ³ª´©¾îºÁ¿ä<br>
+          <p class="slide-desc">í…Œì´ë¸” ê°€ë“ ë‹¬ë‹¬í•¨ì„ ë‚˜ëˆ„ì–´ë´ìš”<br>
               <br><a class="button" href="#">view more</a> </p>
 	  </div>
-	  <button class="arrow prev"></button>
-	  <button class="arrow next"></button>
+	  <button class="arrow prev"><</button>
+	  <button class="arrow next">></button>
 		<ul class="slide-nav"></ul>
  </div>
 <!-- partial -->
@@ -108,10 +104,10 @@
 									<section>
 										<a href="#" class="image featured"><img src="images/diy.jpg" alt="" /></a>
 										<header>
-											<h3>³ª¸¸ÀÇ ´ÙÀÌ¾î¸® ²Ù¹Ì±â</h3>
+											<h3>ë‚˜ë§Œì˜ ë‹¤ì´ì–´ë¦¬ ê¾¸ë¯¸ê¸°</h3>
 										</header>
-										<p>´Ù²Ù, ÀÌÁ¦´Â 
-										 <a href="#">Å°Æ®</a>·Î ±¸¸ÅÇÏ¼¼¿ä!
+										<p>ë‹¤ê¾¸, ì´ì œëŠ” 
+										 <a href="#">í‚¤íŠ¸</a>ë¡œ êµ¬ë§¤í•˜ì„¸ìš”!
 										</p>
 									</section>
 
@@ -120,11 +116,11 @@
 
 								<!-- Feature -->
 									<section>
-										<a href="#" class="image featured"><img src="images/image-3.jpg" alt="" /></a>
+										<a href="#" class="image featured"><img src="images/coding.jpg" alt="" /></a>
 										<header>
-											<h3>ÄÚµù ½±°Ô ¹è¿ìÀÚ</h3>
+											<h3>ì½”ë”© ì‰½ê²Œ ë°°ìš°ì</h3>
 										</header>
-                                        <p>ÇöÁ÷ÀÚ¿¡°Ô ¹è¿ì´Â ½Ç¹« ÄÚµù<br>±âÃÊºÎÅÍ ½ºÅ³±îÁö!</p>
+                                        <p>í˜„ì§ìì—ê²Œ ë°°ìš°ëŠ” ì‹¤ë¬´ ì½”ë”©<br>ê¸°ì´ˆë¶€í„° ìŠ¤í‚¬ê¹Œì§€!</p>
 									</section>
 
 							</div>
@@ -132,11 +128,11 @@
 
 								<!-- Feature -->
 									<section>
-										<a href="#" class="image featured"><img src="images/piano_1.jpg" alt="" /></a>
+										<a href="#" class="image featured"><img src="images/piano.jpg" alt="" /></a>
 										<header>
-											<h3>ÀçÁî ÇÇ¾Æ³ë</h3>
+											<h3>ì¬ì¦ˆ í”¼ì•„ë…¸</h3>
 										</header>
-										<p>ÇÑ´Ş¸¸¿¡ 'ÀÎ»ıÀÇ È¸Àü¸ñ¸¶' ¿ÏÁÖ °¡´É!</p>
+										<p>í•œë‹¬ë§Œì— 'ì¸ìƒì˜ íšŒì „ëª©ë§ˆ' ì™„ì£¼ ê°€ëŠ¥!</p>
 									</section>
 
 							</div>
@@ -152,7 +148,7 @@
 			<!-- Banner -->
 				<section id="banner">
 					<div class="container">
-						<p>Ãë¹Ì Ä«Å×°í¸® ¿¹Á¤</p>
+						<p>ì·¨ë¯¸ ì¹´í…Œê³ ë¦¬ ì˜ˆì •</p>
 					</div>
 				</section>
 
@@ -168,38 +164,36 @@
 										<article class="box post">
 											<header>
 												<h2><a href="#"><strong>HOT!</strong> <br />
-												Áö±İ ÀÎ±â ÀÖ´Â Ãë¹Ì</a></h2>
+												ì§€ê¸ˆ ì¸ê¸° ìˆëŠ” ì·¨ë¯¸</a></h2>
 											</header>
 											<a href="#" class="">
                                             <!--
 											 class="image featured">--><iframe class="video" width="100%" height="315px" src="https://www.youtube.com/embed/Tuq3XRUOQA8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></a><br><br>
-											<h3>ÀÏ»óÀ» À½¾ÇÀ¸·Î Ã¤»öÇØºÁ¿ä, ÇÔ²² ¹è¿ì´Â ¾îÄí½ºÆ½ ±âÅ¸</h3><hr>
-											<p><strong>½ÇÁ¦ ¼ö°­»ıµéÀÇ ¼ö°­ÈÄ±â</strong></p>
+											<h3>ì¼ìƒì„ ìŒì•…ìœ¼ë¡œ ì±„ìƒ‰í•´ë´ìš”, í•¨ê»˜ ë°°ìš°ëŠ” ì–´ì¿ ìŠ¤í‹± ê¸°íƒ€</h3><hr>
+											<p><strong>ì‹¤ì œ ìˆ˜ê°•ìƒë“¤ì˜ ìˆ˜ê°•í›„ê¸°</strong></p>
                                             
                                           
                                             
                                             <div class="lesson">   
-                                                <!--<ul>
-                                                <li><a class="fas fa-user-circle fa-5x" href="#"></a><br>&nbsp;&nbsp;¼Û&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</li>       
-                                                </ul> -->
+                                               
                                                 
                                                 <table>
                                                     <tr>
-                                                        <td><a class="fas fa-user-circle fa-5x" href="#"></a><br>&nbsp;&nbsp;¼Û&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</td>
-                                                        <td>ÁøÂ¥ ½±°í Àç¹Õ°Ô °¡¸£ÃÄ ÁÖ¼¼¿ë</td>
+                                                        <td><a class="fas fa-user-circle fa-5x" href="#"></a><br>&nbsp;&nbsp;ì†¡&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</td>
+                                                        <td>ì§„ì§œ ì‰½ê³  ì¬ë°Œê²Œ ê°€ë¥´ì³ ì£¼ì„¸ìš©</td>
                                                     </tr>
                                                     <tr>
-                                                        <td><a class="fas fa-user-circle fa-5x" href="#"></a><br>&nbsp;&nbsp;±è&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</td>
-                                                        <td>±×³É ±×·¡¿ä ÇĞ¿ø ´Ù´Ï±æ</td>
+                                                        <td><a class="fas fa-user-circle fa-5x" href="#"></a><br>&nbsp;&nbsp;ê¹€&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</td>
+                                                        <td>ê·¸ëƒ¥ ê·¸ë˜ìš” í•™ì› ë‹¤ë‹ˆê¸¸</td>
                                                     </tr>
                                                     <tr>
-                                                        <td><a class="fas fa-user-circle fa-5x" href="#"></a><br>&nbsp;&nbsp;º¯&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</td>
+                                                        <td><a class="fas fa-user-circle fa-5x" href="#"></a><br>&nbsp;&nbsp;ë³€&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</td>
                                                         <td>good good</td>
                                                     </tr>
                                                 </table>
                                             </div>
 											<ul class="actions">
-												<li><a href="#" class="button icon solid fa-file">Å¬·¡½º ¼ö°­½ÅÃ»ÇÏ±â</a></li>
+												<li><a href="#" class="button icon solid fa-file">í´ë˜ìŠ¤ ìˆ˜ê°•ì‹ ì²­í•˜ê¸°</a></li>
 											</ul>
 										</article>
 
@@ -248,7 +242,7 @@
 													<!-- Excerpt -->
 														<article class="box excerpt">
 															<header>
-																<span class="date">1°³¿ù</span>
+																<span class="date">1ê°œì›”</span>
 																<h3><a href="#">Just another post</a></h3>
 															</header>
 															<p>Lorem ipsum dolor odio facilisis convallis. Etiam non nunc vel est
@@ -261,7 +255,7 @@
 													<!-- Excerpt -->
 														<article class="box excerpt">
 															<header>
-																<span class="date">2°³¿ù</span>
+																<span class="date">2ê°œì›”</span>
 																<h3><a href="#">And another post</a></h3>
 															</header>
 															<p>Lorem ipsum dolor odio facilisis convallis. Etiam non nunc vel est
@@ -274,7 +268,7 @@
 													<!-- Excerpt -->
 														<article class="box excerpt">
 															<header>
-																<span class="date">3°³¿ù</span>
+																<span class="date">3ê°œì›”</span>
 																<h3><a href="#">One more post</a></h3>
 															</header>
 															<p>Lorem ipsum dolor odio facilisis convallis. Etiam non nunc vel est
@@ -291,7 +285,7 @@
 												<li>
 
 													<!-- Highlight -->
-														<!-- <article class="box highlight">
+														<article class="box highlight">
 															<header>
 																<h3><a href="#">Something of note</a></h3>
 															</header>
@@ -306,10 +300,10 @@
 														</article>
 
 												</li>
-												<li> -->
+												<li>
 
 													<!-- Highlight -->
-														 <!--  <article class="box highlight">
+														<article class="box highlight">
 															<header>
 																<h3><a href="#">Something of less note</a></h3>
 															</header>
@@ -321,7 +315,7 @@
 															<ul class="actions">
 																<li><a href="#" class="button icon solid fa-file">Learn More</a></li>
 															</ul>
-														</article>-->
+														</article>
 
 												</li>
 											</ul>
@@ -337,7 +331,7 @@
 				<section id="footer">
 					<div class="container">
 						<header>
-							<h2>ÀÚ½Å¸¸ÀÇ Ãë¹Ì Å¬·¡½º¸¦ µî·ÏÇÏ°í ½Í´Ù¸é <strong>MY HOB!</strong>¿¡ ¹®ÀÇ ÇØÁÖ¼¼¿ä.</h2>
+							<h2>Questions or comments? <strong>Get in touch:</strong></h2>
 						</header>
 						<div class="row">
 							<div class="col-6 col-12-medium">
@@ -362,7 +356,9 @@
 							</div>
 							<div class="col-6 col-12-medium">
 								<section>
-									<p></p>
+									<p>Erat lorem ipsum veroeros consequat magna tempus lorem ipsum consequat Phaselamet
+									mollis tortor congue. Sed quis mauris sit amet magna accumsan tristique. Curabitur
+									leo nibh, rutrum eu malesuada.</p>
 									<div class="row">
 										<div class="col-6 col-12-small">
 											<ul class="icons">
@@ -417,5 +413,6 @@
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
             
+
 	</body>
 </html>

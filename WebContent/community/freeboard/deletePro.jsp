@@ -13,7 +13,7 @@
   int check = dbPro.deleteArticle(num, passwd);
   if(check==1){
 %>
-	<meta http-equiv="Refresh" content="0;url=../community/free_board.jsp?pageNum=<%=pageNum%>">
+	<meta http-equiv="Refresh" content="0;url=/community/freeboard/free_board.jsp?pageNum=<%=pageNum%>">
 <%}else{%>
     <script type="text/javascript">      
         

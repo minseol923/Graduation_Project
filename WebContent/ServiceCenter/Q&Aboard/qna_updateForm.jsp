@@ -19,7 +19,7 @@
 <p>글수정</p>
 <br>
 <form method="post" name="writeform" 
-action="../community/updatePro.jsp?pageNum=<%=pageNum%>" onsubmit="return writeSave()">
+action="/ServiceCenter/Q&Aboard/qna_updatePro.jsp?pageNum=<%=pageNum%>" onsubmit="return writeSave()">
 <table border="1">
   <tr>
     <td  width="70"  align="center">이 름</td>
@@ -59,7 +59,7 @@ action="../community/updatePro.jsp?pageNum=<%=pageNum%>" onsubmit="return writeS
      <input type="submit" value="글수정" >  
      <input type="reset" value="다시작성">
      <input type="button" value="목록보기" 
-       onclick="document.location.href='../community/free_board.jsp?pageNum=<%=pageNum%>'">
+       onclick="document.location.href='/ServiceCenter/Q&Aboard/Q&A.jsp?pageNum=<%=pageNum%>'">
    </td>
  </tr>
  </table>

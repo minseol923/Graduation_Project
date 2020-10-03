@@ -2,9 +2,12 @@
 
 #my-Sidebar {
         width: 250px;
-        padding: 20px;
+        height:100%;
+        padding:px;
         margin-bottom: 20px;
         float: left;
+        background-color: #fff; 
+        margin-top:100px;
       }
  
  ul{
@@ -74,7 +77,7 @@ li {
 }
 .profile{
 	width:600px;
-	height:350px;
+	height:450px;
 	border: 2px solid gray;
 	border-radius :3%;
 	display:flex;

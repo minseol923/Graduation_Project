@@ -1,8 +1,10 @@
- create table user(
-     id varchar(100) not null primary key,
-     passwd varchar(100) not null,
-     name varchar(100) not null,
- 	 email varchar(100) not null,
-	 hobby varchar(30),
-	 phone varchar(200) not null
-     );
+create table user(
+ id varchar(20) not null,
+ passwd varchar(20),
+name varchar(20),
+email varchar(50),
+address varchar(1000),
+birth varchar(100),
+phone varchar(50),
+hobby varchar(50),
+primary key(id));

@@ -7,13 +7,13 @@
 <html>
 <head>
 <title>게시판</title>
-<link rel="stylesheet" href="../assets/css/free_board.css" type="text/css">
+<link rel="stylesheet" href="/assets/css/free_board.css" type="text/css">
 </head>
 <body>
 <p>글삭제</p>
 <br>
 <form method="POST" name="delForm" 
-   action="../community/deletePro.jsp?pageNum=<%=pageNum%>" 
+   action="/community/freeboard/deletePro.jsp?pageNum=<%=pageNum%>" 
    onsubmit="return deleteSave()"> 
  <table>
   <tr height="30">
@@ -29,7 +29,7 @@
     <td align=center>
       <input type="submit" value="글삭제" >
       <input type="button" value="글목록" 
-       onclick="document.location.href='../community/free_board.jsp?pageNum=<%=pageNum%>'">     
+       onclick="document.location.href='/community/freeboard/free_board.jsp?pageNum=<%=pageNum%>'">     
    </td>
  </tr>  
 </table> 

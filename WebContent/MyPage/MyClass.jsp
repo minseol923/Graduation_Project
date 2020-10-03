@@ -46,52 +46,42 @@
 							<p>MAKE YOUR HOBBY</p>
 
 						<!-- Nav -->
-							<nav id="nav">
-                        <ul>
-                           <li><a class="icon solid fa-home" href="index.jsp"><span>Introduction</span></a></li>
-                           <li>
-                              <a href="#" class="icon fa-chart-bar"><span>취미</span></a>
-                              <ul>
-                                 <li><a href="#">Lorem ipsum dolor</a></li>
-                                 <li><a href="#">Magna phasellus</a></li>
-                                 <li><a href="#">Etiam dolore nisl</a></li>
-                                 <li>
-                                    <a href="#">Phasellus consequat</a>
-                                    <ul>
-                                       <li><a href="#">Magna phasellus</a></li>
-                                       <li><a href="#">Etiam dolore nisl</a></li>
-                                       <li><a href="#">Phasellus consequat</a></li>
-                                    </ul>
-                                 </li>
-                                 <li><a href="#">Veroeros feugiat</a></li>
-                              </ul>
-                           </li>
-                           <li><a class="icon solid fa-cog" href="../MyPage/MyClass.jsp">
-                           <span>MY Page</span></a>
-                              <ul>
-                                 <li><a href="/MyPage/MyClass.jsp">My Class</a></li>
-                                 <li><a href="/MyPage/HobbyLog.jsp">활동로그</a></li>
-                                 <li><a href="/MyPage/Profile.jsp">내 프로필</a></li>
-                                 <li><a href="/MyPage/EditProfile.jsp">프로필수정</a></li>
-                              </ul>
-                           <li><a class="icon solid fa-retweet" href="../ServiceCenter/FAQ.jsp">
-                           <span>Service Center</span></a>
-                              <ul>
-                                 <li><a href="/ServiceCenter/notice.jsp">공지사항</a></li>
-                                 <li><a href="/ServiceCenter/FAQ.jsp">FAQ</a></li>
-                                 <li><a href="/ServiceCenter/Q&A.jsp">Q&A</a></li>
-                              </ul>
-                           </li>
-                           <li><a class="icon solid fa-sitemap" href="../community/info_board.jsp">
-                              <span>community</span></a>
-                              <ul>
-                                 <li><a href="/community/free_board.jsp">자유게시판</a></li>
-                                 <li><a href="/community/info_board.jsp">정보게시판</a></li>
-                              </ul>
-                           
-                           </li>
+						<nav id="nav">
+								<ul>
+									
+									<li><a class="fab fa-medium-m" href="#"><span>About Us</span></a></li>
+									<li><a class="icon solid fa-cog" href="left-sidebar.html"><span>취미탐색</span></a>
+                                        <ul>
+											<li><a href="#">취미 검사</a></li>
+											<li><a href="#">MBTI</a></li>											
+										</ul>
+                                    </li>
+									<li><a class="far fa-comments" href="/community/freeboard/free_board.jsp"><span>커뮤니티</span></a>
+                                        <ul>
+											<li><a href="/community/freeboard/free_board.jsp">자유게시판</a></li>
+											<li><a href="/community/infoboard/info_board.jsp">정보게시판</a></li>
+										</ul>
+                                    </li>
+									<li><a class="fab fa-quora" href="/ServiceCenter/Noticeboard/notice.jsp"><span>고객센터</span></a>
+                                        <ul>
+											<li><a href="/ServiceCenter/Noticeboard/notice.jsp">공지사항</a></li>
+											<li><a href="/ServiceCenter/FAQboard/FAQ.jsp">FAQ</a></li>
+											<li><a href="/ServiceCenter/Q&Aboard/Q&A.jsp">Q&A</a></li>
+										</ul>
+                                    </li>
+								</ul>
+                                
+                                <ul class="navtop">   
+                                
+                                    <li><a href="/Join/LoginForm.jsp">Login</a></li>
+				                    <li><a href="/Join/insertForm.jsp">Join</a></li>
+                                    <li><a class="fas fa-user fa-1.5x" href="/MyPage/Profile.jsp"></a>
+                                    <span></span></a>
+										
+                                    </li>             
                         </ul>
-                     </nav>
+                                
+							</nav>                                
 
                </div>
             </section>

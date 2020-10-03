@@ -13,6 +13,8 @@ public class BoardDataBean {
     private int re_step;	
     private int re_level;
     private String content;
+    private String boardType;
+    
 	public int getNum() {
 		return num;
 	}
@@ -79,4 +81,11 @@ public class BoardDataBean {
 	public void setContent(String content) {
 		this.content = content;
 	}
+	public String getBoardType() {
+		return boardType;
+	}
+	public void setBoardType(String boardType) {
+		this.boardType = boardType;
+	}
+	
 }

@@ -17,7 +17,7 @@
 
     if(check==1){ //db와 패스워드가 같아서 1을 리턴받으면(성공했을때).
 %>
-	  <meta http-equiv="Refresh" content="0;url=../assets/community/free_board.jsp?pageNum=<%=pageNum%>" >
+	  <meta http-equiv="Refresh" content="0;url=/ServiceCenter/Q&Aboard/Q&A.jsp?pageNum=<%=pageNum%>" >
 <% }else{%>
       <script type="text/javascript">      
         

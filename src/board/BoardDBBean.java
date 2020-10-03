@@ -53,6 +53,9 @@ public class BoardDBBean {
 		int ref=article.getRef();
 		int re_step=article.getRe_step();
 		int re_level=article.getRe_level();
+		
+		
+		String boardType = article.getBoardType(); //free - 자유, qna-QNA , 
 		int number=0;
         String sql="";
 
@@ -67,7 +70,7 @@ public class BoardDBBean {
 		    else
 		      number=1; //작성된 글이 없다면 넘버는 1
 		   
-		   /* if (num!=0) {  
+		    if (num!=0) {  
 		      sql="update board set re_step=re_step+1 ";
 		      sql += "where ref= ? and re_step> ?";
               pstmt = conn.prepareStatement(sql);
@@ -80,10 +83,11 @@ public class BoardDBBean {
 		  	  ref=number;
 			  re_step=0;
 			  re_level=0;
-		     }	 */
+		     }	 
             // ������ �ۼ�
+			
             sql = "insert into board(writer,email,subject,passwd,reg_date,";
-		    sql+="ref,re_step,re_level,content) values(?,?,?,?,?,?,?,?,?)";
+		    sql+="ref,re_step,re_level,content,boardType) values(?,?,?,?,?,?,?,?,?,?)";
 
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, article.getWriter());
@@ -95,6 +99,8 @@ public class BoardDBBean {
             pstmt.setInt(7, re_step);
             pstmt.setInt(8, re_level);
 			pstmt.setString(9, article.getContent());
+            pstmt.setString(10, article.getBoardType());
+
 			
 			
             pstmt.executeUpdate();
@@ -107,7 +113,17 @@ public class BoardDBBean {
         }
     }
     
-    //board테이블에 저장된 전체글의 수를 얻어냄.(select문)<=list.jsp에서 사용.
+    private PreparedStatement setString(int i, Object boardType) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	private Object getBoardType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	//board테이블에 저장된 전체글의 수를 얻어냄.(select문)<=list.jsp에서 사용.
 	public int getArticleCount()  throws Exception {
         Connection conn = null;
         PreparedStatement pstmt = null;
@@ -135,7 +151,7 @@ public class BoardDBBean {
     }
 
 	//글의 목록(복수개의 글)을 가져옴 (select문) <=list.jsp에서 사용.
-	public List<BoardDataBean> getArticles(int start, int end)
+	public List<BoardDataBean> getArticles(int start, int end, String boardType, String searchOption, String keyword)
              throws Exception {
         Connection conn = null;
         PreparedStatement pstmt = null;
@@ -145,9 +161,10 @@ public class BoardDBBean {
             conn = getConnection();
             
             pstmt = conn.prepareStatement(
-            	"select * from board order by num desc, ref desc, re_step asc limit ?,? ");
-            pstmt.setInt(1, start-1);
-			pstmt.setInt(2, end);
+            	"select * from board where boardType= ? order by num desc, ref desc, re_step asc limit ?,? ");
+            pstmt.setString(1, boardType);
+            pstmt.setInt(2, start-1);
+			pstmt.setInt(3, end);
             rs = pstmt.executeQuery();
 
             if (rs.next()) {

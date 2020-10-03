@@ -1,12 +1,14 @@
 package Test;
 
 public class user {
-	private String id;
-	private String passwd;
-	private String name;
-	private String email;
-	private String hobby;
-	
+	   private String id ;
+	   private String passwd;
+	   private String name;
+	   private String email; 
+	   private String address;
+	   private String phone;
+	   private String birth;
+	   private String hobby;
 	public String getId() {
 		return id;
 	}
@@ -31,12 +33,30 @@ public class user {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public String getBirth() {
+		return birth;
+	}
+	public void setBirth(String birth) {
+		this.birth = birth;
+	}
 	public String getHobby() {
 		return hobby;
 	}
 	public void setHobby(String hobby) {
 		this.hobby = hobby;
 	}
-	
-
+	  
+	   
 }

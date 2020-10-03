@@ -10,7 +10,7 @@
 	<% session.invalidate(); %>
 	<script>
 	alert("로그아웃");
-	location.href="./LoginForm.jsp"
+	location.href="../Join/LoginForm.jsp"
 	</script>
 </body>
 </html>

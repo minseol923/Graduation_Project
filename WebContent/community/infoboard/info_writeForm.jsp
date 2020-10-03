@@ -9,7 +9,8 @@
 <body>
 
 <p> 글쓰기 </p>
-<form method="post" action="../community/writePro.jsp">
+<form method="post" action="/community/infoboard/info_writePro.jsp">
+<input type="hidden" name="boardType" value="info">
 
  <table border="1">
    <tr>
@@ -44,7 +45,7 @@
    <tr>
    	<td colspan="2"> <input type="submit" value="글쓰기">
    	<input type="reset" value="다시작성">
-   	<input type="button" value="목록보기" onClick="window.location="../community/free_board.jsp"> </td>
+   	<input type="button" value="목록보기" onClick="window.location="/community/infoboard/info_board.jsp"> </td>
    	
   </tr>
  </table>
