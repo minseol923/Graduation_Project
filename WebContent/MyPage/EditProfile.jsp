@@ -1,18 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="Test.user"%>
+ <jsp:useBean id="userjoin" class="Test.userDB"/>
+ 
+ <%
+	String idkey = request.getParameter("id");
+ 	user use = userjoin.getData(idkey); 
+
+	String passwd=request.getParameter("passwd");
+	String name= request.getParameter("name");
+	String email=request.getParameter("email");
+	String address= request.getParameter("address");
+	String phone=request.getParameter("phone");
+	String birth=request.getParameter("birth");
+	String hobby=request.getParameter("hobby");
+
+%>
+
 <!DOCTYPE HTML>
-<!--
-	Strongly Typed by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
 	<head>
-		<title>No Sidebar - Strongly Typed by HTML5 UP</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="../assets/css/main1.css" />
 		<link rel="stylesheet" href="../assets/css/MyPage.css" />
+
 	</head>
 	<body class="no-sidebar is-preload">
 		<div id="page-wrapper">
@@ -89,31 +101,31 @@
 									<table>
 								            <tr>
 								                <td align="center" width ="150"><b>아이디</b></td>
-								                <td><input type="text" name="my_name" size="20" value="test_id">
+								                <td><input type="text" name="my_name" size="20" value="<%=use.getId()%>">
 								            </tr>
 								            <tr>
 								                <td align="center" width ="150"><b>비밀번호</b></td>
 								                <td>
-								                	<input type="password" name="passwd" mexlength="16" value="비밀번호를 입력하세요.">
+								                	<input type="password" name="passwd" mexlength="16" value="<%=use.getPasswd()%>">
 								               		(영문 대소문자/숫자/특수문자 중 2가지 이상 조합,8~18자)
 								               	</td>
 								            </tr>
 								            
 								            <tr>
 								                <td align="center"><b>비밀번호확인</b></td>
-								                <td><input type="password" name="passwd_check" mexlength="16" value="비밀번호를 확인하세요.">
+								                <td><input type="password" name="passwd_check" mexlength="16" value="<%=use.getPasswd()%>">
 								            </tr>
 								            
 								             <tr>
 								                <td align="center"><b>이름</b></td>
-								                <td><input type="text" name="name" size="20" value="testname">
+								                <td><input type="text" name="name" size="20" value="<%=use.getName()%>">
 								            </tr>
 								            
 								            <tr>
 								                <td align="center"><b>이메일</b></td>
 								                <td>
-								                	<input type="text" name="email"> @
-								                	<input type='text' name="email_dns"> 
+								                	<input type="text" name="email" value="<%=use.getEmail()%>"> @
+								                	<input type='text' name="email_dns" value="<%=use.getEmail()%>"> 
 											              <select id ="emailaddr" name="emailaddr">
 											                 <option value="">직접입력</option>
 											                 <option value="daum.net">daum.net</option>
@@ -128,7 +140,7 @@
 								            <tr>
 								            	<td align="center"><b>주소</b></td>
 								            	<td>
-								            		<input type="text" name="address" id="address" size="6">
+								            		<input type="text" name="address" id="address" size="6" value="<%=use.getAddress()%>">
 								            		<input type="button" name="zipcode" id="zipcode" value="우편번호"><br>
 								                    <input type="text" name="add1" id="add1" size="25" >기본주소<br>
 								                    <input type="text" id="add2" id="add2" size="25"> 나머지 주소
@@ -165,7 +177,7 @@
 								            <tr>
 								                <td align="center"><b>휴대전화</b></td>
 								                <td>
-								               		 <select name="phone" id="phone" style="width:70px;">
+								               		 <select name="phone" id="phone" value="<%=use.getPhone()%>" style="width:70px;">
 								               		 	<option value="선택">선택</option>
 									                	<option value="010">010</option>
 									                	<option value="011">011</option>
@@ -173,9 +185,7 @@
 									                	<option value="017">017</option>
 									                	<option value="018">018</option>
 									                	<option value="019">019</option>
-								                	</select>-
-								                	<input type="text" name="phone2" id="phone">-
-								                	<input type="text" name="phone3" id="phone">
+								                	</select>
 								                	<input type="button" name="zipcode" id="phone_certification" value="인증"><br>
 								                </td>
 								            </tr>
@@ -183,11 +193,11 @@
 								            <tr>
 								                <td align="center"><b>생년월일</b></td>
 								                <td>
-								                	<input type="text" name="birth" size="10" value>년
-								                	<input type="text" name="birth" size="10" value>월
-								               		<input type="text" name="birth" size="10" value>일
-								                	<input type="radio" name="양력음력" value="양력">양력
-								                	<input type="radio" name="양력음력" value="음력">음력
+								                	<input type="text" name="birth" size="10" value="<%=use.getBirth()%>">년
+								                	<input type="text" name="birth" size="10" value="<%=use.getBirth()%>">월
+								               		<input type="text" name="birth" size="10" value="<%=use.getBirth()%>">일
+								                	<!-- <input type="radio" name="양력음력" value="양력">양력
+								                	<input type="radio" name="양력음력" value="음력">음력 -->
 								                </td>
 								            </tr>
 								            

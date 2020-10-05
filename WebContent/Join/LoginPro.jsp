@@ -2,8 +2,6 @@
     pageEncoding="UTF-8"%>
 <jsp:useBean id="userjoin" class="Test.userDB"/>
 
-
- <%--   <%@ page import="Test.userDB" %>  --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +17,7 @@
 		response.sendRedirect("../Join/insertForm.jsp"); //로그인실패
 	} else { 
 		session.setAttribute("id", id);
-		response.sendRedirect("../Join/Main.jsp");
+		response.sendRedirect("../index.jsp");
 } %>
 
 

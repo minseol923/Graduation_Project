@@ -3,7 +3,7 @@ package Test;
 //일단 만들어 놓음,,,
 
 public class userBean {
-	private String id,passwd,name,email,address,phone,birth;
+	private String id,passwd,name,email,address,phone,birth,hobby;
 
 	public String getId() {
 		return id;
