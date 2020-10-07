@@ -19,18 +19,20 @@
 	int endRow = currentPage * pageSize;
 	int count = 0;
 	int number = 0;
-	List<BoardDataBean> articleList = null; 
 	
+	List<BoardDataBean> articleList = null; 
 	BoardDBBean dbPro = BoardDBBean.getInstance();
 	
 	String boardType="qna";
 	String searchOption=request.getParameter("searchOption");	
 	String keyword=request.getParameter("keyword");
 	articleList = dbPro.getArticles(startRow, pageSize, boardType,searchOption,keyword);
+	
+
 	if(articleList!=null){
-	    count = articleList.size();
-		number = count-(currentPage-1)*pageSize;
+		count=dbPro.getArticleCount(boardType);
 	}
+		number = count-(currentPage-1)*pageSize;
 %>
 <html>
 <head>
@@ -77,14 +79,6 @@
                                     </li>
 								</ul>
                                 
-                                <ul class="navtop">   
-                                
-                                    <li><a href="/Join/LoginForm.jsp">Login</a></li>
-				                    <li><a href="/Join/insertForm.jsp">Join</a></li>
-                                    <li><a class="fas fa-user fa-1.5x" href="/MyPage/Profile.jsp"></a>
-                                    <span></span></a>
-										
-                                    </li>             
                         </ul>
                                 
 							</nav>                                
@@ -106,13 +100,6 @@
 		 		<div id="content">
 		 		
 		 	<p>글목록(전체 글:<%=count%>)</p>
-			<table>
-			  <tr>
-			    <td align="right">
-			       <a href="/ServiceCenter/Q&Aboard/qna_writeForm.jsp">글쓰기</a>
-			    </td>
-			  </tr>
-			</table>
 			
 			<% if (count == 0) { %>
 			
@@ -130,23 +117,37 @@
 			      <td align="center"  width="250" >제   목</td> 
 			      <td align="center"  width="100" >작성자</td>
 			      <td align="center"  width="150" >작성일</td> 
-			      <td align="center"  width="50" >조 회</td> 
+			      <td align="center"  width="50" >조회수</td> 
 			    
 			    </tr>
 			<%  
-			   for (int i = 0; i < articleList.size() ; i++) {
+			   for (int i = 0; i < articleList.size(); i++) {
 			       BoardDataBean article = (BoardDataBean)articleList.get(i);
 			%>
-			   <tr height="30">
-			    <td  width="50" > <%=number--%></td>
-			    <td  width="250" align="left">
+			  	 <tr height="30">
+			    	<td width="50" > <%=number--%></td>
+			    	<td width="250" align="left">
+			    <%
+			        //답변글이라면
+			    	int wid=0; 
+			    	if(article.getRe_level()>0){
+			    		wid=5*(article.getRe_level());
+			    %>
+			    	<img src="/images/level-0000.jpg" width="<%=wid%>"height="16">
+			    	<img src="/images/re-0000.gif">
+			    	
+			    <% //원글이라면
+			    	}else{ %>
+			  		<img src="/images/level-0000.jpg" width="<%=wid%>"height="16">
+			  	<% } %>
+			  	
+			  	
 			      <a href="/ServiceCenter/Q&Aboard/content.jsp?boardType=qna&num=<%=article.getNum()%>&pageNum=<%=currentPage%>">
 			           <%=article.getSubject()%></a> 
 			    </td>
 			    <td width="100" align="left"> 
 			       <a href="mailto:<%=article.getEmail()%>">
-			                     <%=article.getWriter()%></a>
-			                     </td>
+			                     <%=article.getWriter()%></a></td>
 			    <td width="150"><%= sdf.format(article.getReg_date())%></td>
 			    <td width="50"><%=article.getReadcount()%></td>
 			
@@ -154,7 +155,15 @@
 			<%}%>
 			</table>
 			<%}%>
-			<div>
+				<table>
+				  <tr>
+				    <td align="right">
+				       <a href="/ServiceCenter/Q&Aboard/qna_writeForm.jsp">글쓰기</a>
+				    </td>
+				  </tr>
+				</table>
+			
+				<div>
 					<tr>
 				  		<td>
 				  			<select name="searchOption">
@@ -166,11 +175,9 @@
 					  		<input type="text" id="keyword" name="keyword">
 					  		<input type="submit" name="submit" value="검색">
 				  		</td>
-				  		<td >
-				  			<a href="/community/freeboard/writeForm.jsp">글쓰기</a>
-				  		</td>
 				  	</tr>
 			  	</div>
+			  	<div style=text-align:center;>
 			<%
 				if(count>0){
 					int pageCount =count/pageSize+(count % pageSize==0?0:1);
@@ -186,22 +193,22 @@
 					if(endPage >pageCount) endPage=pageCount;
 					
 					if(startPage>10){ %>
-						<a herf="/ServiceCenter/Q&Aboard/Q&A.jsp?pageNum=<%=startPage-10 %>">[이전]</a>
+						<a href="/ServiceCenter/Q&Aboard/Q&A.jsp?pageNum=<%=startPage-10 %>">[이전]</a>
 					
 				<% }
 					
 					for(int i =startPage; i<=endPage;i++){ %>
-						<a href="/ServiceCenter/Q&Aboard/Q&A.jsp?pageNum=<%=i%>"><%=i %></a>
+						<a href="/ServiceCenter/Q&Aboard/Q&A.jsp?pageNum=<%=i%>">[<%=i %>]</a>
 				<% }
 					
 					if(endPage < pageCount){ %>
-					<a herf="/ServiceCenter/Q&Aboard/Q&A.jsp?pageNum=<%=startPage+10 %>">[다음]</a>
+					<a href="/ServiceCenter/Q&Aboard/Q&A.jsp?pageNum=<%=startPage+10 %>">[다음]</a>
 				
 				<%
 						}
 					}
 				%>
-                        </div>
+                      </div>
                           </div>
                            </section>
 		<!-- Scripts -->

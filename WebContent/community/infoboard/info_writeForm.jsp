@@ -12,36 +12,36 @@
 <form method="post" action="/community/infoboard/info_writePro.jsp">
 <input type="hidden" name="boardType" value="info">
 
- <table border="1">
+  <table border="1">
    <tr>
    	<td colspan="2"> 글목록 </td>
    </tr>
    
    <tr>
-   	<td> 이름 </td>
-   	<td> <input type="text" name="writer"></td>
+   	<td width="70" align="center">이름 </td>
+   	<td> <input type="text" size="10" name="writer"></td>
   </tr>
   
   <tr>
-   	<td> 제목 </td>
-   	<td> <input type="text" name="subject"></td>
+   	<td width="70" align="center"> 제목 </td>
+   	<td width="300" align="left">
+	   	<%
+	   		if(request.getParameter("num")==null) {%>
+	   			<input type="text" size="40" maxlength="50" name="subject">
+	   	<% }else {%>
+	   			<input type="text" size="40" maxlength="50" name="subject" value="Re :">
+	   		
+	   	<%}%>
+   	 </td>
   </tr>
-  
-  <tr>
-   	<td> 이메일  </td>
-   	<td> <input type="text" name="email"></td>
-  </tr>
+
   
    <tr>
-   	<td> 내용 </td>
-   	<td> <input type="text" name="content"></td>
+   	<td width="70" align="center"> 내용 </td>
+   	<td width="300" align="left"><textarea name="content" rows="13" cols="40"></textarea></td>
   </tr>
   
-   <tr>
-   	<td> 비밀번호 </td>
-   	<td> <input type="text" name="passwd"></td>
-  </tr>
-  
+
    <tr>
    	<td colspan="2"> <input type="submit" value="글쓰기">
    	<input type="reset" value="다시작성">

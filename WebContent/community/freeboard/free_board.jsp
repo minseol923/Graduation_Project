@@ -27,11 +27,12 @@
 	String searchOption=request.getParameter("searchOption");	
 	String keyword=request.getParameter("keyword");
 			
-	articleList = dbPro.getArticles(startRow,pageSize,boardType,searchOption,keyword);
+	articleList = dbPro.getArticles(startRow, pageSize, boardType, searchOption, keyword);
+	
 	if(articleList!=null){
-	    count = articleList.size();
-		number = count-(currentPage-1)*pageSize;
+		count=dbPro.getArticleCount(boardType);
 	}
+		number = count-(currentPage-1)*pageSize;
 %>
 <html>
 <head>
@@ -77,16 +78,7 @@
 										</ul>
                                     </li>
 								</ul>
-                                
-                                <ul class="navtop">   
-                                
-                                    <li><a href="/Join/LoginForm.jsp">Login</a></li>
-				                    <li><a href="/Join/insertForm.jsp">Join</a></li>
-                                    <li><a class="fas fa-user fa-1.5x" href="/MyPage/Profile.jsp"></a>
-                                    <span></span></a>
-										
-                                    </li>             
-                        </ul>
+                               
                                 
 					</nav>                                
 
@@ -104,6 +96,7 @@
 		 		<div id="content">
 		 		
 		 	<p>글목록(전체 글:<%=count%>)</p>
+		 	
 			
 			<% if (count == 0) { %>
 			
@@ -145,7 +138,13 @@
 			<%}%>
 			</table>
 			<%}%>
-			
+				<table>
+					  <tr>
+					    <td align="right">
+					       <a href="/community/freeboard/writeForm.jsp">글쓰기</a>
+					    </td>
+					  </tr>
+				</table>
 				<div>
 					<tr>
 				  		<td>
@@ -158,13 +157,10 @@
 					  		<input type="text" id="keyword" name="keyword">
 					  		<input type="submit" name="submit" value="검색">
 				  		</td>
-				  		<td >
-				  			<a href="/community/freeboard/writeForm.jsp">글쓰기</a>
-				  		</td>
 				  	</tr>
 			  	</div>
 			
-
+			<div style="text-align:center">
 			<%
 				if(count>0){
 					int pageCount =count/pageSize+(count % pageSize==0?0:1);
@@ -180,7 +176,7 @@
 					if(endPage >pageCount) endPage=pageCount;
 					
 					if(startPage>10){ %>
-						<a herf="/community/freeboard/free_board.jsp?pageNum=<%=startPage-10 %>">[이전]</a>
+						<a href="/community/freeboard/free_board.jsp?pageNum=<%=startPage-10 %>">[이전]</a>
 					
 				<% }
 					
@@ -189,15 +185,12 @@
 				<% }
 					
 					if(endPage < pageCount){ %>
-					<a herf="/community/freeboard/free_board.jsp?pageNum=<%=startPage+10 %>">[다음]</a>
+					<a href="/community/freeboard/free_board.jsp?pageNum=<%=startPage+10 %>">[다음]</a>
 				
 				<%
 						}
 					}
 				%>
-				
-			  
-			   
                         </div>
                       </div>
               </section>

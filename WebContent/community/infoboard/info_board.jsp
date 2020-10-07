@@ -29,10 +29,10 @@
 	String keyword=request.getParameter("keyword");
 	
     articleList = dbPro.getArticles(startRow,pageSize,boardType,searchOption,keyword);
-	if(articleList!=null){
-	    count = articleList.size();
-		number = count-(currentPage-1)*pageSize;
+    if(articleList!=null){
+		count=dbPro.getArticleCount(boardType);
 	}
+		number = count-(currentPage-1)*pageSize;
 %>
 <html>
 <head>
@@ -108,13 +108,6 @@
 		 		<div id="content">
 		 		
 		 	<p>글목록(전체 글:<%=count%>)</p>
-			<table>
-			  <tr>
-			    <td align="right">
-			       <a href="/community/infoboard/info_writeForm.jsp">글쓰기</a>
-			    </td>
-			  </tr>
-			</table>
 			
 			<% if (count == 0) { %>
 			
@@ -157,6 +150,13 @@
 			</table>
 			<%}%>
 			<div>
+			<table>
+			  <tr>
+			    <td align="right">
+			       <a href="/community/infoboard/info_writeForm.jsp">글쓰기</a>
+			    </td>
+			  </tr>
+			</table>
 					<tr>
 				  		<td>
 				  			<select name="searchOption">
@@ -167,30 +167,11 @@
 				  			</select>
 					  		<input type="text" id="keyword" name="keyword">
 					  		<input type="submit" name="submit" value="검색">
-				  		</td>
-				  		<td >
-				  			<a href="/community/freeboard/writeForm.jsp">글쓰기</a>
 				  		</td>
 				  	</tr>
 			  	</div>
 			  	
-			  	<div>
-					<tr>
-				  		<td>
-				  			<select name="searchOption">
-					  			<option value="all"> 제목+이름+내용 </option>
-								<option value="writer" >이름</option>
-								<option value="content" >내용 </option>
-								<option value="title"  >제목</option>	
-				  			</select>
-					  		<input type="text" id="keyword" name="keyword">
-					  		<input type="submit" name="submit" value="검색">
-				  		</td>
-				  		<td >
-				  			<a href="/community/freeboard/writeForm.jsp">글쓰기</a>
-				  		</td>
-				  	</tr>
-			  	</div>
+			  <div style="text-align:center">	
 			<%
 				if(count>0){
 					int pageCount =count/pageSize+(count % pageSize==0?0:1);
@@ -206,7 +187,7 @@
 					if(endPage >pageCount) endPage=pageCount;
 					
 					if(startPage>10){ %>
-						<a herf="/community/infoboard/info_board.jsp?pageNum=<%=startPage-10 %>">[이전]</a>
+						<a href="/community/infoboard/info_board.jsp?pageNum=<%=startPage-10 %>">[이전]</a>
 					
 				<% }
 					
@@ -215,7 +196,7 @@
 				<% }
 					
 					if(endPage < pageCount){ %>
-					<a herf="/community/infoboard/info_board.jsp?pageNum=<%=startPage+10 %>">[다음]</a>
+					<a href="/community/infoboard/info_board.jsp?pageNum=<%=startPage+10 %>">[다음]</a>
 				
 				<%
 						}

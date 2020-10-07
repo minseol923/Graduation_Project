@@ -14,18 +14,25 @@ public class userDB {
 	private Connection conn; // connection:db에접근하게 해주는 객체
 	private PreparedStatement pstmt;
 	private ResultSet rs;
-	private Statement ds;
+	private Statement ds; 
 
 	
 	public static userDB getInstance() {
 		return instance;
 	}
 	
+
+	private Connection getConnection() throws Exception{
+		Context initCtx = new InitialContext();
+		Context envCtx =(Context) initCtx.lookup("java:comp/env");
+		DataSource ds =(DataSource)envCtx.lookup("jdbc/bdbjsp");
+		return ds.getConnection();
+	}
 	
 	//로그인메소드
 	public int userCheck(String id, String passwd) {
 		String SQL = "SELECT passwd FROM user WHERE id = ?";
-
+		
 		try {
 
 			pstmt = conn.prepareStatement(SQL);
@@ -34,10 +41,8 @@ public class userDB {
 			if (rs.next()) {
 				if (rs.getString(1).equals(passwd)) {
 					return 1; //성공
-
 				} else
 					return 0; //비밀번호 불일치
-
 			}
 			return -1; // 아이디 노
 			
@@ -54,7 +59,8 @@ public class userDB {
 
 		try {
 
-			String sql = "select id,passwd,name,email,address,phone,birth,hobby from user where id";
+			String sql = "select id,passwd,name,email,address,phone,birth,hobby from user where id=min";
+			
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
@@ -114,8 +120,8 @@ public class userDB {
 			}
 			return b;
 		}
+		
 		//회원 탈퇴 - 탈퇴하기
-
 		public boolean deleteData(String id){
 			boolean b = false;
 			try {
@@ -133,7 +139,7 @@ public class userDB {
 					if(pstmt!=null)pstmt.close();
 					if(conn!=null)conn.close();
 				} catch (Exception e2) {
-					// TODO: handle exception
+					
 				}
 			}
 			return b;

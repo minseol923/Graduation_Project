@@ -47,14 +47,6 @@
                                     </li>
 								</ul>
                                 
-                                <ul class="navtop">   
-                                
-                                    <li><a href="/Join/LoginForm.jsp">Login</a></li>
-				                    <li><a href="/Join/insertForm.jsp">Join</a></li>
-                                    <li><a class="fas fa-user fa-1.5x" href="/MyPage/Profile.jsp"></a>
-                                    <span></span></a>
-										
-                                    </li>             
                         </ul>
                                 
 							</nav>                                
