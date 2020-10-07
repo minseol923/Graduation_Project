@@ -28,7 +28,6 @@
 	
 	Connection conn=null;
 	PreparedStatement pstmt=null;
-
 	try{
 		String url="jdbc:mysql://localhost:3306/bdbjsp?serverTimezone=UTC";
 		String dbId="root";
@@ -51,8 +50,6 @@
 		e.printStackTrace();
 		
 	}
-
-
 %>
 <%=str%>
 <script>

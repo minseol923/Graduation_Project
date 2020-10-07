@@ -68,6 +68,10 @@
        onclick="document.location.href='/community/freeboard/deleteForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
      <!-- num ,pagenum값을 가지고 deleteForm.jsp로 넘어간다 -->
     &nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="button" value="답글쓰기" 
+       onclick="document.location.href='/community/freeboard/writeForm.jsp?num=<%=num%>&ref=<%=ref%>&re_step=<%=re_step%>&re_level=<%=re_level%>'">
+        <!-- num ,ref,re_step,re_level을  가지고 writeForm.jsp로 넘어간다 -->
+    &nbsp;&nbsp;&nbsp;&nbsp;
        <input type="button" value="글목록" 
        onclick="document.location.href='/community/freeboard/free_board.jsp?pageNum=<%=pageNum%>'">
   <!--pagenum을  가지고 list.jsp로 넘어간다 -->

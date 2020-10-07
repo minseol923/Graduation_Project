@@ -1,8 +1,10 @@
 package Test;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.naming.Context;
@@ -22,12 +24,26 @@ public class userDB {
 	}
 	
 
-	private Connection getConnection() throws Exception{
-		Context initCtx = new InitialContext();
-		Context envCtx =(Context) initCtx.lookup("java:comp/env");
-		DataSource ds =(DataSource)envCtx.lookup("jdbc/bdbjsp");
-		return ds.getConnection();
-	}
+    private Connection getConnection() throws Exception {
+    	Connection conn=null;
+    	PreparedStatement pstmt=null;
+    	
+    	String jdbc_driver = "com.mysql.cj.jdbc.Driver";
+    	String jdbc_url  = "jdbc:mysql://localhost:3306/bdbjsp?characterEncoding=UTF-8&serverTimezone=UTC";
+    	
+    	
+    		try {
+    			Class.forName(jdbc_driver);
+    			conn=DriverManager.getConnection(jdbc_url,"root","1234");
+    			
+    		} catch (Exception e) {
+    			// TODO Auto-generated catch block
+    			e.printStackTrace();
+    		}
+    		
+    	 
+        return conn;
+    }
 	
 	//로그인메소드
 	public int userCheck(String id, String passwd) {
@@ -41,6 +57,7 @@ public class userDB {
 			if (rs.next()) {
 				if (rs.getString(1).equals(passwd)) {
 					return 1; //성공
+					
 				} else
 					return 0; //비밀번호 불일치
 			}
@@ -56,43 +73,43 @@ public class userDB {
 	public user getData(String id){
 
 		user use = null;
+		   Connection conn = null;
+	        PreparedStatement pstmt = null;
+	        ResultSet rs = null;
 
-		try {
 
-			String sql = "select id,passwd,name,email,address,phone,birth,hobby from user where id=min";
-			
-			conn = ds.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, id);
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()){
-				use = new user();
-				use.setId(rs.getString("id"));
-				use.setPasswd(rs.getString("passwd"));
-				use.setName(rs.getString("name"));
-				use.setEmail(rs.getString("email"));
-				use.setAddress(rs.getString("address"));
-				use.setPhone(rs.getString("phone"));
-				use.setBirth(rs.getString("birth"));
-				use.setHobby(rs.getString("hobby"));
-			}
-		} catch (Exception e) {
-			System.out.println("getData err : " + e);
-		} finally {
-			try {
-				if(rs!=null)rs.close();
-				if(pstmt!=null)pstmt.close();
-				if(conn!=null)conn.close();
-			} catch (Exception e2) {
 
-			}
-		}
+	        try {
+	            conn = getConnection();
+	            
+	            pstmt = conn.prepareStatement("select id,passwd,name,email,address,phone,birth,hobby from user where id=?");
+	            pstmt.setString(1,id);
+	            rs = pstmt.executeQuery();
+
+				if(rs.next()){
+					use = new user();
+					use.setId(rs.getString("id"));
+					use.setPasswd(rs.getString("passwd"));
+					use.setName(rs.getString("name"));
+					use.setEmail(rs.getString("email"));
+					use.setAddress(rs.getString("address"));
+					use.setPhone(rs.getString("phone"));
+					use.setBirth(rs.getString("birth"));
+					use.setHobby(rs.getString("hobby"));
+				}
+	        } catch(Exception ex) {
+	            ex.printStackTrace();
+	        } finally {
+	            if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+	            if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+	            if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+	        }
+
 		return use;
 	}
 	
 	//회원정보 수정하기 -찐수정
-		public boolean modifyData(userBean bean){
+		public boolean modifyData(user bean){
 			boolean b = false;
 			try {
 				String sql = "update user set passwd=?,name=?, email=?,address=?, phone=?,birth=?,hobby=? where id=?";

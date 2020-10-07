@@ -4,10 +4,9 @@
  <jsp:useBean id="userjoin" class="Test.userDB"/>
  
  <%
-
 	String id =(String)session.getAttribute("id");
+	out.print(id);
 	user use = userjoin.getData(id);
-
 %>
 
 
@@ -96,30 +95,36 @@
 									<table>
 								            <tr>
 								                <td align="center" width ="150"><b>아이디</b></td>
-								                <td><input type="text" name="my_name" size="20"  value="<%=use.getId()%>">
+								                <td>
+								                	<input type="text" name="my_name" readonly size="20" value=<%=use.getId()%> >
+								                </td>
 								            </tr>
 								            <tr>
 								                <td align="center" width ="150"><b>비밀번호</b></td>
 								                <td>
-								                	<input type="password" name="passwd" mexlength="16"  value="<%=use.getPasswd()%>" >
+								                	<input type="password" name="passwd" maxlength="16"  value=<%=use.getPasswd()%> >
 								               		(영문 대소문자/숫자/특수문자 중 2가지 이상 조합,8~18자)
 								               	</td>
 								            </tr>
 								            
 								            <tr>
 								                <td align="center"><b>비밀번호확인</b></td>
-								                <td><input type="password" name="passwd_check" mexlength="16"  value="<%=use.getPasswd()%>" >
+								                <td>
+								                	<input type="password" name="passwd_check" maxlength="16"  value=<%=use.getPasswd()%>>
+								                </td>
 								            </tr>
 								            
 								             <tr>
 								                <td align="center"><b>이름</b></td>
-								                <td><input type="text" name="name" size="20"  value="<%=use.getName()%>">
+								                <td>
+								                	<input type="text" name="name" size="20"  value=<%=use.getName()%>>
+								                </td>
 								            </tr>
 								            
 								            <tr>
 								                <td align="center"><b>이메일</b></td>
 								                <td>
-								                	<input type="text" name="email" value="<%=use.getEmail()%>"> <!-- @ -->
+								                	<input type="text" name="email" value=<%=use.getEmail()%>> <!-- @ -->
 								                	<%-- <input type='text' name="email_dns" value="<%=use.getEmail()%>"> 
 											              <select id ="emailaddr" name="emailaddr">
 											                 <option value="">직접입력</option>
@@ -169,10 +174,22 @@
 								                </td>
 								            </tr>
 								            
+								          
+								         
 								            <tr>
+								                <td align="center"><b>생년월일</b></td>
+								                <td>
+								                	<input type="text" name="birth" size="10" value=<%=use.getPhone()%>>
+								                	<%-- <input type="text" name="birth" size="10" value="<%=use.getBirth()%>">월
+								               		<input type="text" name="birth" size="10" value="<%=use.getBirth()%>">일 --%>
+								                	<!-- <input type="radio" name="양력음력" value="양력">양력
+								                	<input type="radio" name="양력음력" value="음력">음력 -->
+								                </td>
+								            </tr>
+								              <tr>
 								                <td align="center"><b>휴대전화</b></td>
 								                <td>
-								               		 <input type="text" id="phone" value="<%=use.getPhone()%>" style="width:70px;">
+								               		 <input type="text" id="phone" value=<%=use.getBirth()%> style="width:70px;">
 								               		 	<!-- <option value="선택">선택</option>
 									                	<option value="010">010</option>
 									                	<option value="011">011</option>
@@ -184,18 +201,6 @@
 								                	<!-- <input type="button" name="zipcode" id="phone_certification" value="인증"><br> -->
 								                </td>
 								            </tr>
-								         
-								            <tr>
-								                <td align="center"><b>생년월일</b></td>
-								                <td>
-								                	<input type="text" name="birth" size="10" value="<%=use.getBirth()%>">
-								                	<%-- <input type="text" name="birth" size="10" value="<%=use.getBirth()%>">월
-								               		<input type="text" name="birth" size="10" value="<%=use.getBirth()%>">일 --%>
-								                	<!-- <input type="radio" name="양력음력" value="양력">양력
-								                	<input type="radio" name="양력음력" value="음력">음력 -->
-								                </td>
-								            </tr>
-								            
 								                   
 								            <tr>
 								                <td align="center"><b>관심분야</b>
@@ -209,6 +214,7 @@
 								            </tr>
         					</table>
         									<input type="button" id="delete" value="회원탈퇴">
+        									<input type="button" id="modify" value="수정">
         				</div>
 								        
 								      

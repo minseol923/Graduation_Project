@@ -8,3 +8,4 @@ birth varchar(100),
 phone varchar(50),
 hobby varchar(50),
 primary key(id));
+

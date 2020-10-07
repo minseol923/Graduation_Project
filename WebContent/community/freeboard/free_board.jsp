@@ -124,10 +124,26 @@
 			   <tr height="30">
 			    <td  width="50" > <%=number--%></td>
 			    <td  width="250" align="left">
+			    <%
+			        //답변글이라면
+			    	int wid=0; 
+			    	if(article.getRe_level()>0){
+			    		wid=5*(article.getRe_level());
+			    %>
+			    	<img src="/images/level-0000.jpg" width="<%=wid%>"height="16">
+			    	<img src="/images/re-0000.gif">
+			    	
+			    <% //원글이라면
+			    	}else{ %>
+			  		<img src="/images/level-0000.jpg" width="<%=wid%>"height="16">
+			  	<% } %>
+			  	
+			    
 			      <a href="/community/freeboard/content.jsp?boardType=free&num=<%=article.getNum()%>&pageNum=<%=currentPage%>">
 			           <%=article.getSubject()%></a> 
 			    </td>
 			    <td width="100" align="left"> 
+			  
 			       <a href="mailto:<%=article.getEmail()%>">
 			                     <%=article.getWriter()%></a>
 			                     </td>

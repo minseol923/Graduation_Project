@@ -7,10 +7,27 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%
+	int num=0, ref=1, re_step=0, re_level=0;
+	String strV="";
+	
+	try{
+		if(request.getParameter("num")!=null){
+			num=Integer.parseInt(request.getParameter("num"));
+			ref=Integer.parseInt(request.getParameter("ref"));
+			re_step=Integer.parseInt(request.getParameter("re_step"));
+			re_level=Integer.parseInt(request.getParameter("re_level"));
+		}
+%>
 
 <p> 글쓰기 </p>
 <form method="post" action="/ServiceCenter/Noticeboard/notice_writePro.jsp">
 <input type="hidden" name="boardType" value="notice">
+<input type="hidden" name="num" value="<%=num%>">
+<input type="hidden" name="ref" value="<%=ref%>">
+<input type="hidden" name="re_step" value="<%=re_step%>">
+<input type="hidden" name="re_level" value="<%=re_level %>">
+
 
  <table border="1">
    <tr>
@@ -39,6 +56,10 @@
    	<td width="70" align="center"> 내용 </td>
    	<td width="300" align="left"><textarea name="content" rows="13" cols="40"></textarea></td>
   </tr>
+     <tr>
+   	<td width="70" align="center"> 비밀번호 </td>
+   	<td> <input type="password" size="8" maxlength="18"name="passwd"></td>
+  </tr>
   
    <tr>
    	<td colspan="2"> <input type="submit" value="글쓰기">
@@ -47,6 +68,10 @@
    	
   </tr>
  </table>
+ 
+ <%
+	}catch(Exception e){}
+ %>
 </form>
 </body>
 </html>
