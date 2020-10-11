@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@page import="Test.user"%>
+<jsp:useBean id="userjoin" class="Test.userDB"/>
+ 
+ <%
+	String id =(String)session.getAttribute("id");
+ 	out.print(id);
+	user use = userjoin.getData(id);
+%>
 <!DOCTYPE HTML>
 <!--
 	Strongly Typed by HTML5 UP
@@ -90,8 +98,10 @@
 												프로필 사진 : <input type="file" name="image"><br>
 												<input type='submit' value="저장" >
 											</form>
-							         	<h4>김은비</h4>
-							         	<p>beawha@naver.com</p>
+							         	<h4>이름 </h4>
+							         	<input type="text" name="my_name" value=<%=use.getId()%>>
+							         	<p>이메일</p>
+							         	<input type="text" name="email" value=<%=use.getEmail()%>>
 							         </div>
 							         
 							         <div class="right">
@@ -109,12 +119,12 @@
 								         		<p>배화짱</p>
 								         	</div>
 								         	<div class="data">
-								         		<h4>내용4</h4>
-								         		<p>내용</p>
+								         		<h4>최근 수강한 클래스</h4>
+								         		<p>초코칩 쿠키를 만들어 보아요!</p>
 								         	</div>
 								         	<div class="data">
-								         		<h4>내용5</h4>
-								         		<p>내용</p>
+								         		<h4>이번주 클래스 진도율</h4>
+								         		<p>70%</p>
 								         	</div>
 			            			</div>
 			           	 </div>

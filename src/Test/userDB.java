@@ -77,11 +77,8 @@ public class userDB {
 	        PreparedStatement pstmt = null;
 	        ResultSet rs = null;
 
-
-
 	        try {
 	            conn = getConnection();
-	            
 	            pstmt = conn.prepareStatement("select id,passwd,name,email,address,phone,birth,hobby from user where id=?");
 	            pstmt.setString(1,id);
 	            rs = pstmt.executeQuery();
@@ -110,9 +107,14 @@ public class userDB {
 	
 	//회원정보 수정하기 -찐수정
 		public boolean modifyData(user bean){
-			boolean b = false;
+			
+			Connection conn = null;
+		    PreparedStatement pstmt = null;
+		    ResultSet rs = null;
+		    
+			boolean b = true;
 			try {
-				String sql = "update user set passwd=?,name=?, email=?,address=?, phone=?,birth=?,hobby=? where id=?";
+				String sql = "update user set passwd=?,name=?, email=?,address=?, phone=?,birth=? where id=?";
 				conn = ds.getConnection();
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, bean.getPasswd());
@@ -123,9 +125,9 @@ public class userDB {
 				pstmt.setString(6, bean.getBirth());
 				pstmt.setString(7, bean.getHobby());
 				pstmt.setString(8, bean.getId());
-				if(pstmt.executeUpdate()>0) b=true;
+				pstmt.executeUpdate();
 			} catch (Exception e) {
-				System.out.println("modifyData err : " + e);
+				
 			} finally {
 				try {
 					if(rs!=null)rs.close();
@@ -138,9 +140,55 @@ public class userDB {
 			return b;
 		}
 		
+		//회원 탈퇴 - 비밀번호 확인
+
+		public boolean deleteConfirm(String id, String passwd){
+
+			boolean b = false;
+
+			try {
+
+				String sql = "select id,passwd,name,email,address,phone,birth,hobby from user where id = ? and passwd = ?";
+
+				conn = ds.getConnection();
+
+				pstmt = conn.prepareStatement(sql);
+
+				pstmt.setString(1, id);
+
+				pstmt.setString(2, passwd);
+
+				rs = pstmt.executeQuery();
+
+				if(rs.next()) b = true;
+
+				
+
+			} catch (Exception e) {
+
+				System.out.println("deleteConfirm err : " + e);
+
+			} finally {
+
+				try {
+
+					if(rs!=null)rs.close();
+
+					if(pstmt!=null)pstmt.close();
+
+					if(conn!=null)conn.close();
+
+				} catch (Exception e2) {
+
+					// TODO: handle exception
+				}
+			}
+			return b;
+		}
+
 		//회원 탈퇴 - 탈퇴하기
 		public boolean deleteData(String id){
-			boolean b = false;
+			boolean b = true;
 			try {
 				String sql = "delete from user where id = ?";
 				conn = ds.getConnection();
@@ -148,18 +196,21 @@ public class userDB {
 				pstmt.setString(1, id);
 				int re = pstmt.executeUpdate();
 				if(re>0) b = true;
+
 			} catch (Exception e) {
-				System.out.println("deleteData err : " + e);
+				
 			} finally {
 				try {
 					if(rs!=null)rs.close();
 					if(pstmt!=null)pstmt.close();
 					if(conn!=null)conn.close();
 				} catch (Exception e2) {
-					
+					// TODO: handle exception
 				}
 			}
 			return b;
 		}
+		
+
 }
 

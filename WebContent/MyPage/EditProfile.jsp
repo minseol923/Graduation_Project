@@ -1,16 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="Test.user"%>
- <jsp:useBean id="userjoin" class="Test.userDB"/>
- 
+<jsp:useBean id="userjoin" class="Test.userDB"/>
+ <jsp:useBean id="bean" class="Test.user"/>
  <%
 	String id =(String)session.getAttribute("id");
-	out.print(id);
 	user use = userjoin.getData(id);
+	boolean b = userjoin.modifyData(bean);
 %>
-
-
-
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -18,6 +15,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="../assets/css/main1.css" />
 		<link rel="stylesheet" href="../assets/css/MyPage.css" />
+	
 
 	</head>
 	<body class="no-sidebar is-preload">
@@ -62,7 +60,6 @@
                                     <li><a href="/Join/LoginForm.jsp">Login</a></li>
 				                    <li><a href="/Join/insertForm.jsp">Join</a></li>
                                     <li><a class="fas fa-user fa-1.5x" href="/MyPage/Profile.jsp"></a>
-                                    <span></span></a>
 										
                                     </li>             
                         </ul>
@@ -89,6 +86,7 @@
 						<div id="content">
 							
 							<!-- EditProfile -->
+							<form method="post" action="/MyPage/modifyPro.jsp">
 									<header>
 										<h2>회원 정보 수정</h2>
 									</header>
@@ -213,11 +211,13 @@
 								                </td>
 								            </tr>
         					</table>
-        									<input type="button" id="delete" value="회원탈퇴">
-        									<input type="button" id="modify" value="수정">
+        					</form>
+        								<input type="submit" id="delete" value="회원탈퇴" 
+        								onClick="location.href='/MyPage/deletePro.jsp'"/>
+        								<input type="submit" id="modify" value="수정하기"
+        								onClick="location.href='/MyPage/modifyPro.jsp'"/>
         				</div>
-								        
-								      
+
         			</div>
         							
 				</section>

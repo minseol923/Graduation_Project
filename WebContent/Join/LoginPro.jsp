@@ -17,7 +17,7 @@
 		response.sendRedirect("../Join/insertForm.jsp"); //로그인실패
 	} else { 
 		session.setAttribute("id", id);
-		response.sendRedirect("/Join/Main.jsp");
+		response.sendRedirect("/index.jsp");
 } %>
 
 

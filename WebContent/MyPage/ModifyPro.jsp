@@ -1,15 +1,36 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%request.setCharacterEncoding("utf-8"); %>
+<jsp:useBean id="userjoin" class="Test.userDB"/>
+<jsp:useBean id="bean" class="Test.user"/>
+<%
+
+	boolean b = userjoin.modifyData(bean);
+	if(b){
+
+%>
+	<script>
+		alert("¼öÁ¤ ¼º°ø");
+		location.href = "/index.jsp";
+	</script>	
+<% } else { %>
+	<script>
+		alert("¼öÁ¤ ½ÇÆĞ!\n°ü¸®ÀÚ¿¡ ¹®ÀÇ¹Ù¶÷");
+		history.back();
+	</script>	
+<%
+	}
+
+%>
+
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>íšŒì›ì •ë³´ ìˆ˜ì •</title>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
 </head>
 <body>
-<%
-	String id=(String)session.getAttribute("sessionID");
-	
-%>
+
 </body>
 </html>
