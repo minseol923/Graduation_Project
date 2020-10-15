@@ -10,6 +10,8 @@
 %>
 
 <%
+
+	String id=(String)session.getAttribute("id");
 	String pageNum = request.getParameter("pageNum");
 	if (pageNum == null) {
 	    pageNum = "1";
@@ -24,15 +26,29 @@
 	BoardDBBean dbPro = BoardDBBean.getInstance();
 	
 	String boardType="free";
-	String searchOption=request.getParameter("searchOption");	
-	String keyword=request.getParameter("keyword");
-			
-	articleList = dbPro.getArticles(startRow, pageSize, boardType, searchOption, keyword);
+	String keyField="";
+	String keyword="";
+	
+	if(request.getParameter("keyField")!=null){
+		 keyField=request.getParameter("keyField");	
+		 keyword=request.getParameter("keyword");
+	
+		request.getSession().setAttribute("keyField", keyField);
+		request.getSession().setAttribute("keyWord", keyword);
+	
+	}else if(request.getSession().getAttribute("keyField") != null){
+		keyField = (String)request.getSession().getAttribute("keyField");
+		keyword = (String)request.getSession().getAttribute("keyWord");
+
+	}
+
+	articleList = dbPro.getArticles(startRow, pageSize, boardType, keyField, keyword);
 	
 	if(articleList!=null){
 		count=dbPro.getArticleCount(boardType);
 	}
 		number = count-(currentPage-1)*pageSize;
+		
 %>
 <html>
 <head>
@@ -40,7 +56,7 @@
 	<meta charset="utf-8" />
   	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="/assets/css/main2.css"/>
-	<link rel="stylesheet" href="/assets/css/free_board.css">
+	<link rel="stylesheet" href="/assets/css/free_board.css?v=1">
 </head>
 <body class="homepage is-preload">
 		<div id="page-wrapper">
@@ -154,28 +170,41 @@
 			<%}%>
 			</table>
 			<%}%>
-				<table>
-					  <tr>
-					    <td align="right">
-					       <a href="/community/freeboard/writeForm.jsp">글쓰기</a>
-					    </td>
-					  </tr>
-				</table>
+			
+			
+			<table>
+			  <tr>
+			    <td align="center">
+			    
+				<% if (session.getAttribute("id") != null) {%>
+					<a href="/community/freeboard/writeForm.jsp" class="write">글쓰기</a>
+				<%} else {%>
+					<button type="button" class="write" onclick="writeCheck()" >글쓰기</button>
+				<%} %>
+			    </td>
+			  </tr>
+			</table>
+			
+			<form name="search"  method="post" action="/community/freeboard/free_board.jsp">
 				<div>
+				<table>
+				
 					<tr>
 				  		<td>
-				  			<select name="searchOption">
-					  			<option value="all"> 제목+이름+내용 </option>
-								<option value="writer" >이름</option>
-								<option value="content" >내용 </option>
-								<option value="title"  >제목</option>	
+				  			<select name="keyField">
+				  				<option value="" selected>전체</option>
+								<option value="writer">이름</option>
+								<option value="content">내용 </option>
+								<option value="subject">제목</option>	
 				  			</select>
 					  		<input type="text" id="keyword" name="keyword">
-					  		<input type="submit" name="submit" value="검색">
+					  		<input type="submit" value="검색">
+					  	
 				  		</td>
 				  	</tr>
+				  	</table>
 			  	</div>
-			
+			</form>	
 			<div style="text-align:center">
 			<%
 				if(count>0){
@@ -217,5 +246,13 @@
 			<script src="../assets/js/breakpoints.min.js"></script>
 			<script src="../assets/js/util.js"></script>
 			<script src="../assets/js/main.js"></script>
-	</body>
+			<script>
+			function writeCheck(){
+				alert("회원만 글을 쓸수있습니다.");
+				location.href="/Join/LoginForm.jsp";
+			}
+			</script>
+
+		
+</body>
 </html>

@@ -12,6 +12,7 @@
 </head>
 <body>
 <%
+
    int num = Integer.parseInt(request.getParameter("num")); 
    String pageNum = request.getParameter("pageNum"); 
    //웹헤더에서 넘어온 num값과 pagenum값  선언과 생성
@@ -58,16 +59,20 @@
     <td align="center" width="125">글내용</td>
     <td align="left" width="375" colspan="3"><pre><%=article.getContent()%></pre></td>
   </tr>
+  
   <tr height="30">      
+  
     <td colspan="4" align="right" > 
+    <%if("admin".equals(session.getAttribute("id"))){ %>
    <input type="button" value="글수정" 
        onclick="document.location.href='/ServiceCenter/Q&Aboard/qna_updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
-       <!-- num ,pagenum값을 가지고 updateform.jsp로 넘어간다 -->
+      
     &nbsp;&nbsp;&nbsp;&nbsp;
    <input type="button" value="글삭제" 
        onclick="document.location.href='/ServiceCenter/Q&Aboard/qna_deleteForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
-     <!-- num ,pagenum값을 가지고 deleteForm.jsp로 넘어간다 -->
+     
     &nbsp;&nbsp;&nbsp;&nbsp;
+    <%} %>
        <input type="button" value="글목록" 
        onclick="document.location.href='/ServiceCenter/Q&Aboard/Q&A.jsp?pageNum=<%=pageNum%>'">
   <!--pagenum을  가지고 list.jsp로 넘어간다 -->

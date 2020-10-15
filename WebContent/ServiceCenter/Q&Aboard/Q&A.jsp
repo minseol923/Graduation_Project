@@ -10,6 +10,7 @@
 %>
 
 <%
+	String id=(String)session.getAttribute("id");
 	String pageNum = request.getParameter("pageNum");
 	if (pageNum == null) {
 	    pageNum = "1";
@@ -46,42 +47,56 @@
 		<div id="page-wrapper">
 
 			<!-- Header -->
-				<section id="header">
+            <section id="header">
                <div class="container">
 
-                  <!-- Logo -->
-                     <h1 id="logo"><a href="index.jsp">MY HOB!</a></h1>
-                     <p>A responsive HTML5 site template. Manufactured by HTML5 UP.</p>
-
+                  <!-- Logo-->
+                  <h1 id="logo"><a href="/index.jsp">MY HOB!</a></h1>
+                  
                   <!-- Nav -->
                      <nav id="nav">
-								<ul>
-									
-									<li><a class="fab fa-medium-m" href="#"><span>About Us</span></a></li>
-									<li><a class="icon solid fa-cog" href="left-sidebar.html"><span>취미탐색</span></a>
-                                        <ul>
-											<li><a href="#">취미 검사</a></li>
-											<li><a href="#">MBTI</a></li>											
-										</ul>
-                                    </li>
-									<li><a class="far fa-comments" href="/community/freeboard/free_board.jsp"><span>커뮤니티</span></a>
-                                        <ul>
-											<li><a href="/community/freeboard/free_board.jsp">자유게시판</a></li>
-											<li><a href="/community/infoboard/info_board.jsp">정보게시판</a></li>
-										</ul>
-                                    </li>
-									<li><a class="fab fa-quora" href="/ServiceCenter/Noticeboard/notice.jsp"><span>고객센터</span></a>
-                                        <ul>
-											<li><a href="/ServiceCenter/Noticeboard/notice.jsp">공지사항</a></li>
-											<li><a href="/ServiceCenter/FAQ.jsp">FAQ</a></li>
-											<li><a href="/ServiceCenter/Q&Aboard/Q&A.jsp">Q&A</a></li>
-										</ul>
-                                    </li>
-								</ul>
-                                
+                        <ul class="mainnav">
+                        	<li><a href="/index.jsp"><span>About Us</span></a></li>
+                         	<li>
+                              <a href="/HobbyTest/mbti.jsp"><span>Hobby</span></a>
+                              <ul>
+                                 <li><a href="/HobbyTest/mbti.jsp">취미 검사</a></li>
+                                 <li><a href="/HobbyTest/mbti.jsp">MBTI 검사</a></li>
+                              </ul>
+                           </li>
+                           <li><a href="/MyPage/MyClass.jsp">
+                           <span>MY Page</span></a>
+                              <ul>
+                                 <li><a href="/MyPage/MyClass.jsp">My Class</a></li>
+                                 <li><a href="/MyPage/HobbyLog.jsp">활동로그</a></li>
+                                 <li><a href="/MyPage/Profile.jsp">내 프로필</a></li>
+                                 <li><a href="/MyPage/EditProfile.jsp">프로필수정</a></li>
+                              </ul>
+                           <li><a href="/ServiceCenter/FAQboard/FAQ.jsp">
+                           <span>Service Center</span></a>
+                              <ul>
+                                 <li><a href="/ServiceCenter/Noticeboard/notice.jsp">공지사항</a></li>
+                                 <li><a href="/ServiceCenter/FAQboard/FAQ.jsp">FAQ</a></li>
+                                 <li><a href="/ServiceCenter/Q&Aboard/Q&A.jsp">Q&A</a></li>
+                              </ul>
+                           </li>
+                           <li><a href="/community/infoboard/info_board.jsp">
+                              <span>community</span></a>
+                              <ul>
+                                 <li><a href="/community/freeboard/free_board.jsp">자유게시판</a></li>
+                                 <li><a href="/community/infoboard/info_board.jsp">정보게시판</a></li>
+                              </ul>
+                           </li>
                         </ul>
+                        <ul class="navtop">   
                                 
-							</nav>                                
+                                    <li><a href="/Join/LoginForm.jsp">Login</a></li>
+				                    <li><a href="/Join/insertForm.jsp">Join</a></li>
+                                    <li><a class="fas fa-user fa-1.5x" href="/MyPage/Profile.jsp"></a>
+                                    
+                                    </li>             
+                        </ul>
+                     </nav>
 
                </div>
             </section>
@@ -155,28 +170,38 @@
 			<%}%>
 			</table>
 			<%}%>
-				<table>
+			<table>
 				  <tr>
-				    <td align="right">
-				       <a href="/ServiceCenter/Q&Aboard/qna_writeForm.jsp">글쓰기</a>
+				    <td align="center">
+				    
+					<% if (session.getAttribute("id") != null) {%>
+						<a href="/community/freeboard/writeForm.jsp" class="write">글쓰기</a>
+					<%} else {%>
+						<button type="button" class="write" onclick="writeCheck()" >글쓰기</button>
+					<%} %>
 				    </td>
 				  </tr>
-				</table>
+			</table>
 			
+				<form name="search1" method="post" action="/community/infoboard/info_board.jsp">
 				<div>
+				<table>
 					<tr>
 				  		<td>
-				  			<select name="searchOption">
-					  			<option value="all"> 제목+이름+내용 </option>
-								<option value="writer" >이름</option>
-								<option value="content" >내용 </option>
-								<option value="title"  >제목</option>	
+				  			<select name="keyField">
+				  				<option value="" selected>전체</option>
+								<option value="writer">이름</option>
+								<option value="content">내용 </option>
+								<option value="subject">제목</option>	
 				  			</select>
 					  		<input type="text" id="keyword" name="keyword">
-					  		<input type="submit" name="submit" value="검색">
+					  		<input type="submit" value="검색">
+					  	
 				  		</td>
 				  	</tr>
+				  	</table>
 			  	</div>
+			</form>	
 			  	<div style=text-align:center;>
 			<%
 				if(count>0){
@@ -218,5 +243,11 @@
 			<script src="../assets/js/breakpoints.min.js"></script>
 			<script src="../assets/js/util.js"></script>
 			<script src="../assets/js/main.js"></script>
+			<script>
+			function writeCheck(){
+				alert("회원만 글을 쓸수있습니다.");
+				location.href="/Join/LoginForm.jsp";
+			}
+			</script>
 	</body>
 </html>

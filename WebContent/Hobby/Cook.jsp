@@ -53,8 +53,15 @@
                                  <li><a href="/community/freeboard/free_board.jsp">자유게시판</a></li>
                                  <li><a href="/community/infoboard/info_board.jsp">정보게시판</a></li>
                               </ul>
-                           
                            </li>
+                        </ul>
+                        <ul class="navtop">   
+                                
+                                    <li><a href="/Join/LoginForm.jsp">Login</a></li>
+				                    <li><a href="/Join/insertForm.jsp">Join</a></li>
+                                    <li><a class="fas fa-user fa-1.5x" href="/MyPage/Profile.jsp"></a>
+                                    
+                                    </li>             
                         </ul>
                      </nav>
 
@@ -81,7 +88,7 @@
                    <div class="card">
                       <a href="#" class="image featured"><img src="../assets/css/images/Cook1.jpg" alt="" /></a>
                       <header>
-                        <h3>DATA.Category[0]</h3>
+                        <h3>오븐 없이도 완성도 높은 베이킹!</h3>
                      </header>
                             <p>월 34,000원 (6개월)</p>
                    </div>

@@ -15,7 +15,6 @@
 <%
 	String id = (String)request.getParameter("id");
 	String passwd = (String)request.getParameter("passwd");
-
 	boolean deleteConfirm = userjoin.deleteConfirm(id, passwd);
 	if(deleteConfirm){
 %>
@@ -32,7 +31,6 @@
 		</script>
 <%
 	} else {
-
 %>
 
 		<script>
@@ -41,7 +39,6 @@
 		</script>	
 <%
 	}
-
 %>
 </body>
 </html>

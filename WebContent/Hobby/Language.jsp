@@ -3,7 +3,7 @@
 
 <html>
 <head>
-   <title>Music</title>
+   <title>Language</title>
    <meta charset="utf-8" />
      <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
    <link rel="stylesheet" href="../assets/css/Hobby.css">
@@ -54,6 +54,14 @@
                            
                            </li>
                         </ul>
+                        <ul class="navtop">   
+                                
+                                    <li><a href="/Join/LoginForm.jsp">Login</a></li>
+				                    <li><a href="/Join/insertForm.jsp">Join</a></li>
+                                    <li><a class="fas fa-user fa-1.5x" href="/MyPage/Profile.jsp"></a>
+                                    
+                                    </li>             
+                        </ul>
                      </nav>
 
                </div>
@@ -67,7 +75,7 @@
                    <li><a href="DIY.jsp" >DIY</a></li>
                    <li><a href="Language.jsp" >Language</a></li>
                    <li><a href="Music.jsp" >Music</a></li>
-                   <li><a href="PhotoNVidoe.jsp" >Photo & Video</a></li>
+                   <li><a href="PhotoNVideo.jsp" >Photo & Video</a></li>
                    <li><a href="Sport.jsp" >Sport</a></li>
               </ul>
          </div>
@@ -77,38 +85,29 @@
              <div class="row">
                  <div class="column">
                    <div class="card">
-                      <a href="#" class="image featured"><img src="../assets/css/images/piano.jpg" alt="" /></a>
+                      <a href="#" class="image featured"><img src="../assets/css/images/Language1.jpg" alt="" /></a>
                       <header>
-                        <h3>피아노 초급 강의</h3>
+                        <h3>미드로 배우는 실생활 회화</h3>
                      </header>
-                            <p>도레미부터 시작하는 초급 가이드!</p>
+                            <p>월 49,000원 (6개월)</p>
                    </div>
                  </div>
                  <div class="column">
                    <div class="card">
-                      <a href="#" class="image featured"><img src="../assets/css/images/piano.jpg" alt="" /></a>
+                      <a href="#" class="image featured"><img src="../assets/css/images/Language2.jpg" alt="" /></a>
                       <header>
-                        <h3>악보 보기 실습</h3>
+                        <h3>번역본 그만! 원어로 소설 읽기 초급반</h3>
                      </header>
-                            <p>악보보는 이론을 간단하게 설명하는 강의</p>
+                            <p>월 57,000원 (6개월)</p>
                    </div>
                  </div>
                  <div class="column">
                    <div class="card">
-                      <a href="#" class="image featured"><img src="../assets/css/images/piano2.jpg" alt="" /></a>
+                      <a href="#" class="image featured"><img src="../assets/css/images/Language3.jpg" alt="" /></a>
                       <header>
-                        <h3>뉴에이지로 배우는 피아노</h3>
+                        <h3>'언어 학습의 정석' 사전으로 단어 마스터하기</h3>
                      </header>
-                            <p>난이도별 뉴에이지로 피아노 입문하기</p>
-                   </div>
-                 </div>
-                 <div class="column">
-                   <div class="card">
-                      <a href="#" class="image featured"><img src="../assets/css/images/piano3.jpg" alt="" /></a>
-                      <header>
-                        <h3>피아노 반주 가이드</h3>
-                     </header>
-                            <p>반주만을 빠르게 배울 수 있는 강의입니다</p>
+                            <p>월 45,000원 (6개월)</p>
                    </div>
                  </div>
                    </div>

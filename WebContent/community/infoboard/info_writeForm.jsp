@@ -72,26 +72,3 @@
 </form>
 </body>
 </html>
-	   			<input type="text" size="40" maxlength="50" name="subject" value="Re :">
-	   		
-	   
-   	 </td>
-  </tr>
-
-  
-   <tr>
-   	<td width="70" align="center"> 내용 </td>
-   	<td width="300" align="left"><textarea name="content" rows="13" cols="40"></textarea></td>
-  </tr>
-  
-
-   <tr>
-   	<td colspan="2"> <input type="submit" value="글쓰기">
-   	<input type="reset" value="다시작성">
-   	<input type="button" value="목록보기" onClick="window.location="/community/infoboard/info_board.jsp"> </td>
-   	
-  </tr>
- </table>
-</form>
-</body>
-</html>

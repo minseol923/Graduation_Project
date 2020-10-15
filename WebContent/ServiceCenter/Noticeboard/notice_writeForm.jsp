@@ -8,6 +8,7 @@
 </head>
 <body>
 <%
+	String id =(String)session.getAttribute("id");
 	int num=0, ref=1, re_step=0, re_level=0;
 	String strV="";
 	
@@ -36,7 +37,7 @@
    
    <tr>
    	<td width="70" align="center">이름 </td>
-   	<td> <input type="text" size="10" name="writer"></td>
+   	<td> <input type="text" size="10" name="writer" value=<%=id %>></td>
   </tr>
   
   <tr>
@@ -44,11 +45,9 @@
    	<td width="300" align="left">
 	   	<%
 	   		if(request.getParameter("num")==null) {%>
-	   			<input type="text" size="40" maxlength="50" name="subject">
-	   	<% }else {%>
-	   			<input type="text" size="40" maxlength="50" name="subject" value="답변합니다.">
-	   		
-	   	<%}%>
+	   			<input type="text" size="40" maxlength="50" name="subject" value="[공지]">
+	   	<% }%>
+	   	
    	 </td>
   </tr>
   

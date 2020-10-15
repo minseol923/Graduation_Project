@@ -9,9 +9,10 @@
 </head>
 <body>
 <%
+	String id= (String)session.getAttribute("id");
 	int num=0, ref=1, re_step=0, re_level=0;
 	String strV="";
-	
+	out.print(id);
 	try{
 		if(request.getParameter("num")!=null){
 			num=Integer.parseInt(request.getParameter("num"));
@@ -34,9 +35,10 @@
    </tr>
    
    <tr>
-   	<td width="70" align="center">이름 </td>
-   	<td> <input type="text" size="10" name="writer"></td>
-  </tr>
+   	<td width="70" align="center">작성자 </td>
+   	<td><%=id %>
+   		<input type="hidden" size="40" maxlength="50" name="writer" value="<%=id %>">
+   	</td>
   
   <tr>
    	<td width="70" align="center"> 제목 </td>
@@ -56,10 +58,11 @@
   </tr>
   
    <tr>
-   	<td colspan="2"> <input type="submit" value="글쓰기">
-   	<input type="reset" value="다시작성">
-   	<input type="button" value="목록보기" onClick="window.location="/ServiceCenter/Q&Aboard/Q&A.jsp"> </td>
-   	
+   		<td colspan="2"> 
+   			<input type="submit" value="글쓰기">
+   			<input type="reset" value="다시작성">
+   			<input type="button" value="목록보기" onClick="window.location="/community/freeboard/free_board.jsp">
+   		</td>
   </tr>
  </table>
  <%

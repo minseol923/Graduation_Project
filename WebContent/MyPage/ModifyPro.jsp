@@ -4,10 +4,8 @@
 <jsp:useBean id="userjoin" class="Test.userDB"/>
 <jsp:useBean id="bean" class="Test.user"/>
 <%
-
 	boolean b = userjoin.modifyData(bean);
 	if(b){
-
 %>
 	<script>
 		alert("수정 성공");
@@ -20,7 +18,6 @@
 	</script>	
 <%
 	}
-
 %>
 
 

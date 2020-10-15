@@ -3,16 +3,15 @@
 
 <html>
 <head>
-   <title>Music</title>
+   <title>Sport</title>
    <meta charset="utf-8" />
      <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
    <link rel="stylesheet" href="../assets/css/Hobby.css">
-</head>
 
 <body class="homepage is-preload">
       <div id="page-wrapper">
 
-        <!-- Header -->
+       <!-- Header -->
             <section id="header">
                <div class="container">
 
@@ -55,6 +54,14 @@
                            
                            </li>
                         </ul>
+                        <ul class="navtop">   
+                                
+                                    <li><a href="/Join/LoginForm.jsp">Login</a></li>
+				                    <li><a href="/Join/insertForm.jsp">Join</a></li>
+                                    <li><a class="fas fa-user fa-1.5x" href="/MyPage/Profile.jsp"></a>
+                                    
+                                    </li>             
+                        </ul>
                      </nav>
 
                </div>
@@ -68,7 +75,7 @@
                    <li><a href="DIY.jsp" >DIY</a></li>
                    <li><a href="Language.jsp" >Language</a></li>
                    <li><a href="Music.jsp" >Music</a></li>
-                   <li><a href="PhotoNVidoe.jsp" >Photo & Video</a></li>
+                   <li><a href="PhotoNVideo.jsp" >Photo & Video</a></li>
                    <li><a href="Sport.jsp" >Sport</a></li>
               </ul>
          </div>
@@ -78,56 +85,29 @@
              <div class="row">
                  <div class="column">
                    <div class="card">
-                      <a href="#" class="image featured"><img src="../assets/css/images/Music1.jpg" alt="" /></a>
+                      <a href="#" class="image featured"><img src="../assets/css/images/Sport1.jpg" alt="" /></a>
                       <header>
-                        <h3>기타로 배우는 하 말이 안떠올라</h3>
+                        <h3>축구, 아직도 관람만 하시나요?</h3>
                      </header>
-                            <p>월 43,000원 (6개월)</p>
+                            <p>월 53,000원 (6개월)</p>
                    </div>
                  </div>
                  <div class="column">
                    <div class="card">
-                      <a href="#" class="image featured"><img src="../assets/css/images/Music2.jpg" alt="" /></a>
+                      <a href="#" class="image featured"><img src="../assets/css/images/Sport2.jpg" alt="" /></a>
                       <header>
-                        <h3>[한곡 마스터] 기타로 배우는 '아로하'</h3>
+                        <h3>집에서도 가능한 요가 스트레칭</h3>
                      </header>
                             <p>월 38,000원 (6개월)</p>
                    </div>
                  </div>
                  <div class="column">
                    <div class="card">
-                      <a href="#" class="image featured"><img src="../assets/css/images/Music3.jpg" alt="" /></a>
+                      <a href="#" class="image featured"><img src="../assets/css/images/Sport3.jpg" alt="" /></a>
                       <header>
-                        <h3>'브람스를 좋아하세요?'의 여주인공이 되고싶다면?</h3>
+                        <h3>테니스로 재미있게 체력 기르기</h3>
                      </header>
-                            <p>월 43,000원 (6개월)</p>
-                   </div>
-                 </div>
-                 <div class="column">
-                   <div class="card">
-                      <a href="#" class="image featured"><img src="../assets/css/images/Music4.jpg" alt="" /></a>
-                      <header>
-                        <h3>뉴에이지로 배우는 피아노</h3>
-                     </header>
-                            <p>월 45,000원 (6개월)</p>
-                   </div>
-                 </div>
-                 <div class="column">
-                   <div class="card">
-                      <a href="#" class="image featured"><img src="../assets/css/images/Music5.jpg" alt="" /></a>
-                      <header>
-                        <h3>피아노 반주 가이드</h3>
-                     </header>
-                            <p>월 39,000원 (6개월)</p>
-                   </div>
-                 </div>
-                 <div class="column">
-                   <div class="card">
-                      <a href="#" class="image featured"><img src="../assets/css/images/Music6.jpg" alt="" /></a>
-                      <header>
-                        <h3>피아니스트에게 배우는 클래식</h3>
-                     </header>
-                            <p>월 33,000원 (6개월)</p>
+                            <p>월 42,000원 (6개월)</p>
                    </div>
                  </div>
                    </div>

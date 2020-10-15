@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -212,5 +213,48 @@ public class userDB {
 		}
 		
 
-}
+		///관리자페이지 회원 목록 /////
+		public ArrayList<user> getMemberAll() throws Exception {
+			 Connection conn = null;
+		     PreparedStatement pstmt = null;
+		     ResultSet rs = null;
+		     ArrayList<user> memberList=new ArrayList<>();
 
+
+				try {
+			            conn = getConnection();
+			            
+			            pstmt = conn.prepareStatement("select * from user;");
+			            rs = pstmt.executeQuery();
+			            
+			            /*if(keyword !=null && !keyword.equals("")) {
+			            	sql+= "where"+searchOption+"Like '%"+ keyword+"%'";
+			            }
+			            pstmt = conn.prepareStatement(sql);
+			            rs = pstmt.executeQuery();*/
+
+						while(rs.next()){
+							user user= new user();
+							user.setId(rs.getString("id"));
+							user.setName(rs.getString("name"));
+							user.setPhone(rs.getString("phone"));
+							user.setEmail(rs.getString("email"));
+							user.setAddress(rs.getString("address"));
+			                memberList.add(user);
+					
+						}
+			        } catch(Exception ex) {
+			            ex.printStackTrace();
+			        } finally {
+			            if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+			            if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			            if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+			        }
+
+				return memberList;
+			}
+
+
+
+					
+		}

@@ -55,6 +55,14 @@
                            
                            </li>
                         </ul>
+                        <ul class="navtop">   
+                                
+                                    <li><a href="/Join/LoginForm.jsp">Login</a></li>
+				                    <li><a href="/Join/insertForm.jsp">Join</a></li>
+                                    <li><a class="fas fa-user fa-1.5x" href="/MyPage/Profile.jsp"></a>
+                                    
+                                    </li>             
+                        </ul>
                      </nav>
 
                </div>
@@ -68,7 +76,7 @@
                    <li><a href="DIY.jsp" >DIY</a></li>
                    <li><a href="Language.jsp" >Language</a></li>
                    <li><a href="Music.jsp" >Music</a></li>
-                   <li><a href="PhotoNVidoe.jsp" >Photo & Video</a></li>
+                   <li><a href="PhotoNVideo.jsp" >Photo & Video</a></li>
                    <li><a href="Sport.jsp" >Sport</a></li>
               </ul>
          </div>
@@ -80,7 +88,7 @@
                    <div class="card">
                       <a href="#" class="image featured"><img src="../assets/css/images/DIY1.jpg" alt="" /></a>
                       <header>
-                        <h3><%= %></h3>
+                        <h3>실과 바늘만 있다면 뭐든 만들 수 있어!</h3>
                      </header>
                             <p>월 44,000원 (6개월)</p>
                    </div>

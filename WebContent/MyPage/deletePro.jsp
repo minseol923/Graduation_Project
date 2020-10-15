@@ -5,7 +5,6 @@
 <%
 	String id = (String)request.getParameter("id");
 	boolean b = userjoin.deleteData(id);
-
 	if(b){
 		session.removeAttribute("id");
 %>
