@@ -7,4 +7,5 @@ address varchar(1000),
 birth varchar(100),
 phone varchar(50),
 hobby varchar(50),
+reg_date datetime not null,
 primary key(id));

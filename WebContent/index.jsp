@@ -28,7 +28,7 @@
                            <li>
                               <a href="/HobbyTest/mbti.jsp"><span>Hobby</span></a>
                               <ul>
-                                 <li><a href="/HobbyTest/mbti.jsp">취미 검사</a></li>
+                                 <li><a href="/HobbyTest/Survey.jsp">취미 검사</a></li>
                                  <li><a href="/HobbyTest/mbti.jsp">MBTI 검사</a></li>
                               </ul>
                            </li>
@@ -58,7 +58,7 @@
                            </li>
                         </ul>
                         <ul class="navtop">   
-                                <ul class="navtop"> 
+                               
                         			<%if("admin".equals(session.getAttribute("id"))){ %> <!-- 관리자면 -->
 	                                	<li><a href="/admin/memberList.jsp">관리자메뉴</a></li>
 	                                	<li><a href="../Join/Logout.jsp">Logout</a></li>
@@ -70,8 +70,8 @@
                                 	<li><a href="/Join/LoginForm.jsp">Login</a></li>
 				                    <li><a href="/Join/insertForm.jsp">Join</a></li>
 				                    <%} %>
-                                            
-                        </ul>
+                               </ul>             
+                     
                      </nav>
 
                </div>

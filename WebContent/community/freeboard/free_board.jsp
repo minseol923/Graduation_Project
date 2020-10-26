@@ -67,7 +67,6 @@
 
                   <!-- Logo -->
                      <h1 id="logo"><a href="index.jsp">MY HOB!</a></h1>
-                     <p>A responsive HTML5 site template. Manufactured by HTML5 UP.</p>
 
                   <!-- Nav -->
                     <nav id="nav">
