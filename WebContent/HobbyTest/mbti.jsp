@@ -89,8 +89,8 @@ function mbtiCheck(){
  		<div id="my-Sidebar">
         	<h2>취미탐색</h2>
         		<ul>
-         		  	<li><a href="/community/free_board.jsp" >취미 검사</a></li>
-        		  	<li><a href="/community/info_board.jsp" >MBTI</a></li>
+         		  	<li><a href="/HobbyTest/Survey.jsp" >취미 검사</a></li>
+        		  	<li><a href="/HobbyTest/mbti.jsp" >MBTI</a></li>
         		</ul>
       	</div>
       	
