@@ -22,7 +22,7 @@
 		<div id="page-wrapper">
 
 			<!-- Header -->
-            <section id="header">
+          <section id="header">
                <div class="container">
 
                   <!-- Logo-->
@@ -39,14 +39,7 @@
                                  <li><a href="/HobbyTest/mbti.jsp">MBTI 검사</a></li>
                               </ul>
                            </li>
-                           <li><a href="/MyPage/MyClass.jsp">
-                           <span>MY Page</span></a>
-                              <ul>
-                                 <li><a href="/MyPage/MyClass.jsp">My Class</a></li>
-                                 <li><a href="/MyPage/HobbyLog.jsp">활동로그</a></li>
-                                 <li><a href="/MyPage/Profile.jsp">내 프로필</a></li>
-                                 <li><a href="/MyPage/EditProfile.jsp">프로필수정</a></li>
-                              </ul>
+                          
                            <li><a href="/ServiceCenter/FAQboard/FAQ.jsp">
                            <span>Service Center</span></a>
                               <ul>
@@ -63,13 +56,19 @@
                               </ul>
                            </li>
                         </ul>
-                        <ul class="navtop">   
-                                
-                                    <li><a href="/Join/LoginForm.jsp">Login</a></li>
+                        <ul class="navtop"> 
+                        			<%if("admin".equals(session.getAttribute("id"))){ %> <!-- 관리자면 -->
+	                                	<li><a href="/admin/memberList.jsp">관리자메뉴</a></li>
+	                                	<li><a href="/Join/Logout.jsp">Logout</a></li>
+	                                	
+                                	<%}else if(session.getAttribute("id")!=null){ %>      <!-- 아이디가 있으면 -->
+	                                	<li><a href="/Join/Logout.jsp">Logout</a></li>
+	                                	<li><a class="fas fa-user fa-1.5x" href="/MyPage/Profile.jsp"></a></li>
+                                	<%}else{%>       
+                                	<li><a href="/Join/LoginForm.jsp">Login</a></li>
 				                    <li><a href="/Join/insertForm.jsp">Join</a></li>
-                                    <li><a class="fas fa-user fa-1.5x" href="/MyPage/Profile.jsp"></a>
-                                    
-                                    </li>             
+				                    <%} %>
+                                            
                         </ul>
                      </nav>
 
@@ -152,7 +151,7 @@
 												</td>
 											</tr>
 											
-											 <tr>
+											 <%-- <tr>
 								                <td align="center"><b>일반전화</b></td>
 								                <td>
 								               		 <select name="homephone1" id="homephone" style="width:70px;">
@@ -179,7 +178,7 @@
 								                </td>
 								            </tr>
 								            
-								          
+								          --%>
 								         
 								            <tr>
 								                <td align="center"><b>생년월일</b></td>

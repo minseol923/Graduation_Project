@@ -29,7 +29,7 @@
    int re_step=article.getRe_step();
    int re_level=article.getRe_level();
 %>
-<center><b>글내용 보기</b>
+<center><b>자유게시판</b></center>
 <br>
 <form>
 <table width="500" border="1" cellspacing="0" cellpadding="0" align="center">  
@@ -48,7 +48,7 @@
     <td align="center" width="125" >작성일</td>
     <td align="center" width="125" align="center">
       <%= sdf.format(article.getReg_date())%></td> 
-      <!-- timestamp를 simpledateformat형태로 바꿔서 출력 -->
+     
   </tr>
   <tr height="30">
     <td align="center" width="125">글제목</td>

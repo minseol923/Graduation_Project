@@ -7,6 +7,8 @@
 	String id =(String)session.getAttribute("id");
 	user use = userjoin.getData(id);
 %>
+
+
 <!DOCTYPE HTML>
 <!--
 	Strongly Typed by HTML5 UP
@@ -42,14 +44,7 @@
                                  <li><a href="/HobbyTest/mbti.jsp">MBTI 검사</a></li>
                               </ul>
                            </li>
-                           <li><a href="/MyPage/MyClass.jsp">
-                           <span>MY Page</span></a>
-                              <ul>
-                                 <li><a href="/MyPage/MyClass.jsp">My Class</a></li>
-                                 <li><a href="/MyPage/HobbyLog.jsp">활동로그</a></li>
-                                 <li><a href="/MyPage/Profile.jsp">내 프로필</a></li>
-                                 <li><a href="/MyPage/EditProfile.jsp">프로필수정</a></li>
-                              </ul>
+                          
                            <li><a href="/ServiceCenter/FAQboard/FAQ.jsp">
                            <span>Service Center</span></a>
                               <ul>
@@ -66,13 +61,19 @@
                               </ul>
                            </li>
                         </ul>
-                        <ul class="navtop">   
-                                
-                                    <li><a href="/Join/LoginForm.jsp">Login</a></li>
+                        <ul class="navtop"> 
+                        			<%if("admin".equals(session.getAttribute("id"))){ %> <!-- 관리자면 -->
+	                                	<li><a href="/admin/memberList.jsp">관리자메뉴</a></li>
+	                                	<li><a href="/Join/Logout.jsp">Logout</a></li>
+	                                	
+                                	<%}else if(session.getAttribute("id")!=null){ %>      <!-- 아이디가 있으면 -->
+	                                	<li><a href="/Join/Logout.jsp">Logout</a></li>
+	                                	<li><a class="fas fa-user fa-1.5x" href="/MyPage/Profile.jsp"></a></li>
+                                	<%}else{%>       
+                                	<li><a href="/Join/LoginForm.jsp">Login</a></li>
 				                    <li><a href="/Join/insertForm.jsp">Join</a></li>
-                                    <li><a class="fas fa-user fa-1.5x" href="/MyPage/Profile.jsp"></a>
-                                    
-                                    </li>             
+				                    <%} %>
+                                            
                         </ul>
                      </nav>
 
@@ -91,137 +92,55 @@
       		</div>
       
 		<!-- Main -->
-		<section id="main">
-					<div class="container">
-						<div id="content">
-						
-							<!-- Profile -->
-							 <div class="profile">
-							         <div class="left">
-							         		<form action="../MyPage/fileupload.jsp" method="post" enctype="Multipart/form-data">
-												<input type="hidden" name="ID" />
-												프로필 사진 : <input type="file" name="image"><br>
-												<input type='submit' value="저장" >
-											</form>
-							         	<h4>이름 </h4>
-							         	<input type="text" name="my_name" value=<%=use.getId()%>>
-							         	<p>이메일</p>
-							         	<input type="text" name="email" value=<%=use.getEmail()%>>
-							         </div>
-							         
-							         <div class="right">
-							         		<h3>프로필 카드</h3>
-								         	<div class="data">
-								         		<h4>가입일</h4>
-								         		<p>2020/09/13</p>
-								         	</div>
-								         	<div class="data">
-								         		<h4>내클래스</h4>
-								         		<p>꽃꽃이 클래스,바리스타 클래스, 쿠킹 클래스</p>
-								         	</div>
-								         	<div class="data">
-								         		<h4>닉네임</h4>
-								         		<p>배화짱</p>
-								         	</div>
-								         	<div class="data">
-								         		<h4>최근 수강한 클래스</h4>
-								         		<p>초코칩 쿠키를 만들어 보아요!</p>
-								         	</div>
-								         	<div class="data">
-								         		<h4>이번주 클래스 진도율</h4>
-								         		<p>70%</p>
-								         	</div>
-			            			</div>
-			           	 </div>
-			         </div>
-			       </div>
-			</section>
-			<!-- Footer -->
-				<section id="footer">
-					<div class="container">
-						<header>
-							<h2>Questions or comments? <strong>Get in touch:</strong></h2>
-						</header>
-						<div class="row">
-							<div class="col-6 col-12-medium">
-								<section>
-									<form method="post" action="#">
-										<div class="row gtr-50">
-											<div class="col-6 col-12-small">
-												<input name="name" placeholder="Name" type="text" />
-											</div>
-											<div class="col-6 col-12-small">
-												<input name="email" placeholder="Email" type="text" />
-											</div>
-											<div class="col-12">
-												<textarea name="message" placeholder="Message"></textarea>
-											</div>
-											<div class="col-12">
-												<a href="#" class="form-button-submit button icon solid fa-envelope">Send Message</a>
-											</div>
-										</div>
-									</form>
-								</section>
-							</div>
-							<div class="col-6 col-12-medium">
-								<section>
-									<p>Erat lorem ipsum veroeros consequat magna tempus lorem ipsum consequat Phaselamet
-									mollis tortor congue. Sed quis mauris sit amet magna accumsan tristique. Curabitur
-									leo nibh, rutrum eu malesuada.</p>
-									<div class="row">
-										<div class="col-6 col-12-small">
-											<ul class="icons">
-												<li class="icon solid fa-home">
-													1234 Somewhere Road<br />
-													Nashville, TN 00000<br />
-													USA
-												</li>
-												<li class="icon solid fa-phone">
-													(000) 000-0000
-												</li>
-												<li class="icon solid fa-envelope">
-													<a href="#">info@untitled.tld</a>
-												</li>
-											</ul>
-										</div>
-										<div class="col-6 col-12-small">
-											<ul class="icons">
-												<li class="icon brands fa-twitter">
-													<a href="#">@untitled</a>
-												</li>
-												<li class="icon brands fa-instagram">
-													<a href="#">instagram.com/untitled</a>
-												</li>
-												<li class="icon brands fa-dribbble">
-													<a href="#">dribbble.com/untitled</a>
-												</li>
-												<li class="icon brands fa-facebook-f">
-													<a href="#">facebook.com/untitled</a>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</section>
-							</div>
-						</div>
-					</div>
-					<div id="copyright" class="container">
-						<ul class="links">
-							<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-						</ul>
-					</div>
-				</section>
+		   <section id="main">
+               <div class="container">
+                  <div id="content">
+                  
+                     <!-- Profile -->
+                      <div class="profile">
+                              <div class="left">
+                              <input type="hidden" name="ID" />
+                              <img src="../images/profile_img.jpg" alt="" width=100px ><br>                              
+                                 <h4><%=use.getName() %></h4>
+                           </form>                                 
+                              </div>
+                              
+                              <div class="right">
+                                    <h3>프로필 카드</h3>
+                                    <div class="data">
+                                       <h4>가입일</h4>
+                                       <p><%=use.getReg_date() %></p>
+                                    </div>
+                                    <div class="data">
+                                       <h4>이메일</h4>
+                                       <p><%=use.getEmail() %></p>
+                                    </div>
+                                    <div class="data">
+                                       <h4>생일</h4>
+                                       <p><%=use.getBirth() %></p>
+                                    </div>
+                                    <div class="data">
+                                       <h4>관심 분야</h4>
+                                       <p><%=use.getHobby() %></p>
+                                    </div>
+                                  
+                              </div>
+                        </div>
+                  </div>
+                </div>
+         </section>
+         
 
-		</div>
+      </div>
 
-		<!-- Scripts -->
-			<script src="../assets/js/jquery.min.js"></script>
-			<script src="../assets/js/jquery.dropotron.min.js"></script>
-			<script src="../assets/js/browser.min.js"></script>
-			<script src="../assets/js/breakpoints.min.js"></script>
-			<script src="../assets/js/util.js"></script>
-			<script src="../assets/js/main.js"></script>
-	</body>
+      <!-- Scripts -->
+         <script src="../assets/js/jquery.min.js"></script>
+         <script src="../assets/js/jquery.dropotron.min.js"></script>
+         <script src="../assets/js/browser.min.js"></script>
+         <script src="../assets/js/breakpoints.min.js"></script>
+         <script src="../assets/js/util.js"></script>
+         <script src="../assets/js/main.js"></script>
+   </body>
 
-</body>
+
 </html>

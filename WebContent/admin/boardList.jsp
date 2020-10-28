@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ page import = "board.BoardDBBean" %>
 <%@ page import = "board.BoardDataBean" %>
@@ -6,10 +6,11 @@
 <%@ page import = "java.text.SimpleDateFormat" %>
 <%!
     int pageSize = 10;
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 %>
 
 <%
+	request.setCharacterEncoding("utf-8");
 	String id=(String)session.getAttribute("id");
 	String pageNum = request.getParameter("pageNum");
 	if (pageNum == null) {
@@ -25,13 +26,18 @@
 	BoardDBBean adminPro = BoardDBBean.getInstance();
 	count=adminPro.getAdminListCount();
 	
-	String searchOption=request.getParameter("searchOption");	
-	String keyword=request.getParameter("keyword");
-			
-	adminArticle = adminPro.getAdminArticles(startRow, pageSize,searchOption, keyword);
+	String keyField="";
+	String keyword="";
+	
+	if(request.getParameter("keyField")!=null){
+		 keyField=request.getParameter("keyField");	
+		 keyword=request.getParameter("keyword");
+	}
+	
+	adminArticle = adminPro.getAdminArticles(startRow, pageSize,keyField, keyword);
 	
 	if(count >0){
-		adminArticle=adminPro.getAdminArticles(startRow,pageSize,searchOption, keyword);
+		adminArticle=adminPro.getAdminArticles(startRow,pageSize,keyField, keyword);
 	}
 		number = count-(currentPage-1)*pageSize;
 %>
@@ -57,6 +63,7 @@
 			    <td align="center">
 			              게시판에 저장된 글이 없습니다.
 			    </td>
+			  </tr>
 			</table>
 			
 			<% } else {%>
@@ -75,7 +82,7 @@
 			%>
 			   <tr height="30">
 			    	<td  width="50" > <%=number--%></td>
-			      		<a href="/community/infoboard/content.jsp?boardType=info&num=<%=article.getNum()%>&pageNum=<%=currentPage%>"></a> 
+			      		<a href="/admin/boardList.jsp?&num=<%=article.getNum()%>&pageNum=<%=currentPage%>"></a> 
 			    	</td>
 			   		 <td> <%=article.getSubject()%></td>
 			    	<td> <%=article.getWriter()%></td>
@@ -85,21 +92,26 @@
 			<%}%>
 			</table>
 			<%}%>
+				<form name="search" method="post" action="../admin/boardList.jsp">
 				<div>
+				<table>
 					<tr>
 				  		<td>
-				  			<select name="searchOption">
-					  			<option value="all"> 제목+이름+내용 </option>
-								<option value="writer" >이름</option>
-								<option value="content" >내용 </option>
-								<option value="title"  >제목</option>	
+				  			<select name="keyField">
+				  				<option value="" selected>전체</option>
+								<option value="writer">이름</option>
+								<option value="content">내용 </option>
+								<option value="subject">제목</option>	
 				  			</select>
 					  		<input type="text" id="keyword" name="keyword">
-					  		<input type="submit" name="submit" value="검색">
+					  		<input type="submit" value="검색">
+					  	
 				  		</td>
 				  	</tr>
+				  	</table>
 			  	</div>
-			
+			</form>	
+			  	
 			<div style="text-align:center">
 			<%
 				if(count>0){
@@ -132,7 +144,7 @@
 					}
 				%>
                         </div>
-                      </div>
+                  
             
 	</body>
 </html>

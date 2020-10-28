@@ -7,9 +7,10 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="../assets/css/LoginStyle.css" type="text/css"/>
 <link rel="stylesheet" href="../assets/css/main.css" type="text/css"/>
+
 </head>
 <body>
-<!-- Header -->
+
             <section id="header">
                <div class="container">
 
@@ -27,14 +28,7 @@
                                  <li><a href="/HobbyTest/mbti.jsp">MBTI 검사</a></li>
                               </ul>
                            </li>
-                           <li><a href="/MyPage/MyClass.jsp">
-                           <span>MY Page</span></a>
-                              <ul>
-                                 <li><a href="/MyPage/MyClass.jsp">My Class</a></li>
-                                 <li><a href="/MyPage/HobbyLog.jsp">활동로그</a></li>
-                                 <li><a href="/MyPage/Profile.jsp">내 프로필</a></li>
-                                 <li><a href="/MyPage/EditProfile.jsp">프로필수정</a></li>
-                              </ul>
+                           
                            <li><a href="/ServiceCenter/FAQboard/FAQ.jsp">
                            <span>Service Center</span></a>
                               <ul>
@@ -101,7 +95,7 @@
     <footer>
      
       <p><input type="button" id="join" value="회원가입" onClick="location.href='../Join/insertForm.jsp'"></p>
-      <p><a href="index.jsp" title="Forgot Password" >비밀번호를 잊으셨나요?</a></p>
+   
     </footer>
         
     </section>

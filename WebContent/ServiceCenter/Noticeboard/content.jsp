@@ -15,15 +15,14 @@
 
    int num = Integer.parseInt(request.getParameter("num")); 
    String pageNum = request.getParameter("pageNum"); 
-   //웹헤더에서 넘어온 num값과 pagenum값  선언과 생성
+
    SimpleDateFormat sdf = 
         new SimpleDateFormat("yyyy-MM-dd HH:mm");
-   // "yyyy-MM-dd HH:mm"형태로  SimpleDateFormat클래스를 사용해서 보여준다
+ 
    try{
       BoardDBBean dbPro = BoardDBBean.getInstance();
       BoardDataBean article =  dbPro.getArticle(num); 
-      //dbbean의 getarticle(num)메소드를 사용해서 databean의 객체를 받아온다
-      //데이타베이스에서 레코드(한행,한줄)를 가져오기
+
   
    int ref=article.getRef();   
    int re_step=article.getRe_step();

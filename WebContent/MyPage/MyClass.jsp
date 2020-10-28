@@ -1,5 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@page import="myclass.MyclassBean"%>
+<%@page import="myclass.Myclass"%>
+<%@ page import = "java.util.ArrayList" %>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="utf-8"%>
+
 <!DOCTYPE HTML>
 <!--
 	Strongly Typed by HTML5 UP
@@ -18,6 +21,27 @@
 		<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 		<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<%
+	String id= (String)session.getAttribute("id");
+	String class_id=request.getParameter("class_id");	
+	String like_yn=request.getParameter("like_yn");
+
+//	String entryYn ="N";
+	
+	//가입한 클래스
+	Myclass myclass= new Myclass();
+	myclass.setId(id);
+	myclass.setClass_id(class_id);
+	myclass.setEntry_yn("Y");
+	ArrayList<Myclass> entryPro = MyclassBean.getInstance().getMyclass(myclass);
+
+	//좋아요한 클래스
+	Myclass myclass2= new Myclass();
+	myclass.setId(id);
+	myclass.setClass_id(class_id);
+	myclass.setLike_yn("Y");
+	ArrayList<Myclass> likePro = MyclassBean.getInstance().getMyclass(myclass);
+%>
 		<script>
 		$(document).ready(function(){
 			$('.slider-wrap1,.slider-wrap2').slick({
@@ -55,14 +79,7 @@
                                  <li><a href="/HobbyTest/mbti.jsp">MBTI 검사</a></li>
                               </ul>
                            </li>
-                           <li><a href="/MyPage/MyClass.jsp">
-                           <span>MY Page</span></a>
-                              <ul>
-                                 <li><a href="/MyPage/MyClass.jsp">My Class</a></li>
-                                 <li><a href="/MyPage/HobbyLog.jsp">활동로그</a></li>
-                                 <li><a href="/MyPage/Profile.jsp">내 프로필</a></li>
-                                 <li><a href="/MyPage/EditProfile.jsp">프로필수정</a></li>
-                              </ul>
+                           
                            <li><a href="/ServiceCenter/FAQboard/FAQ.jsp">
                            <span>Service Center</span></a>
                               <ul>
@@ -79,13 +96,19 @@
                               </ul>
                            </li>
                         </ul>
-                        <ul class="navtop">   
-                                
-                                    <li><a href="/Join/LoginForm.jsp">Login</a></li>
+                          <ul class="navtop"> 
+                        			<%if("admin".equals(session.getAttribute("id"))){ %> <!-- 관리자면 -->
+	                                	<li><a href="/admin/memberList.jsp">관리자메뉴</a></li>
+	                                	<li><a href="/Join/Logout.jsp">Logout</a></li>
+	                                	
+                                	<%}else if(session.getAttribute("id")!=null){ %>      <!-- 아이디가 있으면 -->
+	                                	<li><a href="/Join/Logout.jsp">Logout</a></li>
+	                                	<li><a class="fas fa-user fa-1.5x" href="/MyPage/Profile.jsp"></a></li>
+                                	<%}else{%>       
+                                	<li><a href="/Join/LoginForm.jsp">Login</a></li>
 				                    <li><a href="/Join/insertForm.jsp">Join</a></li>
-                                    <li><a class="fas fa-user fa-1.5x" href="/MyPage/Profile.jsp"></a>
-                                    
-                                    </li>             
+				                    <%} %>
+                                            
                         </ul>
                      </nav>
 
@@ -113,25 +136,51 @@
 								<header>
 									<h2>수강중인 클래스</h2>
 								</header>
-									    <div class="slider-wrap1">
-											<div><a href=#><img src="../images/CookingClass.jpg" alt="">쿠킹클래스</a></div>
-											<div><a href=#><img src="../images/FlowerClass.jpg" alt="">꽃꽃이 클래스</a></div>
-											<div><a href=#><img src="../images/yoga.jpg" alt="">요가 클래스</a></div>
-											<div><a href=#><img src="../images/Coffee.jpg" alt="">바리스타클래스</a></div>
-											<div><a href=#><img src="../images/knitting.jpg" alt="">뜨개질 클래스</a></div>
-											<div><a href=#><img src="../images/baking.jpg" alt="">베이킹 클래스</a></div>
-										</div>
-								<header>
-									<h2>추천 취미</h2>
-								</header>
-										<div class="slider-wrap2">
-											<div><a href=#><img src="../images/Art.jpg" alt="">그림그리기</a></div>
-											<div><a href=#><img src="../images/Bike.jpg" alt="">자전거</a></div>
-											<div><a href=#><img src="../images/Piano.jpg" alt="">피아노</a></div>
-											<div><a href=#><img src="../images/knitting.jpg" alt="">뜨개질 </a></div>
-											<div><a href=#><img src="../images/baking.jpg" alt="">베이킹</a></div>
-										</div>
+
+								<%
+									if(	entryPro.size() ==0){
+								%>										
+										<div class="slider-wrap1" style="text-align:center; margin:100px;">
+											<td align="center">아직 수강중인 클래스가 없습니다</td>
+										</div>									
+								<% 
+									}else{
+								%>
+									<div class="slider-wrap2">
+								<%
+									for (int i = 0; i < entryPro.size() ; i++) {
+								%>								
+									<div><a href="/HobbyDtail/<%=entryPro.get(i).getClass_id()%>.jsp?classId=<%=entryPro.get(i).getClass_id()%>"><img src="<%=entryPro.get(i).getLink() %>" alt=""></a></div>
+								<%
+									}
+								%>
 								</div>
+								<%
+								}%>
+								<header >
+									<h2>좋아요한 클래스</h2>
+								</header>
+								<%
+									if(	likePro.size() ==0){
+								%>										
+										<div class="slider-wrap1" style="text-align:center; margin:100px;">
+											<td>아직 좋아요한 클래스가 없습니다.</td>
+										</div>									
+								<% 
+									}else{
+								%>
+
+									<div class="slider-wrap2">
+								<%
+									for (int i = 0; i < likePro.size() ; i++) {
+								%>								
+									<div><a href="/HobbyDtail/<%=likePro.get(i).getClass_id()%>.jsp?classId=<%=entryPro.get(i).getClass_id()%>"><img src="<%=likePro.get(i).getLink() %>" alt=""></a></div>
+								<%
+									}
+								%>
+								</div>
+								<%
+								}%>	
 						</div>
 				</section>
 								

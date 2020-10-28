@@ -36,7 +36,7 @@
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		conn=DriverManager.getConnection(url,dbId,dbPass);
 		
-		String sql="insert into user values(?,?,?,?,?,?,?,?)";
+		String sql="insert into user values(?,?,?,?,?,?,?,?,?)";
 		pstmt=conn.prepareStatement(sql);
 		pstmt.setString(1,id);
 		pstmt.setString(2,passwd);
@@ -45,8 +45,8 @@
 		pstmt.setString(5,address);
 		pstmt.setString(6,birth);
 		pstmt.setString(7,phone);
-		
 		pstmt.setString(8,hobby);
+		pstmt.setTimestamp(9,register);
 		pstmt.executeUpdate();
 	}catch(Exception e){
 		e.printStackTrace();
@@ -55,6 +55,7 @@
 %>
 <%=str%>
 <script>
+alert("회원가입이 완료되었습니다.");
 location.href="../Join/LoginForm.jsp";
 </script>
 </body>

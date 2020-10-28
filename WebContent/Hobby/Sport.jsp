@@ -51,7 +51,20 @@
                                  <li><a href="/community/freeboard/free_board.jsp">자유게시판</a></li>
                                  <li><a href="/community/infoboard/info_board.jsp">정보게시판</a></li>
                               </ul>
-                           
+                           <ul class="navtop"> 
+                        			<%if("admin".equals(session.getAttribute("id"))){ %> 
+	                                	<li><a href="/admin/memberList.jsp">관리자메뉴</a></li>
+	                                	<li><a href="../Join/Logout.jsp">Logout</a></li>
+	                                	
+                                	<%}else if(session.getAttribute("id")!=null){ %>     
+	                                	<li><a href="../Join/Logout.jsp">Logout</a></li>
+	                                	<li><a class="fas fa-user fa-1.5x" href="/MyPage/Profile.jsp"></a></li>
+                                	<%}else{%>       
+                                	<li><a href="/Join/LoginForm.jsp">Login</a></li>
+				                    <li><a href="/Join/insertForm.jsp">Join</a></li>
+				                    <%} %>
+                                            
+                        </ul>
                            </li>
                         </ul>
                      </nav>
@@ -100,8 +113,6 @@
                         <h3>테니스로 재미있게 체력 기르기</h3>
                      </header>
                             <p>월 42,000원 (6개월)</p>
-                   </div>
-                 </div>
                    </div>
                  </div>
             </div>

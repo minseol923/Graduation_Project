@@ -9,7 +9,22 @@
 <link rel='stylesheet' href='https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css'>
 <link rel="stylesheet" href="../assets/css/main.css"/>
 <link rel="stylesheet" href="../assets/css/mbti.css">
+<script>
+function mbtiCheck(){
+	var result=document.getElementById('my_mbti').value;
 	
+	var msg="";
+	if(result=='INFP'){
+		msg = "당신에게 맞는 취미는 다꾸입니다.";
+	}else if(result=='INFP'){
+		msg = "당신에게 맞는 취미는 다꾸입니다.";
+	}else if(result=='INFP'){
+		msg = "당신에게 맞는 취미는 다꾸입니다.";
+	}
+	document.getElementById("mbtiMsg").innerHTML = msg;
+}
+
+</script>
 </head>
 
 <div class="homepage is-preload">
@@ -30,18 +45,11 @@
                            <li>
                               <a href="/HobbyTest/mbti.jsp"><span>Hobby</span></a>
                               <ul>
-                                 <li><a href="/HobbyTest/mbti.jsp">취미 검사</a></li>
+                                 <li><a href="/HobbyTest/Survey.jsp">취미 검사</a></li>
                                  <li><a href="/HobbyTest/mbti.jsp">MBTI 검사</a></li>
                               </ul>
                            </li>
-                           <li><a href="/MyPage/MyClass.jsp">
-                           <span>MY Page</span></a>
-                              <ul>
-                                 <li><a href="/MyPage/MyClass.jsp">My Class</a></li>
-                                 <li><a href="/MyPage/HobbyLog.jsp">활동로그</a></li>
-                                 <li><a href="/MyPage/Profile.jsp">내 프로필</a></li>
-                                 <li><a href="/MyPage/EditProfile.jsp">프로필수정</a></li>
-                              </ul>
+                       
                            <li><a href="/ServiceCenter/FAQboard/FAQ.jsp">
                            <span>Service Center</span></a>
                               <ul>
@@ -58,6 +66,20 @@
                               </ul>
                            
                            </li>
+                        </ul>
+                        <ul class="navtop"> 
+                        			<%if("admin".equals(session.getAttribute("id"))){ %> <!-- 관리자면 -->
+	                                	<li><a href="/admin/memberList.jsp">관리자메뉴</a></li>
+	                                	<li><a href="../Join/Logout.jsp">Logout</a></li>
+	                                	
+                                	<%}else if(session.getAttribute("id")!=null){ %>      <!-- 아이디가 있으면 -->
+	                                	<li><a href="../Join/Logout.jsp">Logout</a></li>
+	                                	<li><a class="fas fa-user fa-1.5x" href="/MyPage/Profile.jsp"></a></li>
+                                	<%}else{%>       
+                                	<li><a href="/Join/LoginForm.jsp">Login</a></li>
+				                    <li><a href="/Join/insertForm.jsp">Join</a></li>
+				                    <%} %>
+                                            
                         </ul>
                      </nav>
 
@@ -86,7 +108,7 @@
               <div class="column-xs-12 column-md-2 hide-mobile">
                 <div class="intro">
                   <a href="#">
-                    <h1 class="m_title"><span class="underline">MBTI</span></h1>
+                    <h1 class="m_title"><span class="underline" onclick="location.href='https://www.16personalities.com/ko'">MBTI검사</span></h1>
                   </a>
                 </div>
               </div>
@@ -101,7 +123,12 @@
                         <h1 class="m_title"><span class="underline">MBTI</span></h1>
                       </a>
                     </div>
-                    <p class="description">Tokyo, Japan’s busy capital, mixes the ultramodern and the traditional, from neon-lit skyscrapers to historic temples.</p>
+                    <form action="" name="mbti">당신의 MBTI는?</p>
+                   		<input type="text" id="my_mbti" name="my_mbti" style=width:100%; placeholder="mbti를 입력해주세요">
+                  		<input type="button" value="입력" onClick="mbtiCheck()"><br>
+                  		<span id='mbtiMsg' value='test용'/>
+
+                   </form>
                   </div>
                 </div>
               </div>

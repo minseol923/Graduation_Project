@@ -31,14 +31,7 @@
                                  <li><a href="/HobbyTest/mbti.jsp">MBTI 검사</a></li>
                               </ul>
                            </li>
-                           <li><a href="/MyPage/MyClass.jsp">
-                           <span>MY Page</span></a>
-                              <ul>
-                                 <li><a href="/MyPage/MyClass.jsp">My Class</a></li>
-                                 <li><a href="/MyPage/HobbyLog.jsp">활동로그</a></li>
-                                 <li><a href="/MyPage/Profile.jsp">내 프로필</a></li>
-                                 <li><a href="/MyPage/EditProfile.jsp">프로필수정</a></li>
-                              </ul>
+                       
                            <li><a href="/ServiceCenter/FAQboard/FAQ.jsp">
                            <span>Service Center</span></a>
                               <ul>
@@ -55,18 +48,24 @@
                               </ul>
                            </li>
                         </ul>
-                        <ul class="navtop">   
-                                
-                                    <li><a href="/Join/LoginForm.jsp">Login</a></li>
+                        <ul class="navtop"> 
+                        			<%if("admin".equals(session.getAttribute("id"))){ %> <!-- 관리자면 -->
+	                                	<li><a href="/admin/memberList.jsp">관리자메뉴</a></li>
+	                                	<li><a href="../Join/Logout.jsp">Logout</a></li>
+	                                	
+                                	<%}else if(session.getAttribute("id")!=null){ %>      <!-- 아이디가 있으면 -->
+	                                	<li><a href="../Join/Logout.jsp">Logout</a></li>
+	                                	<li><a class="fas fa-user fa-1.5x" href="/MyPage/Profile.jsp"></a></li>
+                                	<%}else{%>       
+                                	<li><a href="/Join/LoginForm.jsp">Login</a></li>
 				                    <li><a href="/Join/insertForm.jsp">Join</a></li>
-                                    <li><a class="fas fa-user fa-1.5x" href="/MyPage/Profile.jsp"></a>
-                                    
-                                    </li>             
+				                    <%} %>
+                                            
                         </ul>
                      </nav>
 
                </div>
-            </section>	
+            </section>
 			<div id="my-Sidebar">
         	<h2>고객센터</h2>
         		<ul>
@@ -110,20 +109,22 @@
     </div>
     <div class="accordion-item">
       <button id="accordion-button-4" aria-expanded="false">
-      	<span class="accordion-title">Q 질문4</span>
+      	<span class="accordion-title">Q 취미클래스 환불 규정이 어떻게 되나요? </span>
       	<span class="icon" aria-hidden="true"></span>
       </button>
       <div class="accordion-content">
-         <p><h5>A. 답변4</h5></p>
+         <p><h5>A. 수강시작일 전에 환불 요청시 전액 환불 처리됩니다.
+         		      수강시작일 이후부터 환불 요청일 기준으로 부분 환불이 가능합니다.
+          </h5></p>
       </div>
     </div>
     <div class="accordion-item">
       <button id="accordion-button-5" aria-expanded="false">
-      	<span class="accordion-title">Q 질문5</span>
+      	<span class="accordion-title">Q 기존 취미클래스에 없는 새로운 취미 클래스를 듣고싶어요</span>
       	<span class="icon" aria-hidden="true"></span>
       </button>
       <div class="accordion-content">
-         <p><h5>A. 답변5</h5></p>
+         <p><h5>A. 새로운 취미 클래스는 정기적으로 추가됩니다. 듣고 싶은 취미클래스에 대해 문의 주세요. </h5></p>
       </div>
     </div>
   </div>

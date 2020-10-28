@@ -1,13 +1,33 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="utf-8"%>
+<%@page import="myclass.MyclassBean"%>
+<%@page import="myclass.Myclass"%>
+<%@ page import = "java.util.ArrayList" %>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="utf-8"%>
 
 <html>
 <head>
-   <title>HD_Art1</title>
+   <title>ART_01</title>
    <meta charset="utf-8" />
      <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
    <link rel="stylesheet" href="../assets/css/Hobby.css">
-
+<%
+	String id= (String)session.getAttribute("id");
+	String classId = (String)request.getParameter("classId");
+	String entry_yn ="N";
+	String like_yn="N";
+	Myclass myclass= new Myclass();
+	myclass.setId(id);
+	myclass.setClass_id(classId);
+	ArrayList<Myclass> dbPro = MyclassBean.getInstance().getMyclass(myclass);
+	
+	if(dbPro.size()>0){
+		if("Y".equals(dbPro.get(0).getEntry_yn())){
+			entry_yn="Y";
+		}
+		if("Y".equals(dbPro.get(0).getLike_yn())){
+			like_yn="Y";
+		}
+	}
+%>
 <body class="homepage is-preload">
       <div id="page-wrapper">
 
@@ -29,14 +49,7 @@
                                  <li><a href="/HobbyTest/mbti.jsp">MBTI 검사</a></li>
                               </ul>
                            </li>
-                           <li><a href="/MyPage/MyClass.jsp">
-                           <span>MY Page</span></a>
-                              <ul>
-                                 <li><a href="/MyPage/MyClass.jsp">My Class</a></li>
-                                 <li><a href="/MyPage/HobbyLog.jsp">활동로그</a></li>
-                                 <li><a href="/MyPage/Profile.jsp">내 프로필</a></li>
-                                 <li><a href="/MyPage/EditProfile.jsp">프로필수정</a></li>
-                              </ul>
+                         
                            <li><a href="/ServiceCenter/FAQboard/FAQ.jsp">
                            <span>Service Center</span></a>
                               <ul>
@@ -53,13 +66,19 @@
                               </ul>
                            </li>
                         </ul>
-                        <ul class="navtop">   
-                                
-                                    <li><a href="/Join/LoginForm.jsp">Login</a></li>
+                       <ul class="navtop"> 
+                        			<%if("admin".equals(session.getAttribute("id"))){ %> <!-- 관리자면 -->
+	                                	<li><a href="/admin/memberList.jsp">관리자메뉴</a></li>
+	                                	<li><a href="../Join/Logout.jsp">Logout</a></li>
+	                                	
+                                	<%}else if(session.getAttribute("id")!=null){ %>      <!-- 아이디가 있으면 -->
+	                                	<li><a href="../Join/Logout.jsp">Logout</a></li>
+	                                	<li><a class="fas fa-user fa-1.5x" href="/MyPage/Profile.jsp"></a></li>
+                                	<%}else{%>       
+                                	<li><a href="/Join/LoginForm.jsp">Login</a></li>
 				                    <li><a href="/Join/insertForm.jsp">Join</a></li>
-                                    <li><a class="fas fa-user fa-1.5x" href="/MyPage/Profile.jsp"></a>
-                                    
-                                    </li>             
+				                    <%} %>
+                                            
                         </ul>
                      </nav>
 
@@ -88,7 +107,7 @@
 				<h2>공간감을 살리는 스케치 스킬</h2>
 				
 				<!--class="image featured">-->
-				<a><img width= 800px height= 600px src="/assets/css/images/Art1.jpg" alt=""/></a>
+				<a><img width= 800px height= 600px src="/assets/css/images/ART_01.jpg" alt=""/></a>
 				<br>
 				<h3 class="classExplanation">건축하듯 뼈대를 잡고 쌓아올려 구조감 있는 그림을 완성해봅시다.</h3>
 				<hr>
@@ -117,9 +136,21 @@
 					공간감이 느껴지는 그림을 그릴 수 있아요.<br>
 					간직하고싶은 풍경을 그림으로 담을 수 있어요.<br>
 				</text>
-				<ul class="actions">
-					<li><a href="#" class="button icon solid fa-file">클래스 수강신청하기</a></li>
-				</ul>
+				<% if(entry_yn!="Y"){%>
+					<form method="post" action="/HobbyDtail/myClassPro.jsp" name="myClass">
+						<input type="submit" value="클래스 신청하기" id="submit" name="entryBtn" >
+						<input type="hidden" name="class_id" value="ART_01">
+						<input type="hidden" name="entry_yn" value="Y">
+					</form>
+				<%}else{ %>
+
+					<input type="button" value="수강하기" id="playBtn" name="playBtn" >
+				<%}%>
+				<form method="post" action="/HobbyDtail/myClassPro.jsp" name="myClass">
+					<input type="submit" value="좋아요" id="submit" name="likeYnBtn" >
+					<input type="hidden" name="class_id" value="ART_01">
+					<input type="hidden" name="like_yn" id="like_yn" value="Y">
+				</form>				
 				</article>
 			</div>
          	</div>
@@ -131,5 +162,31 @@
          <script src="../assets/js/breakpoints.min.js"></script>
          <script src="../assets/js/util.js"></script>
          <script src="../assets/js/main.js"></script>
+
    </body>
+   <script>
+	   $(document).ready(function(){
+			var entry_yn = '<%=entry_yn%>';
+
+			if( entry_yn =='Y'){
+				$('#divEntry').hide();
+				var text = $('input[name=entryBtn]').val();
+				$('input[name=entryBtn]').val('수강하기');
+			
+				
+			}
+
+			var like_yn = '<%=like_yn%>';
+			if( like_yn =='Y'){
+				var text = $('input[name=likeYnBtn]').val();
+				$('input[name=likeYnBtn]').val('좋아요 취소');
+				$('#like_yn').val('N');
+			}
+
+	   });
+	   
+	   $('#playBtn').click( function() {
+		    window.open("https://www.youtube.com/watch?v=irtQEM739nM", "유튜브", "width=800, height=700, toolbar=no, menubar=no, scrollbars=no, resizable=yes" );  
+	   } );
+   </script>
 </html>

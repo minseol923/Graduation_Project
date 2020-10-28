@@ -62,8 +62,9 @@
   
    <tr>
    	<td colspan="2"> <input type="submit" value="글쓰기">
-   	<input type="reset" value="다시작성">
-   	<input type="button" value="목록보기" onClick="window.location="/ServiceCenter/Noticeboard/notice.jsp"> </td>
+	   	<input type="reset" value="다시작성">
+	   	<input type="button" value="목록보기" onclick="document.location.href='/ServiceCenter/Noticeboard/notice.jsp'">
+    </td>
    	
   </tr>
  </table>

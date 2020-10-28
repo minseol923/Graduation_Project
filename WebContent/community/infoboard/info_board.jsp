@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ page import = "board.BoardDBBean" %>
 <%@ page import = "board.BoardDataBean" %>
@@ -10,7 +10,9 @@
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 %>
 
+
 <%
+	request.setCharacterEncoding("utf-8");
 	String id=(String)session.getAttribute("id");
     String pageNum = request.getParameter("pageNum");
     if (pageNum == null) {
@@ -32,14 +34,6 @@
 	if(request.getParameter("keyField")!=null){
 		 keyField=request.getParameter("keyField");	
 		 keyword=request.getParameter("keyword");
-	
-		request.getSession().setAttribute("keyField", keyField);
-		request.getSession().setAttribute("keyWord", keyword);
-	
-	}else if(request.getSession().getAttribute("keyField") != null){
-		keyField = (String)request.getSession().getAttribute("keyField");
-		keyword = (String)request.getSession().getAttribute("keyWord");
-
 	}
 
 	articleList = dbPro.getArticles(startRow, pageSize, boardType, keyField, keyword);
@@ -78,14 +72,7 @@
                                  <li><a href="/HobbyTest/mbti.jsp">MBTI 검사</a></li>
                               </ul>
                            </li>
-                           <li><a href="/MyPage/MyClass.jsp">
-                           <span>MY Page</span></a>
-                              <ul>
-                                 <li><a href="/MyPage/MyClass.jsp">My Class</a></li>
-                                 <li><a href="/MyPage/HobbyLog.jsp">활동로그</a></li>
-                                 <li><a href="/MyPage/Profile.jsp">내 프로필</a></li>
-                                 <li><a href="/MyPage/EditProfile.jsp">프로필수정</a></li>
-                              </ul>
+                           
                            <li><a href="/ServiceCenter/FAQboard/FAQ.jsp">
                            <span>Service Center</span></a>
                               <ul>
@@ -102,13 +89,19 @@
                               </ul>
                            </li>
                         </ul>
-                        <ul class="navtop">   
-                                
-                                    <li><a href="/Join/LoginForm.jsp">Login</a></li>
+                        <ul class="navtop"> 
+                        			<%if("admin".equals(session.getAttribute("id"))){ %> <!-- 관리자면 -->
+	                                	<li><a href="/admin/memberList.jsp">관리자메뉴</a></li>
+	                                	<li><a href="/Join/Logout.jsp">Logout</a></li>
+	                                	
+                                	<%}else if(session.getAttribute("id")!=null){ %>      <!-- 아이디가 있으면 -->
+	                                	<li><a href="/Join/Logout.jsp">Logout</a></li>
+	                                	<li><a class="fas fa-user fa-1.5x" href="/MyPage/Profile.jsp"></a></li>
+                                	<%}else{%>       
+                                	<li><a href="/Join/LoginForm.jsp">Login</a></li>
 				                    <li><a href="/Join/insertForm.jsp">Join</a></li>
-                                    <li><a class="fas fa-user fa-1.5x" href="/MyPage/Profile.jsp"></a>
-                                    
-                                    </li>             
+				                    <%} %>
+                                            
                         </ul>
                      </nav>
 
@@ -191,9 +184,9 @@
 			    <td align="center">
 			    
 				<% if (session.getAttribute("id") != null) {%>
-					<a href="/community/freeboard/writeForm.jsp" class="write">글쓰기</a>
-				<%} else {%>
-					<button type="button" class="write" onclick="writeCheck()" >글쓰기</button>
+					<button type="button" class="write" onclick="writeCheck()">글쓰기</button>
+				<%} else{%>
+					<button type="button" class="write" onclick="IdCheck()" >글쓰기</button>
 				<%} %>
 			    </td>
 			  </tr>
@@ -262,6 +255,10 @@
 			<script src="../assets/js/main.js"></script>
 			<script>
 			function writeCheck(){
+				location.href="/community/infoboard/info_writeForm.jsp";
+			}
+			
+			function IdCheck(){
 				alert("회원만 글을 쓸수있습니다.");
 				location.href="/Join/LoginForm.jsp";
 			}

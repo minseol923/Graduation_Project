@@ -1,5 +1,5 @@
 create table board(
-     num int not null primary key auto_increment,
+     num int not null primary key 
      writer varchar(10) not null,
      subject varchar(50) not null,
      email varchar(50),

@@ -53,13 +53,19 @@
                               </ul>
                            </li>
                         </ul>
-                        <ul class="navtop">   
-                                
-                                    <li><a href="/Join/LoginForm.jsp">Login</a></li>
+                        <ul class="navtop"> 
+                        			<%if("admin".equals(session.getAttribute("id"))){ %> <!-- 관리자면 -->
+	                                	<li><a href="/admin/memberList.jsp">관리자메뉴</a></li>
+	                                	<li><a href="../Join/Logout.jsp">Logout</a></li>
+	                                	
+                                	<%}else if(session.getAttribute("id")!=null){ %>      <!-- 아이디가 있으면 -->
+	                                	<li><a href="../Join/Logout.jsp">Logout</a></li>
+	                                	<li><a class="fas fa-user fa-1.5x" href="/MyPage/Profile.jsp"></a></li>
+                                	<%}else{%>       
+                                	<li><a href="/Join/LoginForm.jsp">Login</a></li>
 				                    <li><a href="/Join/insertForm.jsp">Join</a></li>
-                                    <li><a class="fas fa-user fa-1.5x" href="/MyPage/Profile.jsp"></a>
-                                    
-                                    </li>             
+				                    <%} %>
+                                            
                         </ul>
                      </nav>
 
@@ -84,7 +90,7 @@
              <div class="row">
                  <div class="column">
                    <div class="card">
-                      <a href="/HobbyDetail/HD_Art1.jsp" class="image featured"><img src="/assets/css/images/Art1.jpg" alt="" /></a>
+                      <a href="/HobbyDtail/ART_01.jsp?classId=ART_01" class="image featured"><img src="/assets/css/images/ART_01.jpg" alt="" /></a>
                       <header>
                         <h3>공간감을 살리는 스케치 스킬</h3>
                      </header>
@@ -93,7 +99,7 @@
                  </div>
                  <div class="column">
                    <div class="card">
-                      <a href="#" class="image featured"><img src="/assets/css/images/Art2.png" alt="" /></a>
+                      <a href="/HobbyDtail/ART_02.jsp?classId=ART_02" class="image featured"><img src="/assets/css/images/Art_02.jpg" alt="" /></a>
                       <header>
                         <h3>손으로만 그림 그리기 지겹다면? 그래픽 일러스트</h3>
                      </header>
@@ -102,7 +108,7 @@
                  </div>
                  <div class="column">
                    <div class="card">
-                      <a href="#" class="image featured"><img src="/assets/css/images/Art3.jpg" alt="" /></a>
+                      <a href="/HobbyDtail/ART_03.jsp?classId=ART_03" class="image featured"><img src="/assets/css/images/ART_03.jpg" alt="" /></a>
                       <header>
                         <h3>섬세한 터치로 완성하는 꽃 드로잉</h3>
                      </header>
@@ -146,8 +152,6 @@
                    </div>
                  </div>
                  
-                   </div>
-                 </div>
             </div>
                           </div>
                            </section>

@@ -2133,7 +2133,19 @@ input::-moz-focus-inner {
 				background: url("images/bracket.svg");
 				opacity: 0.15;
 			}
-
+		    .navtop {
+			    position: absolute;
+			    top: -50px;
+			    left: 450px;
+			    right: 0px;
+			    width: 100%;
+			    cursor: default;
+			    font-size: 0.8em;
+			    display:block;
+			    justify-content: space-between;
+			    align-items: center;
+			}
+		
 			#banner > .container:before {
 				left: 0;
 			}

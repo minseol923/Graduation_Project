@@ -4,11 +4,30 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>게시판</title>
-
+<title>Q&A게시판</title>
+<script>
+function boardCheck(){
+	if(document.free.subject.value==""){
+		alert("제목을 입력하세요");
+		document.free.subject.focus();
+		return false;
+	}
+	if(document.free.content.value==""){
+		alert("내용 입력하세요");
+		document.free.content.focus();
+		return false;
+	}
+	if(document.free.passwd.value==""){
+		alert("비밀번호 입력하세요");
+		document.free.passwd.focus();
+		return false;
+	}
+}
+</script>
 </head>
 <body>
 <%
+	String id =(String)session.getAttribute("id");
 	int num=0, ref=1, re_step=0, re_level=0;
 	String strV="";
 	
@@ -21,7 +40,7 @@
 		}
 %>
 <p> 글쓰기 </p>
-<form method="post" name="qna_writeForm" action="/ServiceCenter/Q&Aboard/qna_writePro.jsp">
+<form method="post" name="qna_writeForm" action="/ServiceCenter/Q&Aboard/qna_writePro.jsp" onsubmit="return boardCheck()">
 <input type="hidden" name="boardType" value="qna">
 <input type="hidden" name="num" value="<%=num%>">
 <input type="hidden" name="ref" value="<%=ref%>">
@@ -35,7 +54,7 @@
    
    <tr>
    	<td width="70" align="center">이름 </td>
-   	<td> <input type="text" size="10" name="writer"></td>
+   	<td> <input type="text" size="10" name="writer" value=<%=id %>></td>
   </tr>
   
   <tr>
@@ -62,9 +81,11 @@
   </tr>
   
    <tr>
-   	<td colspan="2"> <input type="submit" value="글쓰기">
-   	<input type="reset" value="다시작성">
-   	<input type="button" value="목록보기" onClick="window.location="/ServiceCenter/Q&Aboard/Q&A.jsp"> </td>
+   	<td colspan="2"> 
+	   	<input type="submit" value="글쓰기">
+	   	<input type="reset" value="다시작성">
+	   	<input type="button" value="목록보기" onclick="document.location.href='/ServiceCenter/Q&Aboard/Q&A.jsp'"> 
+	</td>
    	
   </tr>
  </table>

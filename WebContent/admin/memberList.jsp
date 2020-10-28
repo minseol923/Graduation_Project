@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ page import = "Test.user" %>
 <%@ page import = "Test.userDB" %>
@@ -12,6 +12,7 @@
 %>
 
 <%
+	request.setCharacterEncoding("utf-8");
 	String id=(String)session.getAttribute("id");
 	String pageNum = request.getParameter("pageNum");
 	if (pageNum == null) {
@@ -20,16 +21,29 @@
 	int currentPage = Integer.parseInt(pageNum);
 	int startRow = (currentPage - 1) * pageSize + 1;
 	int endRow = currentPage * pageSize;
+	int count=0;
 	int number = 0;
-
+	ArrayList<user> getMemberAll = null; 
+	
 	userDB userPro = userDB.getInstance();
+	count=userPro.getUserListCount();
 	
-	String searchOption=request.getParameter("searchOption");	
-	String keyword=request.getParameter("keyword");
+	String keyField="";
+	String keyword="";
+	
+	if(request.getParameter("keyField")!=null){
+		 keyField=request.getParameter("keyField");	
+		 keyword=request.getParameter("keyword");
+	}
 			
-	ArrayList<user> memberList = userPro.getMemberAll();
+	ArrayList<user> memberList = userPro.getMemberAll(startRow, pageSize,keyField, keyword);
 	
-	int count = memberList.size();
+	if(count >0){
+		memberList=userPro.getMemberAll(startRow,pageSize,keyField, keyword);
+	}
+		number = count-(currentPage-1)*pageSize;
+	
+	
 %>
 <html>
 <head>
@@ -40,8 +54,8 @@
 		
 			<tr>
 				<td><%=id %>님 환영합니다.</td>
-				<td><a href="/admin/boardList.jsp" >전체 게시물</a></td>
-				<td><a href="/admin/memberList.jsp">회원 목록</a></td>
+				<td><a href="../admin/boardList.jsp" >전체 게시물</a></td>
+				<td><a href="../admin/memberList.jsp">회원 목록</a></td>
 				<td><a href="../index.jsp">메인으로</a></td>
 			</tr>
 		 	<p align="center">회원목록(전체 회원수:<%=count%>)</p>
@@ -64,6 +78,7 @@
 			      <td align="center"  width="100" >전화번호</td>
 			      <td align="center"  width="150" >이메일</td> 
 			      <td align="center"  width="200">주소</td>
+			      <td align="center"  width="200">가입일</td>
 			    
 			    </tr>
 			<%  
@@ -75,24 +90,31 @@
 			   	 	<td><%= memberList.get(i).getPhone()%></td>
 					<td><%= memberList.get(i).getEmail()%></td>
 			    	<td ><%= memberList.get(i).getAddress()%></td>
+			    	<td ><%= memberList.get(i).getReg_date()%></td>
 			
 			  </tr>
 			<%}%>
 			</table>
 			<%}%>
+				<form name="search" method="post" action="../admin/memberList.jsp">
 				<div>
+				<table>
 					<tr>
 				  		<td>
-				  			<select name="searchOption">
-					  			<option value="id"> 아이디 </option>
-								<option value="phone" >전화번호</option>
-								<option value="address" >주소 </option>
+				  			<select name="keyField">
+				  				<option value="" selected>전체</option>
+								<option value="id">아이디</option>
+								<option value="name">이름 </option>
+								<option value="address">주소</option>
 				  			</select>
 					  		<input type="text" id="keyword" name="keyword">
-					  		<input type="submit" name="submit" value="검색">
+					  		<input type="submit" value="검색">
+					  	
 				  		</td>
 				  	</tr>
+				  	</table>
 			  	</div>
+			</form>	
 			
 			<div style="text-align:center">
 			<%
@@ -110,23 +132,23 @@
 					if(endPage >pageCount) endPage=pageCount;
 					
 					if(startPage>10){ %>
-						<a href="/admin/memberList.jsp?pageNum=<%=startPage-10 %>">[이전]</a>
+						<a href="../admin/memberList.jsp?pageNum=<%=startPage-10 %>">[이전]</a>
 					
 				<% }
 					
 					for(int i =startPage; i<=endPage;i++){ %>
-						<a href="/admin/memberList.jsp?pageNum=<%=i%>">[<%=i %>]</a>
+						<a href="../admin/memberList.jsp?pageNum=<%=i%>">[<%=i %>]</a>
 				<% }
 					
 					if(endPage < pageCount){ %>
-					<a href="/admin/memberList.jsp?pageNum=<%=startPage+10 %>">[다음]</a>
+					<a href="../admin/memberList.jsp?pageNum=<%=startPage+10 %>">[다음]</a>
 				
 				<%
 						}
 					}
 				%>
-                        </div>
-                      </div>
+           </div>
+                      
             
 	</body>
 </html>
