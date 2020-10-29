@@ -14,7 +14,7 @@ import java.util.*;
 
 
 public class RecommenderIntro {
-
+	static String alert;
 	
 private RecommenderIntro() {
 	
@@ -39,7 +39,43 @@ private RecommenderIntro() {
     for (RecommendedItem recommendation : recommendations) {
       System.out.println(recommendation);
       System.out.println(recommendation.getItemID());
+      if(recommendation.getItemID() == 0){
+	  		alert = "당신에게 맞는 취미는 스포츠 입니다.";
+	  	}else if(recommendation.getItemID() == 1){
+	  		alert = "당신에게 맞는 취미는 DIY입니다.";
+	  	}else if(recommendation.getItemID() == 2){
+	  		alert = "당신에게 맞는 취미는 요리입니다.";
+	  	}
+	  	else if(recommendation.getItemID() == 3){
+	  		alert = "당신에게 맞는 취미는 언어배우기 입니다.";
+	  	}
+	  	else if(recommendation.getItemID() == 4){
+	  		alert = "당신에게 맞는 취미는 사진/영상 입니다.";
+	  	}
+	  	else if(recommendation.getItemID() == 5){
+	  		alert = "당신에게 맞는 취미는 미술 입니다.";
+	  	}
+	  	else if(recommendation.getItemID() == 6){
+	  		alert = "당신에게 맞는 취미는 언어배우기 입니다.";
+	  	}
+	  	else if(recommendation.getItemID() == 7){
+	  		alert = "당신에게 맞는 취미는 스포츠입니다.";
+	  	}
+	  	else if(recommendation.getItemID() == 8){
+	  		alert = "당신에게 맞는 취미는 음악 입니다.";
+	  	}
+	  	else if(recommendation.getItemID() == 9){
+	  		alert = "당신에게 맞는 취미는 DIY 입니다.";
+	  	}
+	  	else if(recommendation.getItemID() == 10){
+	  		alert = "당신에게 맞는 취미는 음악 입니다.";
+	  	}
+	  	else if(recommendation.getItemID() == 11){
+	  		alert = "당신에게 맞는 취미는 DIY 입니다.";
+	  	}
+
     }
+   
     
  
   }

@@ -6,13 +6,11 @@
 <title>MY HOB!</title>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
-<link rel="stylesheet" href="../assets/css/Survey.css"/>
+<link rel="stylesheet" href="/assets/css/survey.css"/>
 <script>
-
 <%
-	Object result = request.getAttribute("recommendation.getItemID()");   
+   Object result = request.getAttribute("recommendation.getItemID()");   
 %>
-
 </script>
 </head>
 <body class="homepage is-preload" style="overflow-x:hidden">
@@ -21,29 +19,18 @@
             <section id="header">
                <div class="container">
 
-                  <!-- Logo -->
-                     <h1 id="logo"><a href="/index.jsp">MY HOB!</a></h1>
-
-                  <!-- Nav -->
+                  <!-- Nav 진짜마지막 -->
                      <nav id="nav">
-                        <ul>
+                        <ul class="mainnav">
                            <li><a href="/index.jsp"><span>About Us</span></a></li>
-                           <li>
-                              <a href="/HobbyTest/mbti.jsp"><span>Hobby</span></a>
+                            <li>
+                              <a href="/HobbyTest/Survey.jsp"><span>Hobby</span></a>
                               <ul>
-                                 <li><a href="/HobbyTest/mbti.jsp">취미 검사</a></li>
+                                 <li><a href="/HobbyTest/Survey.jsp">취미 검사</a></li>
                                  <li><a href="/HobbyTest/mbti.jsp">MBTI 검사</a></li>
                               </ul>
                            </li>
-                           <li><a href="/MyPage/MyClass.jsp">
-                           <span>MY Page</span></a>
-                              <ul>
-                                 <li><a href="/MyPage/MyClass.jsp">My Class</a></li>
-                                 <li><a href="/MyPage/HobbyLog.jsp">활동로그</a></li>
-                                 <li><a href="/MyPage/Profile.jsp">내 프로필</a></li>
-                                 <li><a href="/MyPage/EditProfile.jsp">프로필수정</a></li>
-                              </ul>
-                           <li><a href="/ServiceCenter/FAQboard/FAQ.jsp">
+                           <li><a href="/ServiceCenter/Noticeboard/notice.jsp">
                            <span>Service Center</span></a>
                               <ul>
                                  <li><a href="/ServiceCenter/Noticeboard/notice.jsp">공지사항</a></li>
@@ -51,25 +38,32 @@
                                  <li><a href="/ServiceCenter/Q&Aboard/Q&A.jsp">Q&A</a></li>
                               </ul>
                            </li>
-                           <li><a href="/community/infoboard/info_board.jsp">
+                           <li><a href="/community/freeboard/free_board.jsp">
                               <span>community</span></a>
                               <ul>
                                  <li><a href="/community/freeboard/free_board.jsp">자유게시판</a></li>
                                  <li><a href="/community/infoboard/info_board.jsp">정보게시판</a></li>
                               </ul>
-                           
                            </li>
                         </ul>
-                        <ul class="navtop">   
-                                
-                                    <li><a href="/Join/LoginForm.jsp">Login</a></li>
+                        <ul class="navtop"> 
+                                 <%if("admin".equals(session.getAttribute("id"))){ %> <!-- 관리자면 -->
+                                      <li><a href="/admin/memberList.jsp">관리자메뉴</a></li>
+                                      <li><a href="../Join/Logout.jsp">Logout</a></li>
+                                      
+                                   <%}else if(session.getAttribute("id")!=null){ %>      <!-- 아이디가 있으면 -->
+                                      <li><a href="../Join/Logout.jsp">Logout</a></li>
+                                      <li><a class="fas fa-user fa-1.5x" href="/MyPage/Profile.jsp"></a></li>
+                                   <%}else{%>       
+                                   <li><a href="/Join/LoginForm.jsp">Login</a></li>
                                 <li><a href="/Join/insertForm.jsp">Join</a></li>
-                                  <!-- <li><a class="fas fa-key" href="/MyPage/Profile.jsp"></a>-->
-                                    <li><a href="/MyPage/Profile.jsp"><img src="../images/gear.png"></a></li>
-                                                                            
+                                <%} %>
+                                            
                         </ul>
                      </nav>
-
+                     
+                      <!-- Logo-->
+                  <h1 id="logo"><a href="/index.jsp">MY HOB!</a></h1>
                </div>
             </section>
    
@@ -904,7 +898,7 @@
                      <form>
                         <section>
                         <button class="btn blue-grey darken-3 wave-effect waves-light" type="submit" name="action"
-                     onclick="alert('당신에게 \n' + <%= result %>  +'취미를 추천해드릴게요');" style="cursor:pointer">
+                     onclick="alert('당신에게 \n' + <%= result %>  +'취미를 추천해드릴게요');" >
                      Send<i class="material-icons right"></i>
                         </button>
                         </section>

@@ -52,8 +52,7 @@
 	<title>MY HOB! Q&A게시판</title>
 	<meta charset="utf-8" />
   	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="/assets/css/main2.css"/>
-	<link rel="stylesheet" href="/assets/css/free_board.css">
+	<link rel="stylesheet" href="/assets/css/Board.css">
 </head>
 <body class="homepage is-preload">
 		<div id="page-wrapper">

@@ -48,13 +48,17 @@ public class userDB {
 	
 	//로그인메소드
 	public int userCheck(String id, String passwd) {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		String SQL = "SELECT passwd FROM user WHERE id = ?";
 		
 		try {
-
+			conn = getConnection();
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
+		
 			if (rs.next()) {
 				if (rs.getString(1).equals(passwd)) {
 					return 1; //성공
@@ -69,7 +73,32 @@ public class userDB {
 		}
 		return -2; 
 	}
-	
+	//아이디 중복 확인
+	public boolean idCheck(String id) {
+		boolean b=false;
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			String sql = "SELECT * FROM user WHERE id = ?";
+
+	        conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				b=true;
+			}	
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+            if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+            if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+            if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+        }
+		return b;
+}
 	//회원수정-회원정보 가져오기
 	public user getData(String id){
 
@@ -80,7 +109,7 @@ public class userDB {
 
 	        try {
 	            conn = getConnection();
-	            pstmt = conn.prepareStatement("select id,passwd,name,email,address,phone,birth,hobby from user where id=?");
+	            pstmt = conn.prepareStatement("select * from user where id=?");
 	            pstmt.setString(1,id);
 	            rs = pstmt.executeQuery();
 
@@ -94,6 +123,8 @@ public class userDB {
 					use.setPhone(rs.getString("phone"));
 					use.setBirth(rs.getString("birth"));
 					use.setHobby(rs.getString("hobby"));
+					use.setReg_date(rs.getTimestamp("reg_date"));
+					
 				}
 	        } catch(Exception ex) {
 	            ex.printStackTrace();
@@ -214,25 +245,30 @@ public class userDB {
 		
 
 		///관리자페이지 회원 목록 /////
-		public ArrayList<user> getMemberAll() throws Exception {
+		public ArrayList<user> getMemberAll(int start, int end,String keyField,String keyword) throws Exception {
 			 Connection conn = null;
 		     PreparedStatement pstmt = null;
 		     ResultSet rs = null;
 		     ArrayList<user> memberList=new ArrayList<>();
 
-
-				try {
-			            conn = getConnection();
-			            
-			            pstmt = conn.prepareStatement("select * from user;");
+		     String sql="";
+		        
+		        try {
+		            conn = getConnection();
+		            if(!"".equals(keyField) ){
+		            	sql ="select * from user where "+keyField+" like ?  order by reg_date desc limit ?,?"; 
+			            pstmt=conn.prepareStatement(sql);
+			            pstmt.setString(1,"%"+keyword+"%");
+			            pstmt.setInt(2, start-1);
+						pstmt.setInt(3, end);
+		            
+		            }else{
+		                sql="select * from user order by reg_date desc limit ?,? ";
+		                pstmt=conn.prepareStatement(sql);
+		                pstmt.setInt(1, start-1);
+		    		    pstmt.setInt(2, end);
+		            }
 			            rs = pstmt.executeQuery();
-			            
-			            /*if(keyword !=null && !keyword.equals("")) {
-			            	sql+= "where"+searchOption+"Like '%"+ keyword+"%'";
-			            }
-			            pstmt = conn.prepareStatement(sql);
-			            rs = pstmt.executeQuery();*/
-
 						while(rs.next()){
 							user user= new user();
 							user.setId(rs.getString("id"));
@@ -240,6 +276,7 @@ public class userDB {
 							user.setPhone(rs.getString("phone"));
 							user.setEmail(rs.getString("email"));
 							user.setAddress(rs.getString("address"));
+							user.setReg_date(rs.getTimestamp("reg_date"));
 			                memberList.add(user);
 					
 						}
@@ -254,7 +291,32 @@ public class userDB {
 				return memberList;
 			}
 
+//회원목록 수
+		public int getUserListCount() throws Exception {
+	        Connection conn = null;
+	        PreparedStatement pstmt = null;
+	        ResultSet rs = null;
 
+	        int x=0;
+
+	        try {
+	            conn = getConnection();
+	            
+	            pstmt = conn.prepareStatement("select count(*) from user ");
+	            rs = pstmt.executeQuery();
+
+	            if (rs.next()) {
+	               x= rs.getInt(1);
+				}
+	        } catch(Exception ex) {
+	            ex.printStackTrace();
+	        } finally {
+	            if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+	            if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+	            if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+	        }
+			return x;
+	    }
 
 					
 		}

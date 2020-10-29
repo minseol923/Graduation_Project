@@ -51,7 +51,6 @@
 	<meta charset="utf-8" />
 </head>
 <body>		
-		
 			<tr>
 				<td><%=id %>님 환영합니다.</td>
 				<td><a href="../admin/boardList.jsp" >전체 게시물</a></td>
